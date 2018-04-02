@@ -10,6 +10,11 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
     end
   end
   
+  def self.up
+    add_column :questions, :type, :string
+    add_column :questions, :explanation, :string
+  end
+  
   def down
     drop_table :questions
   end
