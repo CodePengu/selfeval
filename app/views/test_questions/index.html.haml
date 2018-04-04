@@ -6,12 +6,12 @@
     = question.content
     = @correctness[question.id]
     %br
-    %select{:name => "answers[#{question.id}]"}
+  //  %select{:name => "answers[#{question.id}]"}
       %input{:type => 'radio', :value => 'option1', :selected => @answers[question.id] == 'option1'}= question.option1
       %input{:type => 'radio', :value => 'option2', :selected => @answers[question.id] == 'option2'}= question.option2
       %input{:type => 'radio', :value => 'option3', :selected => @answers[question.id] == 'option3'}= question.option3
       %input{:type => 'radio', :value => 'option4', :selected => @answers[question.id] == 'option4'}= question.option4
-    %br
+  //  %br
     %br
   = submit_tag 'Submit All', :id => 'submit_test'
 
