@@ -32,7 +32,7 @@
       #content
         The correct answer is
         %strong
-          = "[#{question.answer}]"
+          = question[question.answer]
         and you selected
         %strong
           = question[@answers[question.id]]

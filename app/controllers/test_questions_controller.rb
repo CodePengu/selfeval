@@ -3,7 +3,6 @@ class TestQuestionsController < ApplicationController
   def index
     @questions = Question.all
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
-    @correct_answer = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     if params[:answers] != nil
       params[:answers].each do |id, answer|
@@ -14,7 +13,6 @@ class TestQuestionsController < ApplicationController
         elsif (answer != "blank")
           @correctness[id] = ("wrong")
         end
-        @correct_answer[id] =("#{question.answer}")
         @answers[id] = ("#{answer}")
       end
     end
