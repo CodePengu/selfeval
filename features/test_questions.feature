@@ -15,28 +15,43 @@ Feature: submit answers to questions
   Scenario: view list of questions on application's test_questions page
     When I go to the index page for test_questions
     Then I should see "What color is the sky?"
+    And I should see "red"
+    And I should see "green"
+    And I should see "blue"
+    And I should see "yellow"
     And I should see "When is the exam?"
+    And I should see "Monday"
+    And I should see "Tuesday"
+    And I should see "Wednesday"
+    And I should see "Thursday"
     And I should see "Who is the professor?"
-    
+    And I should see "Walker"
+    And I should see "Chen"
+    And I should see "Obama"
+    And I should see "Trump"
     
   Scenario: submit answers to the questions on application's test_questions page
     Given I am on the index page for test_questions
-    When I select "red" from "answers[1]"
-    And I select "Wednesday" from "answers[2]"
-    And I select "Walker" from "answers[3]"
+    When I choose "option1" for "answers[1]"
+    And I choose "option3" for "answers[2]"
+    And I choose "option1" for "answers[3]"
     When I press "Submit All"
     Then I should be on the index page for test_questions
-    And I should see "What color is the sky? [false]"
-    And I should see "When is the exam? [false]"
-    And I should see "Who is the professor? [true]"
+    And I should see "What color is the sky?"
+    And I should see "The correct answer is blue and you selected red so it was wrong"
+    And I should see "When is the exam?"
+    And I should see "The correct answer is Thursday and you selected Wednesday so it was wrong"
+    And I should see "Who is the professor?"
+    And I should see "The correct answer is Walker and you selected Walker so it was correct"
 
   Scenario: leave questions blank
     Given I am on the index page for test_questions
-    When I select "blue" from "answers[1]"
-    And I select "Monday" from "answers[2]"
+    When I choose "option3" for "answers[1]"
+    And I choose "option1" for "answers[2]"
     When I press "Submit All"
-    Then I should see "What color is the sky? [true]"
-    And I should see "When is the exam? [false]"
+    Then I should see "What color is the sky?"
+    And I should see "The correct answer is blue and you selected blue so it was correct"
+    And I should see "When is the exam?"
+    And I should see "The correct answer is Thursday and you selected Monday so it was wrong"
     And I should see "Who is the professor?"
-    But I should not see "Who is the professor? [true]"
-    And I should not see "Who is the professor? [false]"
+    But I should not see "The correct answer is Walker"

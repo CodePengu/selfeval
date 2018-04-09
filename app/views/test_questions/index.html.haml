@@ -1,13 +1,12 @@
-
 %h1 Take the Test
 
 %table#review
   %thead
     %tr
       - @correctness.each do |id, val|
-        - if val == "[true]"
+        - if val == "correct"
           %th#true= id
-        - elsif val == "[false]"
+        - elsif val == "wrong"
           %th#false= id
         - else
           %th= id
@@ -18,14 +17,28 @@
   - @questions.each_with_index do |question, i|
     = "#{question.id}."
     = question.content
-    = @correctness[question.id]
     %br
-    %select{:name => "answers[#{question.id}]"}
-      %option{:value => 'blank', :selected => @answers[question.id] == 'blank'}
-      %option{:value => 'option1', :selected => @answers[question.id] == 'option1'}= question.option1
-      %option{:value => 'option2', :selected => @answers[question.id] == 'option2'}= question.option2
-      %option{:value => 'option3', :selected => @answers[question.id] == 'option3'}= question.option3
-      %option{:value => 'option4', :selected => @answers[question.id] == 'option4'}= question.option4
-    %br
-    %br
-  = submit_tag 'Submit All', :id => 'submit_test'
+    #content_q
+      .left.column
+        %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
+        %br
+        %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
+        %br
+        %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
+        %br
+        %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
+    - if @answers[question.id] != "blank"
+      %br
+      #content
+        The correct answer is
+        %strong
+          = question[question.answer]
+        and you selected
+        %strong
+          = question[@answers[question.id]]
+        so it was
+        %i
+          = @correctness[question.id]
+    %hr
+  %br
+  %button{:value => 'Submit All', :id => 'submit_test'}Submit All
