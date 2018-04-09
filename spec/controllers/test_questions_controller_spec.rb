@@ -48,6 +48,11 @@ describe TestQuestionsController do
       expect(assigns(:answers)).to eql(answers)
     end
     
+    it 'should display the correct answer' do
+      correct_answer = {id_1=>"option3", id_2=>"option4", id_3=>"option1"}
+      get :index, :params => parameters
+      expect(assigns(:correct_answer)).to eql(correct_answer)
+    end
   end
 
 end
