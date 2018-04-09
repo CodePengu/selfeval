@@ -14,26 +14,26 @@
       <img src="./assets/0.10.2/loading.gif" alt="loading"/>
     </div>
     <div id="wrapper" style="display:none;">
-      <div class="timestamp">Generated <abbr class="timeago" title="2018-03-27T07:29:30+00:00">2018-03-27T07:29:30+00:00</abbr></div>
+      <div class="timestamp">Generated <abbr class="timeago" title="2018-04-09T03:44:03+00:00">2018-04-09T03:44:03+00:00</abbr></div>
       <ul class="group_tabs"></ul>
 
       <div id="content">
         <div class="file_list_container" id="AllFiles">
   <h2>
     <span class="group_name">All Files</span>
-    (<span class="covered_percent"><span class="red">71.77%</span></span>
+    (<span class="covered_percent"><span class="red">72.0%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.67
+         3.35
        </span>
     </span> hits/line)
   </h2>
   <a name="AllFiles"></a>
   <div>
     <b>18</b> files in total.
-    <b>124</b> relevant lines. 
-    <span class="green"><b>89</b> lines covered</span> and
+    <b>125</b> relevant lines. 
+    <span class="green"><b>90</b> lines covered</span> and
     <span class="red"><b>35</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -113,11 +113,11 @@
       <tr>
         <td class="strong"><a href="#819d4a47224f025153b77e094af5810e42b180f9" class="src_link" title="app/controllers/test_questions_controller.rb">app/controllers/test_questions_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>17</td>
-        <td>11</td>
-        <td>11</td>
+        <td>19</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>10.5</td>
+        <td>16.3</td>
       </tr>
       
       <tr>
@@ -157,7 +157,7 @@
         <td>10</td>
         <td>8</td>
         <td>2</td>
-        <td>8.6</td>
+        <td>9.4</td>
       </tr>
       
       <tr>
@@ -239,19 +239,19 @@
           <div class="file_list_container" id="Controllers">
   <h2>
     <span class="group_name">Controllers</span>
-    (<span class="covered_percent"><span class="red">77.92%</span></span>
+    (<span class="covered_percent"><span class="red">78.21%</span></span>
      covered at
      <span class="covered_strength">
        <span class="green">
-         2.61
+         3.6
        </span>
     </span> hits/line)
   </h2>
   <a name="Controllers"></a>
   <div>
     <b>6</b> files in total.
-    <b>77</b> relevant lines. 
-    <span class="green"><b>60</b> lines covered</span> and
+    <b>78</b> relevant lines. 
+    <span class="green"><b>61</b> lines covered</span> and
     <span class="red"><b>17</b> lines missed </span>
   </div>
   <table class="file_list">
@@ -311,11 +311,11 @@
       <tr>
         <td class="strong"><a href="#819d4a47224f025153b77e094af5810e42b180f9" class="src_link" title="app/controllers/test_questions_controller.rb">app/controllers/test_questions_controller.rb</a></td>
         <td class="green strong">100.0 %</td>
-        <td>17</td>
-        <td>11</td>
-        <td>11</td>
+        <td>19</td>
+        <td>12</td>
+        <td>12</td>
         <td>0</td>
-        <td>10.5</td>
+        <td>16.3</td>
       </tr>
       
       <tr>
@@ -454,7 +454,7 @@
      covered at
      <span class="covered_strength">
        <span class="green">
-         6.71
+         7.29
        </span>
     </span> hits/line)
   </h2>
@@ -506,7 +506,7 @@
         <td>10</td>
         <td>8</td>
         <td>2</td>
-        <td>8.6</td>
+        <td>9.4</td>
       </tr>
       
       <tr>
@@ -1506,8 +1506,8 @@
     <h3>app/controllers/test_questions_controller.rb</h3>
     <h4><span class="green">100.0 %</span> covered</h4>
     <div>
-      <b>11</b> relevant lines. 
-      <span class="green"><b>11</b> lines covered</span> and
+      <b>12</b> relevant lines. 
+      <span class="green"><b>12</b> lines covered</span> and
       <span class="red"><b>0</b> lines missed.</span>
     </div>
   </div>
@@ -1533,85 +1533,97 @@
           <code class="ruby">  def index</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="4">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="10" data-linenumber="4">
+          <span class="hits">10</span>
           
           <code class="ruby">    @questions = Question.all</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="5">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="40" data-linenumber="5">
+          <span class="hits">40</span>
           
           <code class="ruby">    @correctness = Hash[@questions.map {|question| [question.id, &quot;&quot;]}]</code>
         </li>
       
-        <li class="covered" data-hits="24" data-linenumber="6">
-          <span class="hits">24</span>
+        <li class="covered" data-hits="40" data-linenumber="6">
+          <span class="hits">40</span>
           
           <code class="ruby">    @answers = Hash[@questions.map {|question| [question.id, &quot;&quot;]}]</code>
         </li>
       
-        <li class="covered" data-hits="6" data-linenumber="7">
-          <span class="hits">6</span>
+        <li class="covered" data-hits="10" data-linenumber="7">
+          <span class="hits">10</span>
           
           <code class="ruby">    if params[:answers] != nil</code>
         </li>
       
-        <li class="covered" data-hits="4" data-linenumber="8">
-          <span class="hits">4</span>
+        <li class="covered" data-hits="6" data-linenumber="8">
+          <span class="hits">6</span>
           
           <code class="ruby">      params[:answers].each do |id, answer|</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="9">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="18" data-linenumber="9">
+          <span class="hits">18</span>
           
           <code class="ruby">        id = id.to_i</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="10">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="18" data-linenumber="10">
+          <span class="hits">18</span>
           
           <code class="ruby">        question = Question.find_by(:id =&gt; id)</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="11">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="18" data-linenumber="11">
+          <span class="hits">18</span>
           
-          <code class="ruby">        @correctness[id] = (&quot;[#{question.answer == answer}]&quot;)</code>
+          <code class="ruby">        if answer != &quot;blank&quot;</code>
         </li>
       
-        <li class="covered" data-hits="12" data-linenumber="12">
-          <span class="hits">12</span>
+        <li class="covered" data-hits="13" data-linenumber="12">
+          <span class="hits">13</span>
           
-          <code class="ruby">        @answers[id] = answer</code>
+          <code class="ruby">          @correctness[id] = (&quot;[#{question.answer == answer}]&quot;)</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="13">
           
           
-          <code class="ruby">      end</code>
+          <code class="ruby">        end</code>
         </li>
       
-        <li class="never" data-hits="" data-linenumber="14">
+        <li class="covered" data-hits="18" data-linenumber="14">
+          <span class="hits">18</span>
           
-          
-          <code class="ruby">    end</code>
+          <code class="ruby">        @answers[id] = answer</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="15">
           
           
-          <code class="ruby">  end</code>
+          <code class="ruby">      end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="16">
           
           
-          <code class="ruby"></code>
+          <code class="ruby">    end</code>
         </li>
       
         <li class="never" data-hits="" data-linenumber="17">
+          
+          
+          <code class="ruby">  end</code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="18">
+          
+          
+          <code class="ruby"></code>
+        </li>
+      
+        <li class="never" data-hits="" data-linenumber="19">
           
           
           <code class="ruby">end</code>
@@ -1939,8 +1951,8 @@
           <code class="ruby">    def current_user</code>
         </li>
       
-        <li class="covered" data-hits="38" data-linenumber="8">
-          <span class="hits">38</span>
+        <li class="covered" data-hits="42" data-linenumber="8">
+          <span class="hits">42</span>
           
           <code class="ruby">        @current_user ||= User.find_by(id: session[:user_id])</code>
         </li>
@@ -1969,8 +1981,8 @@
           <code class="ruby">    def logged_in?</code>
         </li>
       
-        <li class="covered" data-hits="37" data-linenumber="13">
-          <span class="hits">37</span>
+        <li class="covered" data-hits="41" data-linenumber="13">
+          <span class="hits">41</span>
           
           <code class="ruby">        !current_user.nil?</code>
         </li>

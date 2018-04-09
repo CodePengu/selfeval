@@ -8,7 +8,9 @@ class TestQuestionsController < ApplicationController
       params[:answers].each do |id, answer|
         id = id.to_i
         question = Question.find_by(:id => id)
-        @correctness[id] = ("[#{question.answer == answer}]")
+        if answer != "blank"
+          @correctness[id] = ("[#{question.answer == answer}]")
+        end
         @answers[id] = answer
       end
     end

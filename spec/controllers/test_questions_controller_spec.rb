@@ -22,7 +22,7 @@ describe TestQuestionsController do
       id_2 = Question.create!(question_2).id
       id_3 = Question.create!(question_3).id
       parameters = {"utf8"=>"✓", "answers"=>{"#{id_1}"=>"option3", "#{id_2}"=>"option3",
-      "#{id_3}"=>"option1"}, "commit"=>"Submit All"}
+      "#{id_3}"=>"blank"}, "commit"=>"Submit All"}
     end
     
     after :all do
@@ -36,12 +36,12 @@ describe TestQuestionsController do
       expect(response).to render_template(:index)
     end
     it 'should determine which of the answers are correct' do
-      correctness = {id_1=>"[true]", id_2=>"[false]", id_3=>"[true]"}
+      correctness = {id_1=>"[true]", id_2=>"[false]", id_3=>""}
       get :index, :params => parameters
       expect(assigns(:correctness)).to eql(correctness)
     end
     it 'should record the answers submitted by the user' do
-      answers = {id_1=>"option3", id_2=>"option3", id_3=>"option1"}
+      answers = {id_1=>"option3", id_2=>"option3", id_3=>"blank"}
       get :index, :params => parameters
       expect(assigns(:answers)).to eql(answers)
     end

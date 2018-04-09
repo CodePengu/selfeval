@@ -21,9 +21,22 @@ Feature: submit answers to questions
     
   Scenario: submit answers to the questions on application's test_questions page
     Given I am on the index page for test_questions
+    When I select "red" from "answers[1]"
+    And I select "Wednesday" from "answers[2]"
+    And I select "Walker" from "answers[3]"
     When I press "Submit All"
     Then I should be on the index page for test_questions
     And I should see "What color is the sky? [false]"
     And I should see "When is the exam? [false]"
     And I should see "Who is the professor? [true]"
 
+  Scenario: leave questions blank
+    Given I am on the index page for test_questions
+    When I select "blue" from "answers[1]"
+    And I select "Monday" from "answers[2]"
+    When I press "Submit All"
+    Then I should see "What color is the sky? [true]"
+    And I should see "When is the exam? [false]"
+    And I should see "Who is the professor?"
+    But I should not see "Who is the professor? [true]"
+    And I should not see "Who is the professor? [false]"
