@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get 'users/new'
   get 'questions/feedback'
   get 'questions/answer'
+  get 'questions/:type' => 'questions#new'
   
   root 'static_pages#home'
   get    '/help',    to: 'static_pages#help'

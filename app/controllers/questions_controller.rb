@@ -11,12 +11,10 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
   end
-
+  
   # GET /questions/new
   def new
     @question = Question.new
-    @question_type = params[:type]
-    render new_question_path
   end
 
   # GET /questions/1/edit
@@ -26,7 +24,19 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
+    if params[:qtype] == "MCQ"
+      @question = Question.new(question_params)
+    elsif params[:qtype] == "T/F"
+      @question = Question.new()
+      @question.qtype = params[:qtype]
+      @question.content = params[:question][:content]
+      @question.option1 = 'True'
+      @question.option2 = 'False'
+      @question.option3 = 'nil'
+      @question.option4 = 'nil'
+      @question.answer = params[:question][:answer]
+      @question.explanation = params[:question][:explanation]
+    end
     
     respond_to do |format|
       if @question.save
@@ -37,8 +47,6 @@ class QuestionsController < ApplicationController
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
-    
-    redirect_to @question
   end
 
   # PATCH/PUT /questions/1
@@ -73,6 +81,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:type, :content, :option1, :option2, :option3, :option4, :answer, :explanation)
+      params.require(:question).permit(:qtype, :content, :option1, :option2, :option3, :option4, :answer, :explanation)
     end
 end

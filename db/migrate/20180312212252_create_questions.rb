@@ -6,13 +6,8 @@ class CreateQuestions < ActiveRecord::Migration[5.1]
       t.string :option2
       t.string :option3
       t.string :option4
-      t.string :answer
+      t.string :answer  
     end
-  end
-  
-  def self.up
-    add_column :questions, :type, :string
-    add_column :questions, :explanation, :string
   end
   
   def down

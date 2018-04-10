@@ -11,70 +11,51 @@
     </div>
   <% end %>
   
+  <%= javascript_include_tag('question.js') %>
+  
   <div class="actions">
-    <select name="question_type" id="question_type_id">
-      <option value="">Select Question Type</option>
-      <option value="/question/new/1" selected = selected>MCQ</option>
-      <option value="/question/new/2">T/F</option>
+    <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype_id">
+      <option>MCQ</option>
+      <option>T/F</option>
     </select>
   </div>
+
+  <div class="field">
+    <%= form.label :content %>
+    <%= form.text_area :content, size: "100x20", id: :question_content %>
+  </div>
+
+  <div id="opt1" class="field">
+    <%= form.label :option1 %>
+    <%= form.text_area :option1, size: "20x5", id: :question_option1 %>
+  </div>
+
+  <div id="opt2" class="field">
+    <%= form.label :option2 %>
+    <%= form.text_area :option2, size: "20x5", id: :question_option2 %>
+  </div>
+
+  <div id="opt3" class="field">
+    <%= form.label :option3 %>
+    <%= form.text_area :option3, size: "20x5", id: :question_option3 %>
+  </div>
+
+  <div id="opt4" class="field">
+    <%= form.label :option4 %>
+    <%= form.text_area :option4, size: "20x5", id: :question_option4 %>
+  </div>
   
-
-  <% if params[:type] == "MCQ" %>
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content, size: "100x20", id: :question_content %>
-    </div>
-
-    <div class="field">
-      <%= form.label :option1 %>
-      <%= form.text_area :option1, size: "20x5", id: :question_option1 %>
-    </div>
-
-    <div class="field">
-      <%= form.label :option2 %>
-      <%= form.text_area :option2, size: "20x5", id: :question_option2 %>
-    </div>
-
-    <div class="field">
-      <%= form.label :option3 %>
-      <%= form.text_area :option3, size: "20x5", id: :question_option3 %>
-    </div>
-
-    <div class="field">
-      <%= form.label :option4 %>
-      <%= form.text_area :option4, size: "20x5", id: :question_option4 %>
-    </div>
+  <div class="field">
+    <%= form.label :answer %>
+    <%= form.text_area :answer, size: "20x5", id: :question_answer %>
+  </div>
   
-    <div class="field">
-      <%= form.label :answer %>
-      <%= form.text_area :answer, size: "20x5", id: :question_answer %>
-    </div>
+  <div class="field">
+    <%= form.label :explanation %>
+    <%= form.text_area :explanation, size: "20x5", id: :question_explanation %>
+  </div>
   
-    <div class="field">
-      <%= form.label :explanation %>
-      <%= form.text_area :explanation, size: "20x5", id: :question_explanation %>
-    </div>
-    
-  <% else %>
-    <div class="field">
-      <%= form.label :content %>
-      <%= form.text_area :content, size: "100x20", id: :question_content %>
-    </div>
-    
-    <div class="field">
-      <%= form.label :answer %>
-      <%= form.check_box :answer, {}, "true", "false"%> 
-    </div>
-    
-    <div class="field">
-      <%= form.label :explanation %>
-      <%= form.text_area :explanation, size: "20x5", id: :question_explanation %>
-    </div>
-    
-  <% end %>
-
-    <div class="actions">
-      <%= form.submit %>
-    </div>
-  <% end %>
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
