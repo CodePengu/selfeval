@@ -36,6 +36,11 @@ class QuestionsController < ApplicationController
       @question.option4 = 'nil'
       @question.answer = params[:question][:answer]
       @question.explanation = params[:question][:explanation]
+      if @question.answer == "True" or @question.answer == "true"
+        @question.answer = "option1"
+      else
+        @question.answer = "option2"
+      end
     end
     
     respond_to do |format|

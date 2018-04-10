@@ -14,9 +14,10 @@
   <%= javascript_include_tag('question.js') %>
   
   <div class="actions">
+    <%= form.label :qtype, 'Type of question' %>
     <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype_id">
-      <option>MCQ</option>
       <option>T/F</option>
+      <option>MCQ</option>
     </select>
   </div>
 
@@ -26,22 +27,22 @@
   </div>
 
   <div id="opt1" class="field">
-    <%= form.label :option1 %>
+    <%= form.label :option1, "First option" %>
     <%= form.text_area :option1, size: "20x5", id: :question_option1 %>
   </div>
 
   <div id="opt2" class="field">
-    <%= form.label :option2 %>
+    <%= form.label :option2, "Second option" %>
     <%= form.text_area :option2, size: "20x5", id: :question_option2 %>
   </div>
 
   <div id="opt3" class="field">
-    <%= form.label :option3 %>
+    <%= form.label :option3, "Third option" %>
     <%= form.text_area :option3, size: "20x5", id: :question_option3 %>
   </div>
 
   <div id="opt4" class="field">
-    <%= form.label :option4 %>
+    <%= form.label :option4, "Fourth option" %>
     <%= form.text_area :option4, size: "20x5", id: :question_option4 %>
   </div>
   
