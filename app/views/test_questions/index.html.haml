@@ -20,12 +20,16 @@
     %br
     #content_q
       .left.column
+      - if  question.option1 != "nil"
         %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
         %br
+      - if  question.option2 != "nil"
         %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
         %br
+      - if  question.option3 != "nil"
         %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
         %br
+      - if  question.option4 != "nil"
         %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
     - if @answers[question.id] != "blank"
       %br
