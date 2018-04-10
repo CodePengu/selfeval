@@ -1,4 +1,4 @@
-var elem = document.getElementById("question_qtype_id");
+var elem = document.getElementById("question_qtype");
 elem.onchange = function(){console.log()
     var hiddenDiv1 = document.getElementById("opt1");
     hiddenDiv1.style.display = (this.value == "T/F") ? "none":"block";

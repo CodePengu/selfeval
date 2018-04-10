@@ -24,11 +24,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    if params[:qtype] == "MCQ"
-      @question = Question.new(question_params)
-    elsif params[:qtype] == "T/F"
+    if params[:qtype] == "T/F"
       @question = Question.new()
-      @question.qtype = params[:qtype]
+      @question.qtype = params[:question_qtype]
       @question.content = params[:question][:content]
       @question.option1 = 'True'
       @question.option2 = 'False'
@@ -41,6 +39,8 @@ class QuestionsController < ApplicationController
       else
         @question.answer = "option2"
       end
+    else
+      @question = Question.new(question_params)
     end
     
     respond_to do |format|

@@ -16,7 +16,7 @@ Feature:Show the content of existing  questions in the Question List Page
   Scenario: showing the content of the existing question
   When I am on the Question List Page
   And I follow "Show" of "1"
-  Then the content of "1" should be "Star Wars"
+  Then the content of "1" should be "Question 1"
   
   Scenario: redirecting to edit the content of the existing question
   When I am on the content declaration page of "1"
