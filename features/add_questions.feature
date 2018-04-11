@@ -1,7 +1,7 @@
 Feature:Add a new question
   
   As an admin
-  So that I can add a  question not on the database
+  So that I can add a question not on the database
   I want to add a new question
   
   Scenario: adding a new question
@@ -11,6 +11,10 @@ Feature:Add a new question
   
   Scenario: adding content of new question
   When I am on the New Question Page
+  And I fill "content" with "Question"
+  And I fill "qtype" with "T/F"
+  And I fill "answer" with "option1"
+  And I fill "explanation" with "exp"
   And I press "Create Question"
   Then I should be redirected to the Question Successfully Created Page
   

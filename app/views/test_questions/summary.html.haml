@@ -1,0 +1,13 @@
+%h1 Test summary
+
+%h3 You scored #{@count1} out of #{@total}
+%br
+%h3 The questions with the right answers are:
+%br
+- @questions.each_with_index do |question, i|
+    = question.content 
+    %br
+    = question[question.answer]
+    %br
+    %br
+= link_to 'Done', root_path 
