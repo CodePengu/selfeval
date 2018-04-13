@@ -9,4 +9,12 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.permit(:account_update, keys: [:name])
   end
 
+  
+  # def hello
+  #   render html: "&#161 Hola, Mundo!"
+  # end
+  
+  # def goodbye
+  #   render html: "Goodbye, World!"
+  # end
 end
