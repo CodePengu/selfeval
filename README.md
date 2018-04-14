@@ -1,6 +1,7 @@
 # selfeval
 Determine whether students are ready to take CSCE 629, so they can decide whether to sign up.
 
+<<<<<<< HEAD
     ,-----.,--.                  ,--. ,---.   ,--.,------.  ,------.
     '  .--./|  | ,---. ,--.,--. ,-|  || o   \  |  ||  .-.  \ |  .---'
     |  |    |  || .-. ||  ||  |' .-. |`..'  |  |  ||  |  \  :|  `--,
@@ -23,6 +24,8 @@ The Cloud9 IDE team
 # selfeval
 Determine whether students are ready to take CSCE 629, so they can decide whether to sign up.
 
+=======
+>>>>>>> e1fe6f815a4867265d81019270bc1cec102319fd
 ## Getting started
 
 To get started with the app, clone the repo and then install the needed gems:

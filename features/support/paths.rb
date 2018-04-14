@@ -15,6 +15,24 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
+    
+    when /^the index page for test_questions/i
+      '/test_questions'
+    
+    when /^Sign up$/
+      signup_path
+      
+    when /^the New Question Page$/  then '/questions/new'
+    when /^the Question List Page$/  then '/questions'
+      
+    when /^the Edit Questions Page$/  then '/questions'  
+      
+    when /^the content declaration page of "(.*)"$/ 
+    #then '/questions/#{$1}'
+    questions_path Question.find_by_id($1)
+
+    when /^the edit page of "(.*)"$/
+      edit_question_path Question.find_by_id($1)
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

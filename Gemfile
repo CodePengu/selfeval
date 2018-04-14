@@ -56,8 +56,11 @@ group :development, :test do
 end
 
 group :development do
+<<<<<<< HEAD
     gem 'better_errors'
   gem 'rails_layout'
+=======
+>>>>>>> e1fe6f815a4867265d81019270bc1cec102319fd
   gem 'web-console', '~> 2.0'
   gem 'listen',                '3.1.5'
   gem 'spring'
@@ -82,6 +85,7 @@ group :production do
   gem 'pg' # for Heroku deployment
   gem 'rails_12factor'
 end
+<<<<<<< HEAD
 
 # ======================
 # ruby '2.3.1'
@@ -193,3 +197,5 @@ end
 #   gem 'pg', '0.20.0'
 # end
 
+=======
+>>>>>>> e1fe6f815a4867265d81019270bc1cec102319fd

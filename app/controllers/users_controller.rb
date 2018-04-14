@@ -1,4 +1,5 @@
 class UsersController < ApplicationController
+
   before_action :authenticate_user!
   before_action :admin_only, :except => :show
 
@@ -17,32 +18,26 @@ class UsersController < ApplicationController
         redirect_to root_path, :alert => "Access denied."
       end
     end
-  end
 
-  # GET /users/new
+  end
+  
   def new
     @user = User.new
   end
-
-  # GET /users/1/edit
-  def edit
-  end
-
-  # POST /users
-  # POST /users.json
+  
   def create
-    @user = User.new(user_params)
-
-    respond_to do |format|
-      if @user.save
-        format.html { redirect_to @user, notice: 'User was successfully created.' }
-        format.json { render :show, status: :created, location: @user }
-      else
-        format.html { render :new }
-        format.json { render json: @user.errors, status: :unprocessable_entity }
-      end
+    @user = User.create!(user_params) #change new to create!
+    if @user.save
+      # Handle a successful save.
+      log_in @user
+      flash[:success] = "Welcome to the Self Evaluation System!"
+      redirect_to @user
+      # We can also redirect to home page with a success message
+    else
+      render 'new'
     end
   end
+
 
   def update
     @user = User.find(params[:id])
@@ -70,6 +65,7 @@ class UsersController < ApplicationController
   def secure_params
     params.require(:user).permit(:role)
   end
+
 end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
