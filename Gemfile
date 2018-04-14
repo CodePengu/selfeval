@@ -16,6 +16,7 @@ gem 'haml'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Use Puma as the app server
+gem 'unicorn'
 gem 'puma' #, '~> 3.4'
 # Use SCSS for stylesheets
 gem 'sass-rails', '5.0.6'
