@@ -19,6 +19,8 @@ ActiveRecord::Schema.define(version: 20180312212252) do
     t.string "option3"
     t.string "option4"
     t.string "answer"
+    t.string "qtype"
+    t.string "explanation"
   end
 
   create_table "users", force: :cascade do |t|

@@ -11,7 +11,7 @@ class QuestionsController < ApplicationController
   # GET /questions/1.json
   def show
   end
-
+  
   # GET /questions/new
   def new
     @question = Question.new
@@ -24,8 +24,25 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    @question = Question.new(question_params)
-
+    if params[:qtype] == "T/F"
+      @question = Question.new()
+      @question.qtype = params[:question_qtype]
+      @question.content = params[:question][:content]
+      @question.option1 = 'True'
+      @question.option2 = 'False'
+      @question.option3 = 'nil'
+      @question.option4 = 'nil'
+      @question.answer = params[:question][:answer]
+      @question.explanation = params[:question][:explanation]
+      if @question.answer == "True" or @question.answer == "true"
+        @question.answer = "option1"
+      else
+        @question.answer = "option2"
+      end
+    else
+      @question = Question.new(question_params)
+    end
+    
     respond_to do |format|
       if @question.save
         format.html { redirect_to @question, notice: 'Question was successfully created.' }
@@ -69,6 +86,6 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:content, :option1, :option2, :option3, :option4, :answer)
+      params.require(:question).permit(:qtype, :content, :option1, :option2, :option3, :option4, :answer, :explanation)
     end
 end
