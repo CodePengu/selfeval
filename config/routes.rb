@@ -1,4 +1,15 @@
 Rails.application.routes.draw do
+  
+  resources :test_questions
+  resources :questions
+  
+  get 'sessions/new'
+  get 'users/new'
+  get 'questions/feedback'
+  get 'questions/answer'
+  
+  # get '/testquestions', to: 'test_questions#index'
+  
   root to: 'visitors#index'
   devise_for :users
   resources :users

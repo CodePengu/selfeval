@@ -15,10 +15,9 @@ class UsersController < ApplicationController
     unless current_user.admin?
       unless @user == current_user
         redirect_to root_path, :alert => "Access denied."
-  # GET /users/1
-  # GET /users/1.json
-  # def show
-  # end
+      end
+    end
+  end
 
   # GET /users/new
   def new
@@ -71,7 +70,7 @@ class UsersController < ApplicationController
   def secure_params
     params.require(:user).permit(:role)
   end
-
+end
   # PATCH/PUT /users/1
   # PATCH/PUT /users/1.json
   # def update
@@ -106,4 +105,4 @@ class UsersController < ApplicationController
   #   def user_params
   #     params.require(:user).permit(:name, :email)
   #   end
-end
+# end

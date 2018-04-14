@@ -1,0 +1,19 @@
+
+%h1 Take the Test
+
+= form_tag test_questions_path, :id => 'test_form', :method => 'get' do
+  - @questions.each_with_index do |question, i|
+    = question.content
+    = @correctness[question.id]
+    %br
+    %select{:name => "answers[#{question.id}]"}
+      %option{:value => 'option1', :selected => @answers[question.id] == 'option1'}= question.option1
+      %option{:value => 'option2', :selected => @answers[question.id] == 'option2'}= question.option2
+      %option{:value => 'option3', :selected => @answers[question.id] == 'option3'}= question.option3
+      %option{:value => 'option4', :selected => @answers[question.id] == 'option4'}= question.option4
+    %br
+    %br
+  = submit_tag 'Submit All', :id => 'submit_test'
+
+
+  
