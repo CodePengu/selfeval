@@ -1,8 +1,9 @@
 class TestQuestionsController < ApplicationController
 
-@@score =0
+
 
   def index
+    @@score =0
     @questions = Question.all
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
