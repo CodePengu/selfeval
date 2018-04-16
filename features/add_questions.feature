@@ -4,10 +4,22 @@ Feature:Add a new question
   So that I can add a question not on the database
   I want to add a new question
   
+   Given the following users exist:
+  | name        | email         | created_at        | role  | encrypted_password|
+  | Xien        | xthomas       | shieldedRavine    | admin       |     123           |
+  | Edmaad      | edScrumMaster | shovelWaterSpirit | user       |     567           |
+  | Alien       | iAmReal       | sugarStarWars     | user     |                |
+  | George      | armyOfOne     | georgeOfTheJungle | user       |                |
+  
   Scenario: adding a new question
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Email" with "xien.thomas@email.com"
+  And  I fill in "Password" with "password"
+  And  I press "Sign in"
   When I am on the homepage
-  And I follow "Add"
-  Then I should be redirected to New Question Page
+  # And I follow "Add"
+  # Then I should be redirected to New Question Page
   
   Scenario: adding content of new question
   When I am on the New Question Page

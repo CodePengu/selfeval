@@ -4,6 +4,10 @@ Given /the following users exist/ do |table|
     end
 end
 
+Given /I am an admin/ do 
+    c_user = User.create!("example@ex.com","password")
+    c_user.set_admin
+end
 # Then /^(?:|I )should be on (.+)$/ do |page_name|
 #   current_path = URI.parse(current_url).path
 #   if current_path.respond_to? :should

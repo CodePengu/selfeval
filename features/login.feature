@@ -10,37 +10,36 @@ Feature: Login to the website
 Background: Users in a database
  
   Given the following users exist:
-  | name        | email         | created_at        | updated_at  | password_digest|
-  | Xien        | xthomas       | shieldedRavine    | Admin       |     123           |
-  | Edmaad      | edScrumMaster | shovelWaterSpirit | Users       |     567           |
-  | Alien       | iAmReal       | sugarStarWars     | Users       |                |
-  | George      | armyOfOne     | georgeOfTheJungle | Users       |                |
+  | name        | email         | created_at        | role  | encrypted_password|
+  | Xien        | xthomas       | shieldedRavine    | admin       |     123           |
+  | Edmaad      | edScrumMaster | shovelWaterSpirit | user       |     567           |
+  | Alien       | iAmReal       | sugarStarWars     | user       |                |
+  | George      | armyOfOne     | georgeOfTheJungle | user       |                |
 
 Scenario: verify output when email id is entered
   Given I am on the home page
-  Then I follow "Log in"
+  Then I follow "Sign in"
   And  I fill in "Email" with "xien.thomas@email.com"
   And  I fill in "Password" with "password"
-  And  I press "Log in"
+  And  I press "Sign in"
  
 Scenario: verify signup from login page
   Given I am on the home page
-  Then I follow "Log in"
-  Then  I follow "Sign up now!"
+  Then I follow "Sign up"
   And  I fill in "Name" with "xien"
   And  I fill in "Password" with "password"
   And  I fill in "Email" with "xien.thomas@email.com"
-  And  I fill in "Confirmation" with "password"
-  And I press "Create my account"
+  And  I fill in "Password confirmation" with "password"
+  And I press "Sign up"
   
 Scenario: verify output when email id is entered wrong (sad path)
   Given I am on the home page
-  Then I follow "Log in"
-  Then  I follow "Sign up now!"
+  Then I follow "Sign in"
+  Then  I follow "Sign up now"
   And  I fill in "Name" with "xien"
   And  I fill in "Password" with "password"
   And  I fill in "Email" with "xienthomas"
-  And  I fill in "Confirmation" with "password"
+  And  I fill in "Password confirmation" with "password"
   Then I should be on Sign up
   
 #   And  I press "Log in"

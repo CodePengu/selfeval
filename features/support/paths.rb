@@ -20,7 +20,7 @@ module NavigationHelpers
       '/test_questions'
     
     when /^Sign up$/
-      signup_path
+      new_user_registration_path
       
     when /^the New Question Page$/  then '/questions/new'
     when /^the Question List Page$/  then '/questions'
