@@ -6,11 +6,19 @@
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
-user = CreateAdminService.new.call
-puts 'CREATED ADMIN USER: ' << user.email 
-puts 'CREATED ADMIN PASSWORD: ' << user.password
-puts user.role
+#user = CreateAdminService.new.call
+#puts 'CREATED ADMIN USER: ' << user.email 
+#puts 'CREATED ADMIN PASSWORD: ' << user.password
+#puts user.role
+user = User.create
+user.email="user@example.com"
+user.password= "changeme"
+user.password_confirmation="changeme"
+user.admin!
 
+puts user.email
+puts user.password
+puts user.role
 # The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
 #
 # Examples:
