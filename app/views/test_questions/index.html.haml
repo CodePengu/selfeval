@@ -1,9 +1,9 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script>
-$(summary).hide();
+$(summa).hide();
 $(document).ready(function(){
 $("submit_test").click(function(){
-$(summary).show();
+$(summa).show();
 });
 });
 </script>
@@ -55,4 +55,4 @@ $(summary).show();
   %br
   %button{:value => 'Submit All', :id => 'submit_test'}Submit All
   
-  = link_to 'Summary', summary_path , :id => 'summary' 
+  = link_to 'Summary', {:controller => "test_questions", :action => "summary", :count => @count}, :id => 'summa'

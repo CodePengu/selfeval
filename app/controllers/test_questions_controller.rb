@@ -1,9 +1,9 @@
 class TestQuestionsController < ApplicationController
 
-
+@@score = 0
 
   def index
-    @@score =0
+    @@score = 0
     @questions = Question.all
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
@@ -22,15 +22,15 @@ class TestQuestionsController < ApplicationController
          @count=@count+1
         end
       end
-      @@score = @count
+      
     end
-    
+    @@score = @count
   end
 
 
   def summary
     @questions = Question.all
-    @count1 = @@score
+    @count1 = params[:count]
     @total =Question.count
   end
 
