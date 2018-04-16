@@ -28,7 +28,6 @@ $(summary).show();
     = question.content
     %br
     #content_q
-      .left.column
       - if  question.option1 != "nil"
         %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
         %br
