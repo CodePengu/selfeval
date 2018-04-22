@@ -1,22 +1,12 @@
-class SessionsController < ApplicationController
-  def new
-  end
+class SessionsController < Devise::SessionsController
+#include Devise::Controllers::Rememberable
 
-  def create
-    user = User.find_by(email: params[:session][:email].downcase)
-    if user && user.authenticate(params[:session][:password])
-      # Log the user in and redirect to the user's show page.
-      log_in user
-      redirect_to user
-    else
-      # Create an error message.
-      flash.now[:danger] = 'Invalid email/password combination'
-      render 'new'
-    end
-  end
-
-  def destroy
-    log_out
-    redirect_to root_url
-  end
+ #def create
+ # self.resource = warden.authenticate!(auth_options)
+ # set_flash_message(:notice, :signed_in) if is_flashing_format?
+ # sign_in(resource_name, resource)
+ # ##add remember me to remember user
+ # ##remember_me resource
+ # respond_with resource, location: after_sign_in_path_for(resource)
+ #end
 end
