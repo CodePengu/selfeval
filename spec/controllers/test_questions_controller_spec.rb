@@ -22,7 +22,8 @@ describe TestQuestionsController do
       id_2 = Question.create!(question_2).id
       id_3 = Question.create!(question_3).id
       parameters = {"utf8"=>"✓", "answers"=>{"#{id_1}"=>"option3", "#{id_2}"=>"option3",
-      "#{id_3}"=>"blank"}, "commit"=>"Submit All"}
+      "#{id_3}"=>"blank"},"mark"=>{"#{id_1}"=>"marked", "#{id_2}"=>"",
+      "#{id_3}"=>""}, "commit"=>"Submit All"}
     end
     
     after :all do
@@ -35,6 +36,12 @@ describe TestQuestionsController do
       get :index, :params => parameters
       expect(response).to render_template(:index)
     end
+    
+    it 'should render which of the answers are marked, answered and unanswered' do
+      marker = {id_1=>"marked", id_2=>"answered", id_3=>"unanswered"}
+      get :index, :params => parameters
+      expect(assigns(:mark)).to eql(marker)
+    end  
     
     it 'should determine which of the answers are correct' do
       correctness = {id_1=>"correct", id_2=>"wrong", id_3=>""}

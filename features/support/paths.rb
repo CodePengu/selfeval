@@ -18,7 +18,10 @@ module NavigationHelpers
     
     when /^the index page for test_questions/i
       '/test_questions'
-    
+      
+    when /^the summary page for test_questions$/ 
+      '/test_questions#summary'
+
     when /^Sign up$/
       new_user_registration_path
       

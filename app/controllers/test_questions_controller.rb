@@ -1,30 +1,43 @@
 class TestQuestionsController < ApplicationController
 
-@@score = 0
 
   def index
-    @@score = 0
     @questions = Question.all
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
+    @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
+    @review = params[:review]
+    @submitted = params[:submitted]
     @count=0
+
+    if params[:mark] != nil
+      params[:mark].each do |id,marker|
+        id = id.to_i
+        if (marker == "marked")
+          @mark[id] = ("marked")
+        end
+      end
+    end
     if params[:answers] != nil
       params[:answers].each do |id, answer|
         id = id.to_i
         question = Question.find_by(:id => id)
         if (question.answer == answer)
           @correctness[id] = ("correct")
+          @count=@count+1
         elsif (answer != "blank")
           @correctness[id] = ("wrong")
         end
-        @answers[id] = ("#{answer}")
-        if (@correctness[id] == ("correct"))
-         @count=@count+1
+        if ( @mark[id] != ("marked"))
+          if (answer == "blank")
+            @mark[id] = ("unanswered")
+          else 
+            @mark[id] = ("answered")
+          end
         end
+        @answers[id] = ("#{answer}")
       end
-      
     end
-    @@score = @count
   end
 
 

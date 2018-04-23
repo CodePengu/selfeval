@@ -18,7 +18,7 @@ table#review th {
 table#review th#true {
   border: 2px solid white;
   font-weight: bold;
-  background-color: #90EE90;
+  background-color: #999900;
   text-align: center;
   vertical-align:middle;
 }
@@ -26,7 +26,7 @@ table#review th#true {
 table#review th#false {
   border: 2px solid white;
   font-weight: bold;
-  background-color: #F08080;
+  background-color: #0000ff;
   text-align: center;
   vertical-align:middle;
 }
@@ -58,3 +58,15 @@ table#review th#false {
 }
 
 
+input[type='radio'] {
+  width:4em;
+  height:4em;
+ }
+ 
+ input[type="checkbox"] {
+  width:6em;
+  height:6em;
+ }
+ yellow {
+   color: #999900;
+ }

@@ -12,3 +12,7 @@ end
 When("I choose {string} for {string}") do |string, string2|
   choose(string2, option: string)
 end
+
+When("I checkbox {string} for {string}") do |string, string2|
+  check(string2, option: string)
+end
