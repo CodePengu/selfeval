@@ -13,3 +13,25 @@
 #opt4{
     display:none;
 }
+
+#typetf{
+    display:none;
+}
+
+#typemcq{
+    display:none;
+}
+
+#question_type{
+    width:30px;   
+}
+
+#question_image{
+    width:200px;
+}
+
+.actions{
+    width: 150px;
+    margin: 4px 2px;
+    cursor: pointer;
+}

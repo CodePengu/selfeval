@@ -26,6 +26,7 @@ $(summa).show();
   - @questions.each_with_index do |question, i|
     = "#{question.id}."
     = question.content
+    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
     %br
     #content_q
       - if  question.option1 != "nil"
