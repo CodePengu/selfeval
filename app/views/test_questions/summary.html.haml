@@ -12,11 +12,7 @@
     = question[question.answer]
     %br
     <strong>Your answer:</strong>
-    -if #{question[@answers[question.id.to_s]]} != nil
     = question[@answers[question.id.to_s]]
-    -else
-    You left it blank!
-    -end
     %br
     <strong>Explanation:</strong>
     = question.explanation
