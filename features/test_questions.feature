@@ -35,7 +35,8 @@ Feature: submit answers to questions
     When I choose "option1" for "answers[1]"
     And I choose "option3" for "answers[2]"
     And I choose "option1" for "answers[3]"
-    When I press "Submit All"
+    When I press "Review All"
+    Then I press "Submit All"
     Then I should be on the index page for test_questions
     And I should see "What color is the sky?"
     And I should see "The correct answer is blue and you selected red so it was wrong"
@@ -48,10 +49,11 @@ Feature: submit answers to questions
     Given I am on the index page for test_questions
     When I choose "option3" for "answers[1]"
     And I choose "option1" for "answers[2]"
-    When I press "Submit All"
+    When I press "Review All"
+    Then I press "Submit All"
     Then I should see "What color is the sky?"
     And I should see "The correct answer is blue and you selected blue so it was correct"
     And I should see "When is the exam?"
     And I should see "The correct answer is Thursday and you selected Monday so it was wrong"
     And I should see "Who is the professor?"
-    But I should not see "The correct answer is Walker"
+    But I should see "The correct answer is Walker"
