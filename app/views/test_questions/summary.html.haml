@@ -5,7 +5,7 @@
 %h3 The questions with the right answers are:
 %br
 - @questions.each_with_index do |question, i|
-
+  -if @answers!=nil
     = question.content
     %br
     <strong>Correct Answer:</strong>
