@@ -22,5 +22,5 @@ Rails.application.routes.draw do
   get    '/summary',  to: 'test_questions#summary'
   # get '/about', to: 
 
-
+  # resources :password_resets,     only: [:new, :create, :edit, :update] 
 end
