@@ -17,7 +17,8 @@ Scenario: summary of the test questions
     When I choose "option1" for "answers[1]"
     And I choose "option3" for "answers[2]"
     And I choose "option1" for "answers[3]"
-    When I press "Submit All"
+    When I press "Review All"
+    Then I press "Submit All"
     Then I should be on the index page for test_questions
     And I follow "Summary"
     Then I should be redirected to the summary page
