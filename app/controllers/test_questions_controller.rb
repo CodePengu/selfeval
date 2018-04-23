@@ -31,7 +31,14 @@ class TestQuestionsController < ApplicationController
   def summary
     @questions = Question.all
     @count1 = params[:count]
+    @answers=params[:answers]
     @total =Question.count
+    if @answers != nil
+      @answers.each do |id, answer|
+        id = id.to_i
+        question = Question.find_by(:id => id)
+      end
+    end
   end
 
 

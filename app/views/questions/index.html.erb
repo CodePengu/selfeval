@@ -1,34 +1,44 @@
 <p id="notice"><%= notice %></p>
 
 <h1>Questions</h1>
-
+<br>
+<strong id="new_question"><%= link_to 'New Question', new_question_path %></strong>
+<br>
+<br>
 <table>
-  <thead>
-    <tr>
-      <th>Content</th>
-      <th>Option1</th>
-      <th>Option2</th>
-      <th>Option3</th>
-      <th>Option4</th>
-      <th>Answer</th>
-      <th>Explanation</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
   <tbody>
     <% @questions.each do |question| %>
       <tr>
-        <td><%= question.content %></td>
-        <td><%= question.option1 %></td>
-        <td><%= question.option2 %></td>
-        <td><%= question.option3 %></td>
-        <td><%= question.option4 %></td>
-        <td><%= question.answer %></td>
-        <td><%= question.explanation %></td>
-        <td><%= link_to 'Show', question %></td>
-        <td><%= link_to 'Edit', edit_question_path(question) %></td>
-        <td><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><strong><%= question.id %>.) Content:<%= question.content %></strong></td>
+      </tr>
+      <tr>
+        <td><strong>Option 1:</strong><%= question.option1 %></td>
+      </tr>
+      <tr>
+        <td><strong>Option 2:</strong><%= question.option2 %></td>
+      </tr>
+      <tr>
+        <td><strong>Option 3:</strong><%= question.option3 %></td>
+      </tr>
+      <tr>
+        <td><strong>Option 4:</strong><%= question.option4 %></td>
+      </tr>
+      <tr>
+        <td><strong>Answer:</strong><%= question.answer %></td>
+      </tr>
+      <tr>
+        <td><strong>Explanation:</strong><%= question.explanation %></td>
+      </tr>
+      <tr>
+        <td>
+          <table>
+            <tr>
+               <td><strong id="show"><%= link_to 'Show', question %></strong></td>
+               <td><strong id="edit"><%= link_to 'Edit', edit_question_path(question) %></strong></td>
+               <td><strong id="destroy"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
+            </tr>
+          </table>
+        </td>
       </tr>
     <% end %>
   </tbody>
@@ -36,4 +46,3 @@
 
 <br>
 
-<%= link_to 'New Question', new_question_path %>

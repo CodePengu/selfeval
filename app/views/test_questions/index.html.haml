@@ -55,4 +55,4 @@ $(summa).show();
   %br
   %button{:value => 'Submit All', :id => 'submit_test'}Submit All
   
-  = link_to 'Summary', {:controller => "test_questions", :action => "summary", :count => @count}, :id => 'summa'
+  = link_to 'Summary', {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
