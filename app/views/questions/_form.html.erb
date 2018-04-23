@@ -93,9 +93,13 @@ document.onload = function ()
   </div>
   
   <div class="field">
-    <%= form.label :image %>
+    <%= form.label :image , "Image (only jpg, jpeg, gif and png files)"%>
     <%= form.file_field :image, size: "5x2", id: :question_image %>
     <%= image_tag @question.image_url(:thumb) if @question.image_url.present? %>
+    <% if @question.image_url.present? %>
+      <%= form.label "Remove image"%>
+      <%= form.check_box :remove_question_image %>
+    <% end %>
   </div>
   
   <div class="actions">

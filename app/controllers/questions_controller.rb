@@ -68,6 +68,10 @@ class QuestionsController < ApplicationController
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
+    if image_remove_params
+      @question.remove_image = true
+      @question.update(question_params)
+    end
   end
 
   # DELETE /questions/1
@@ -89,5 +93,9 @@ class QuestionsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
       params.require(:question).permit(:qtype, :content, :image, :option1, :option2, :option3, :option4, :answer, :explanation)
+    end
+    
+    def image_remove_params
+      params.permit(:remove_question_image)
     end
 end
