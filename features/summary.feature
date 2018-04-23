@@ -26,12 +26,7 @@ Scenario: summary of the test questions
 Scenario:Seeing the score
   When I am on the summary page
   Then I should see "You scored"
-  And I should see "What color is the sky?"
-  And I should see "blue"
-  And I should see "When is the exam?"
-  And I should see "Thursday"
-  And I should see "Who is the professor?"
-  And I should see "Walker"
+  And I should see "The questions with the right answers are:"
   
 Scenario:Going back to the homepage
   When I am on the summary page
