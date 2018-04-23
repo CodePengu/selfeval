@@ -1,21 +1,12 @@
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script>
-$(summa).hide();
-$(document).ready(function(){
-$("submit_test").click(function(){
-$(summa).show();
-});
-});
-</script>
 %h1 Take the Test
 
 %table#review
   %thead
     %tr
-      - @correctness.each do |id, val|
-        - if val == "correct"
+      - @mark.each do |id, val|
+        - if val == "marked"
           %th#true= id
-        - elsif val == "wrong"
+        - elsif val == "answered"
           %th#false= id
         - else
           %th= id
@@ -40,20 +31,33 @@ $(summa).show();
         %br
       - if  question.option4 != "nil"
         %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
-    - if @answers[question.id] != "blank"
+        %br
       %br
+    %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 
+      %yellow mark
+    %br
+    %br
+    - if @submitted == "true"
       #content
         The correct answer is
         %strong
           = question[question.answer]
-        and you selected
-        %strong
-          = question[@answers[question.id]]
-        so it was
-        %i
+        - if question[@answers[question.id]] != nil
+          and you selected
+          %strong
+            = question[@answers[question.id]]
+        - if question[@answers[question.id]] != nil
+          so it was
+          %i
           = @correctness[question.id]
-    %hr
+    %br
   %br
-  %button{:value => 'Submit All', :id => 'submit_test'}Submit All
-  
-  = link_to 'Summary', {:controller => "test_questions", :action => "summary", :count => @count}, :id => 'summa'
+  - if @submitted != 'true'
+    %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
+  - if @review == 'clicked' && @submitted != 'true'
+    %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
+  - if @submitted == 'true'
+    = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count}, :id => 'summa'
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
