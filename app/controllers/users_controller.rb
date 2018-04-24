@@ -8,7 +8,8 @@ class UsersController < ApplicationController
   # GET /users
   # GET /users.json
   def index
-    @users = User.all
+      @loggedin_user=current_user.name
+      @users = User.all
   end
 
   def show

@@ -14,5 +14,15 @@ module Features
       fill_in 'Password', with: password
       click_button 'Sign in'
     end
+    
+    
+    def signin_w_rem(email, password)
+      visit new_user_session_path
+      fill_in "Email", with: email
+      fill_in "Password", with: password
+      check "Remember me"
+      click_button 'Sign in'
+    end
+    
   end
 end
