@@ -40,6 +40,8 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '3.3.7'
+gem 'carrierwave', '~> 0.10.0'
+gem 'mini_magick', '~> 4.3'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -52,7 +54,7 @@ group :development, :test do
   # Adds support for Capybara system testing and selenium driver
  
   gem 'capybara', '~> 2.13'
-  gem 'selenium-webdriver'
+  gem 'selenium-webdriver', '2.53.4'
   gem 'rspec-rails'
 end
 

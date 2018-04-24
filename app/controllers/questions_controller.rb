@@ -19,6 +19,7 @@ class QuestionsController < ApplicationController
 
   # GET /questions/1/edit
   def edit
+    #javascript_include_tag('question.js')
   end
 
   # POST /questions
@@ -34,11 +35,12 @@ class QuestionsController < ApplicationController
       @question.option4 = 'nil'
       @question.answer = params[:question][:answer]
       @question.explanation = params[:question][:explanation]
-      if @question.answer == "True" or @question.answer == "true"
-        @question.answer = "option1"
-      else
-        @question.answer = "option2"
-      end
+      #if @question.answer == "True" or @question.answer == "true"
+      #  @question.answer = "option1"
+      #else
+      #  @question.answer = "option2"
+      #end
+      @question.image = params[:question][:image] 
     else
       @question = Question.new(question_params)
     end
@@ -66,6 +68,10 @@ class QuestionsController < ApplicationController
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
+    if image_remove_params
+      @question.remove_image = true
+      @question.update(question_params)
+    end
   end
 
   # DELETE /questions/1
@@ -86,6 +92,10 @@ class QuestionsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def question_params
-      params.require(:question).permit(:qtype, :content, :option1, :option2, :option3, :option4, :answer, :explanation)
+      params.require(:question).permit(:qtype, :content, :image, :option1, :option2, :option3, :option4, :answer, :explanation)
+    end
+    
+    def image_remove_params
+      params.permit(:remove_question_image)
     end
 end

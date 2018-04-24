@@ -13,8 +13,3 @@
  *= require_tree .
  *= require_self
  */
-
-input[type='radio'] {
-  width:4em;
-  height:4em;
- }

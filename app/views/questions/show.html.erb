@@ -6,6 +6,11 @@
 </p>
 
 <p>
+  <strong>Image:</strong>
+  <%= image_tag @question.image_url(:thumb).to_s if @question.image_url.present? %>
+</p>
+
+<p>
   <strong>Option1:</strong>
   <%= @question.option1 %>
 </p>
