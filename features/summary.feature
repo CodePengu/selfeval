@@ -17,7 +17,8 @@ Scenario: summary of the test questions
     When I choose "option1" for "answers[1]"
     And I choose "option3" for "answers[2]"
     And I choose "option1" for "answers[3]"
-    When I press "Submit All"
+    When I press "Review All"
+    Then I press "Submit All"
     Then I should be on the index page for test_questions
     And I follow "Summary"
     Then I should be redirected to the summary page
@@ -25,12 +26,7 @@ Scenario: summary of the test questions
 Scenario:Seeing the score
   When I am on the summary page
   Then I should see "You scored"
-  And I should see "What color is the sky?"
-  And I should see "blue"
-  And I should see "When is the exam?"
-  And I should see "Thursday"
-  And I should see "Who is the professor?"
-  And I should see "Walker"
+  And I should see "The questions with the right answers are:"
   
 Scenario:Going back to the homepage
   When I am on the summary page

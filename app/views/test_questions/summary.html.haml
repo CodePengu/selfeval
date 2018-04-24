@@ -5,13 +5,18 @@
 %h3 The questions with the right answers are:
 %br
 - @questions.each_with_index do |question, i|
-    = question.content 
+  -if @answers!=nil
+    = question.content
     %br
+    <strong>Correct Answer:</strong>
     = question[question.answer]
     %br
-    %strong
-    Explanation:
+    <strong>Your answer:</strong>
+    = question[@answers[question.id.to_s]]
+    %br
+    <strong>Explanation:</strong>
     = question.explanation
     %br
     %br
-= link_to 'Done', root_path 
+    %br
+= link_to 'Done', root_path , :id => 'done'

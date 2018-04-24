@@ -1,3 +1,22 @@
+<script type="text/javascript">
+document.onload = function ()
+{
+  var elem = document.getElementById("question_qtype");
+  var hiddenDiv1 = document.getElementById("opt1");
+  hiddenDiv1.style.display = (this.value == "T/F") ? "none":"block";
+  var hiddenDiv2 = document.getElementById("opt2");
+  hiddenDiv2.style.display = (this.value == "T/F") ? "none":"block";
+  var hiddenDiv3 = document.getElementById("opt3");
+  hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
+  var hiddenDiv4 = document.getElementById("opt4");
+  hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
+  var r1 = document.getElementById("typetf");
+  r1.style.display = (this.value == "T/F") ? "block":"none";
+  var r2 = document.getElementById("typemcq");
+  r2.style.display = (this.value == "T/F") ? "none":"block";
+}
+</script>
+
 <%= form_with(model: question, local: true) do |form| %>
   <% if question.errors.any? %>
     <div id="error_explanation">
@@ -11,49 +30,76 @@
     </div>
   <% end %>
   
-  <%= javascript_include_tag('question.js') %>
-  
   <div class="actions">
     <%= form.label :qtype, 'Type of question' %>
     <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype">
-      <option>T/F</option>
-      <option>MCQ</option>
+      <%if question.qtype == "T/F"%>
+        <option selected="selected">T/F</option>
+      <%else%>
+        <option>T/F</option>
+      <%end%>
+      <%if question.qtype == "MCQ"%>
+        <option selected="selected">MCQ</option>
+      <%else%>
+        <option>MCQ</option>
+      <%end%>
     </select>
   </div>
 
+  <%= javascript_include_tag('question.js') %>
+  
   <div class="field">
     <%= form.label :content %>
-    <%= form.text_area :content, size: "100x20", id: :question_content %>
+    <%= form.text_area :content, size: "100x4", id: :question_content%>
   </div>
 
   <div id="opt1" class="field">
     <%= form.label :option1, "First option" %>
-    <%= form.text_area :option1, size: "20x5", id: :question_option1 %>
+    <%= form.text_area :option1, size: "20x2", id: :question_option1 %>
   </div>
 
   <div id="opt2" class="field">
     <%= form.label :option2, "Second option" %>
-    <%= form.text_area :option2, size: "20x5", id: :question_option2 %>
+    <%= form.text_area :option2, size: "20x2", id: :question_option2 %>
   </div>
 
   <div id="opt3" class="field">
     <%= form.label :option3, "Third option" %>
-    <%= form.text_area :option3, size: "20x5", id: :question_option3 %>
+    <%= form.text_area :option3, size: "20x2", id: :question_option3 %>
   </div>
 
   <div id="opt4" class="field">
     <%= form.label :option4, "Fourth option" %>
-    <%= form.text_area :option4, size: "20x5", id: :question_option4 %>
+    <%= form.text_area :option4, size: "20x2", id: :question_option4 %>
   </div>
   
-  <div class="field">
-    <%= form.label :answer %>
-    <%= form.text_area :answer, size: "20x5", id: :question_answer %>
+  <div id="typemcq" class="field">
+    <%= form.label :answer, "Correct Answer"%><br />
+    <%= form.radio_button :answer, 'option1' %> Option 1<br />
+    <%= form.radio_button :answer, 'option2' %> Option 2<br />
+    <%= form.radio_button :answer, 'option3' %> Option 3<br />
+    <%= form.radio_button :answer, 'option4' %> Option 4<br />
+  </div>
+  
+  <div id="typetf" class="field">
+    <%= form.label :answer, "Correct Answer"%><br />
+    <%= form.radio_button :answer, 'option1' %> True<br />
+    <%= form.radio_button :answer, 'option2' %> False<br />
   </div>
   
   <div class="field">
     <%= form.label :explanation %>
-    <%= form.text_area :explanation, size: "20x5", id: :question_explanation %>
+    <%= form.text_area :explanation, size: "20x2", id: :question_explanation %>
+  </div>
+  
+  <div class="field">
+    <%= form.label :image , "Image (only jpg, jpeg, gif and png files)"%>
+    <%= form.file_field :image, size: "5x2", id: :question_image %>
+    <%= image_tag @question.image_url(:thumb) if @question.image_url.present? %>
+    <% if @question.image_url.present? %>
+      <%= form.label "Remove image"%>
+      <%= form.check_box :remove_question_image %>
+    <% end %>
   </div>
   
   <div class="actions">
