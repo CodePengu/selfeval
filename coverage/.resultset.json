@@ -561,13 +561,10 @@
         null,
         null
       ],
-<<<<<<< HEAD
       "/home/ec2-user/environment/selfeval/app/helpers/static_pages_helper.rb": [
         1,
         null
       ],
-=======
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
       "/home/ec2-user/environment/selfeval/app/helpers/users_helper.rb": [
         1,
         null
@@ -703,10 +700,7 @@
       "/home/ec2-user/environment/selfeval/app/controllers/test_questions_controller.rb": [
         1,
         null,
-<<<<<<< HEAD
-=======
         1,
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         null,
         1,
         4,
@@ -725,7 +719,6 @@
         null,
         null,
         null,
-<<<<<<< HEAD
         4,
         4,
         12,
@@ -744,8 +737,6 @@
         null,
         null,
         12,
-=======
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         null,
         null,
         3,
@@ -770,10 +761,7 @@
         null
       ],
       "/home/ec2-user/environment/selfeval/app/models/question.rb": [
-<<<<<<< HEAD
         1,
-=======
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         1,
         1,
         1,
@@ -788,7 +776,6 @@
         null,
         null
       ],
-<<<<<<< HEAD
       "/home/ec2-user/environment/selfeval/app/uploaders/image_uploader.rb": [
         null,
         1,
@@ -847,24 +834,6 @@
         1,
         null
       ],
-=======
-      "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
-        1,
-        1,
-        9,
-        6,
-        null,
-        3,
-        null,
-        null,
-        null,
-        1,
-        null,
-        0,
-        null,
-        null
-      ],
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
       "/home/ec2-user/environment/selfeval/app/controllers/users_controller.rb": [
         1,
         null,
@@ -972,22 +941,17 @@
         null,
         null
       ],
-<<<<<<< HEAD
       "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
         0,
         0,
         0,
         0,
         0,
-=======
-      "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         0,
         0,
         0,
         0
       ],
-<<<<<<< HEAD
       "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -1014,15 +978,6 @@
         0,
         0,
         0,
-=======
-      "/home/ec2-user/environment/selfeval/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
-        0,
-        null,
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         null,
         null,
         null,
@@ -1040,9 +995,6 @@
         0,
         0
       ],
-<<<<<<< HEAD
-      "/home/ec2-user/environment/selfeval/app/controllers/static_pages_controller.rb": [
-=======
       "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
         0,
         0,
@@ -1053,7 +1005,6 @@
         0,
         0,
         0,
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
         0,
         0,
         0,
@@ -1063,10 +1014,6 @@
         0
       ]
     },
-<<<<<<< HEAD
-    "timestamp": 1524526538
-=======
     "timestamp": 1524546125
->>>>>>> 5b5c16092052fd9c428b925800ae4516f6008268
   }
 }
