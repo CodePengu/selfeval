@@ -48,6 +48,11 @@ document.onload = function ()
 
   <%= javascript_include_tag('question.js') %>
   
+  <div class="topic">
+    <%= form.label :topic %>
+    <%= form.text_area :topic, size: "100x4", id: :question_topic%>
+  </div>
+  
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, size: "100x4", id: :question_content%>
