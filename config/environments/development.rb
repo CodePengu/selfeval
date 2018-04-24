@@ -47,7 +47,8 @@ Rails.application.configure do
   config.assets.debug = true
 
  # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+ # MAKE SURE TO CHANGE THE HOST!!!
+  config.action_mailer.default_url_options = { :host => 'https://devise-admin-xienthomas.c9users.io' }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.raise_delivery_errors = true
 
