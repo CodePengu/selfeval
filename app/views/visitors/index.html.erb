@@ -2,13 +2,13 @@
   <h1>Welcome to the Self Evaluation System</h1>
   
     <% if  user_signed_in? %>
-      <h2>
+      <h3>
         You are logged in as <%= @loggedin_user%>.
-      </h2>  
+      </h3>  
     <% else%>
-      <h2>
+      <h3>
         Click "Log in" in top menu bar to Log-in if you already have an account otherwise click the button below to sign-up.
-      </h2>
+      </h3>
       <%= link_to "Sign up now!", new_user_registration_path, class: "btn btn-lg btn-primary" %>
     <% end%>
 </div>
