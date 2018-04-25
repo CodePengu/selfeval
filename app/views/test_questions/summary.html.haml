@@ -7,7 +7,8 @@
 - @questions.each_with_index do |question, i|
   -if @answers!=nil
     = question.content
-    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
+    <% if question.image_url.present? %>
+    =question.image_url
     %br
     <strong>Correct Answer:</strong>
     = question[question.answer]
