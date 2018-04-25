@@ -8,20 +8,41 @@ elem.onchange = function(){console.log()
     hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
     var hiddenDiv4 = document.getElementById("opt4");
     hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
-    var r1 = document.getElementsByName("answer");
-    for (var i = 2, length = r1.length; i < length; i++)
+    var r1 = document.getElementsByTagName("input");
+    for (var i = 4, length = r1.length; i < 6; i++)
     {
-        if (this.value == "T/F")
+        if (elem.value == "T/F")
         {
             r1[i].checked = false;
-            r1[i].style.display = "none";
+            r1[i].style.visibility = "hidden";
+            r1[2].value = "True";
+            r1[3].value = "False";
         }
         else
         {
-            r1[i].style.display = "block";
+            r1[i].style.visibility = "visible";
+            r1[2].value = "Option 1"
+            r1[3].value = "Option 2"
+            r1[4].value = "Option 3"
+            r1[5].value = "Option 4"
         }
         console.log(r1[i].value);
     }
+    if (elem.value == "T/F")
+    {
+        document.getElementById("Option1").firstChild.data = "True";
+        document.getElementById("Option2").firstChild.data = "False";
+        document.getElementById("Option3").firstChild.data = "";
+        document.getElementById("Option4").firstChild.data = "";
+    }
+    else
+    {
+        document.getElementById("Option1").firstChild.data = "Option 1";
+        document.getElementById("Option2").firstChild.data = "Option 2";
+        document.getElementById("Option3").firstChild.data = "Option 3";
+        document.getElementById("Option4").firstChild.data = "Option 4";
+    }
+    console.log(r1)
 };
 
 //function myFunction() {

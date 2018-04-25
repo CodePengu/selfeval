@@ -12,19 +12,37 @@ $(document).ready(function ()
   hiddenDiv3.style.display = (elem.value == "T/F") ? "none":"block";
   var hiddenDiv4 = document.getElementById("opt4");
   hiddenDiv4.style.display = (elem.value == "T/F") ? "none":"block";
-  var r1 = document.getElementsByName("answer");
-  for (var i = 2, length = r1.length; i < length; i++)
+  var r1 = document.getElementsByTagName("input");
+  for (var i = 4, length = r1.length; i < 6; i++)
   {
     if (elem.value == "T/F")
     {
       r1[i].checked = false;
-      r1[i].style.display = "none";
+      r1[i].style.visibility = "hidden";
     }
     else
     {
-      r1[i].style.display = "block";
+      r1[i].style.visibility = "visible";
     }
+    console.log(r1[i].value)
   }
+  if (elem.value == "T/F")
+  {
+    document.getElementById("Option1").firstChild.data = "True";
+    document.getElementById("Option2").firstChild.data = "False";
+    document.getElementById("Option3").firstChild.data = "";
+    document.getElementById("Option4").firstChild.data = "";
+  }
+  else
+  {
+    document.getElementById("Option1").firstChild.data = "Option 1";
+    document.getElementById("Option2").firstChild.data = "Option 2";
+    document.getElementById("Option3").firstChild.data = "Option 3";
+    document.getElementById("Option4").firstChild.data = "Option 4";
+  }
+  console.log(r1)
+  var r2 = document.getElementById("Option1");
+  console.log(r2.firstChild.data);
 })
 </script>
 
@@ -90,10 +108,10 @@ $(document).ready(function ()
   </div>
   
   <div id="typemcq" class="field">
-    <%= form.radio_button(:answer, "option1") %> Option 1<br />
-    <%= form.radio_button(:answer, "option2") %> Option 2<br />
-    <%= form.radio_button(:answer, "option3") %> Option 3<br />
-    <%= form.radio_button(:answer, "option4") %> Option 4<br />
+    <%= form.radio_button(:answer, "option1") %> <span id="Option1"> Option 1 </span> <br />
+    <%= form.radio_button(:answer, "option2") %> <span id="Option2"> Option 2 </span> <br />
+    <%= form.radio_button(:answer, "option3") %> <span id="Option3"> Option 3 </span> <br />
+    <%= form.radio_button(:answer, "option4") %> <span id="Option4"> Option 4 </span> <br />
   </div>
   
   <div class="field">
