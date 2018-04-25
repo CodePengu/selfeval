@@ -1,63 +1,76 @@
-%h1 Take the Test
-
-%table#review
-  %thead
-    %tr
-      - @mark.each do |id, val|
-        - if val == "marked"
-          %th#true= id
-        - elsif val == "answered"
-          %th#false= id
-        - else
-          %th= id
-
-%br
+%h1 Select the topics for the test
 
 = form_tag test_questions_path, :id => 'test_form', :method => 'get' do
-  - @questions.each_with_index do |question, i|
-    = "#{question.id}."
-    = question.content
-    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
+  - if @topic_selected != "Done"
+    - i = 0 
+    - @questions.each_with_index do |question, index|
+      - if @topics.exclude?(question.topic)
+        - @topics.push(question.topic)
+        %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{i}]", :id => question.id ,:checked => @selected_topics[question.topic] == 'selected' }= question.topic
+        - i += 1
+    %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
     %br
-    #content_q
-      - if  question.option1 != "nil"
-        %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
-        %br
-      - if  question.option2 != "nil"
-        %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
-        %br
-      - if  question.option3 != "nil"
-        %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
-        %br
-      - if  question.option4 != "nil"
-        %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
-        %br
+    %button{:value => "Done", :name => "topic_selected", @topic_selected => 'Done' } Take Test
+  %br
+    
+  %h2Take the test
+  
+  - if @topic_selected == "Done"  
+    %table#review
+      %thead
+        %tr
+          - @mark.each do |id, val|
+            - if val == "marked"
+              %th#true= id
+            - elsif val == "answered"
+              %th#false= id
+            - else
+              %th= id
+    
+    %br
+    
+    - @questions.each_with_index do |question, i|
+      = "#{question.id}."
+      = question.content
+      = image_tag question.image_url(:thumb).to_s if question.image_url.present?
       %br
+      #content_q
+        - if  question.option1 != "nil"
+          %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
+          %br
+        - if  question.option2 != "nil"
+          %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
+          %br
+        - if  question.option3 != "nil"
+          %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
+          %br
+        - if  question.option4 != "nil"
+          %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
+          %br
+        %br
     %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 
       %yellow mark
-    %br
-    %br
-    - if @submitted == "true"
-      #content
-        The correct answer is
-        %strong
+      %br
+      %br
+      - if @submitted == "true"
+        #content
+          The correct answer is
+          %strong
           = question[question.answer]
         - if question[@answers[question.id]] != nil
           and you selected
           %strong
-            = question[@answers[question.id]]
+          = question[@answers[question.id]]
         - if question[@answers[question.id]] != nil
           so it was
           %i
           = @correctness[question.id]
     %br
-  %br
-  - if @submitted != 'true'
-    %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
-  - if @review == 'clicked' && @submitted != 'true'
-    %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
-  - if @submitted == 'true'
-    = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
-
-
-<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+    %br
+    - if @submitted != 'true'
+      %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
+    - if @review == 'clicked' && @submitted != 'true'
+      %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
+    - if @submitted == 'true'
+      = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>

@@ -6,15 +6,27 @@ class TestQuestionsController < ApplicationController
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
+    @selected_topics = Hash[@questions.map {|question| 
+      [question.topic, ""]}]
+    @Default = params[:Default]
+    @topics = Array.new
     @review = params[:review]
     @submitted = params[:submitted]
+    @topic_selected = params[:topic_selected]
     @count=0
-
+    
     if params[:mark] != nil
       params[:mark].each do |id,marker|
         id = id.to_i
         if (marker == "marked")
           @mark[id] = ("marked")
+        end
+      end
+    end
+    if params[:selected_topics] != nil
+      params[:selected_topics].each do |topic,selector|
+        if (selector == "selected")
+          @selected_topics[topic] = ("selected")
         end
       end
     end
