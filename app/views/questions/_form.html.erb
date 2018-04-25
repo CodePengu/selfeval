@@ -1,20 +1,31 @@
 <script type="text/javascript">
-document.onload = function ()
+$(document).ready(function ()
 {
   var elem = document.getElementById("question_qtype");
+  console.log('hi')
+  console.log(elem.value);
   var hiddenDiv1 = document.getElementById("opt1");
-  hiddenDiv1.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv1.style.display = (elem.value == "T/F") ? "none":"block";
   var hiddenDiv2 = document.getElementById("opt2");
-  hiddenDiv2.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv2.style.display = (elem.value == "T/F") ? "none":"block";
   var hiddenDiv3 = document.getElementById("opt3");
-  hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv3.style.display = (elem.value == "T/F") ? "none":"block";
   var hiddenDiv4 = document.getElementById("opt4");
-  hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
-  var r1 = document.getElementById("typetf");
-  r1.style.display = (this.value == "T/F") ? "block":"none";
-  var r2 = document.getElementById("typemcq");
-  r2.style.display = (this.value == "T/F") ? "none":"block";
-}
+  hiddenDiv4.style.display = (elem.value == "T/F") ? "none":"block";
+  var r1 = document.getElementsByName("answer");
+  for (var i = 2, length = r1.length; i < length; i++)
+  {
+    if (elem.value == "T/F")
+    {
+      r1[i].checked = false;
+      r1[i].style.display = "none";
+    }
+    else
+    {
+      r1[i].style.display = "block";
+    }
+  }
+})
 </script>
 
 <%= form_with(model: question, local: true) do |form| %>
@@ -30,8 +41,8 @@ document.onload = function ()
     </div>
   <% end %>
   
-  <div class="actions">
-    <%= form.label :qtype, 'Type of question' %>
+  <div class="actions" onload="function();">
+    <%= form.label :qtype, 'Type of question (Select this first)' %>
     <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype">
       <%if question.qtype == "T/F"%>
         <option selected="selected">T/F</option>
@@ -79,17 +90,10 @@ document.onload = function ()
   </div>
   
   <div id="typemcq" class="field">
-    <%= form.label :answer, "Correct Answer"%><br />
-    <%= form.radio_button :answer, 'option1' %> Option 1<br />
-    <%= form.radio_button :answer, 'option2' %> Option 2<br />
-    <%= form.radio_button :answer, 'option3' %> Option 3<br />
-    <%= form.radio_button :answer, 'option4' %> Option 4<br />
-  </div>
-  
-  <div id="typetf" class="field">
-    <%= form.label :answer, "Correct Answer"%><br />
-    <%= form.radio_button :answer, 'option1' %> True<br />
-    <%= form.radio_button :answer, 'option2' %> False<br />
+    <%= form.radio_button(:answer, "option1") %> Option 1<br />
+    <%= form.radio_button(:answer, "option2") %> Option 2<br />
+    <%= form.radio_button(:answer, "option3") %> Option 3<br />
+    <%= form.radio_button(:answer, "option4") %> Option 4<br />
   </div>
   
   <div class="field">

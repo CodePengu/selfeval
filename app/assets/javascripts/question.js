@@ -8,10 +8,20 @@ elem.onchange = function(){console.log()
     hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
     var hiddenDiv4 = document.getElementById("opt4");
     hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
-    var r1 = document.getElementById("typetf");
-    r1.style.display = (this.value == "T/F") ? "block":"none";
-    var r2 = document.getElementById("typemcq");
-    r2.style.display = (this.value == "T/F") ? "none":"block";
+    var r1 = document.getElementsByName("answer");
+    for (var i = 2, length = r1.length; i < length; i++)
+    {
+        if (this.value == "T/F")
+        {
+            r1[i].checked = false;
+            r1[i].style.display = "none";
+        }
+        else
+        {
+            r1[i].style.display = "block";
+        }
+        console.log(r1[i].value);
+    }
 };
 
 //function myFunction() {
