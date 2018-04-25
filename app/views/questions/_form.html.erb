@@ -12,8 +12,8 @@ $(document).ready(function ()
   hiddenDiv3.style.display = (elem.value == "T/F") ? "none":"block";
   var hiddenDiv4 = document.getElementById("opt4");
   hiddenDiv4.style.display = (elem.value == "T/F") ? "none":"block";
-  var r1 = document.getElementsByTagName("input");
-  for (var i = 4, length = r1.length; i < 6; i++)
+  var r1 = document.getElementsByClassName("radiobutton");
+  for (var i = 2, length = r1.length; i < 4; i++)
   {
     if (elem.value == "T/F")
     {
@@ -59,9 +59,9 @@ $(document).ready(function ()
     </div>
   <% end %>
   
-  <div class="actions" onload="function();">
+  <div class="actions" >
     <%= form.label :qtype, 'Type of question (Select this first)' %>
-    <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype">
+    <select name="qtype" onchange="if (this.selectedIndex) myFunction();" onload="function();" id="question_qtype">
       <%if question.qtype == "T/F"%>
         <option selected="selected">T/F</option>
       <%else%>
@@ -108,10 +108,11 @@ $(document).ready(function ()
   </div>
   
   <div id="typemcq" class="field">
-    <%= form.radio_button(:answer, "option1") %> <span id="Option1"> Option 1 </span> <br />
-    <%= form.radio_button(:answer, "option2") %> <span id="Option2"> Option 2 </span> <br />
-    <%= form.radio_button(:answer, "option3") %> <span id="Option3"> Option 3 </span> <br />
-    <%= form.radio_button(:answer, "option4") %> <span id="Option4"> Option 4 </span> <br />
+    <%= form.label :answer, "Correct Answer" %>
+    <%= form.radio_button(:answer, "option1", :class => "radiobutton") %> <span id="Option1"> Option 1 </span> <br />
+    <%= form.radio_button(:answer, "option2", :class => "radiobutton") %> <span id="Option2"> Option 2 </span> <br />
+    <%= form.radio_button(:answer, "option3", :class => "radiobutton") %> <span id="Option3"> Option 3 </span> <br />
+    <%= form.radio_button(:answer, "option4", :class => "radiobutton") %> <span id="Option4"> Option 4 </span> <br />
   </div>
   
   <div class="field">

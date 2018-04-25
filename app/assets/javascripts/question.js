@@ -8,23 +8,17 @@ elem.onchange = function(){console.log()
     hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
     var hiddenDiv4 = document.getElementById("opt4");
     hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
-    var r1 = document.getElementsByTagName("input");
-    for (var i = 4, length = r1.length; i < 6; i++)
+    var r1 = document.getElementsByClassName("radiobutton");
+    for (var i = 2, length = r1.length; i < 4; i++)
     {
         if (elem.value == "T/F")
         {
             r1[i].checked = false;
             r1[i].style.visibility = "hidden";
-            r1[2].value = "True";
-            r1[3].value = "False";
         }
         else
         {
             r1[i].style.visibility = "visible";
-            r1[2].value = "Option 1"
-            r1[3].value = "Option 2"
-            r1[4].value = "Option 3"
-            r1[5].value = "Option 4"
         }
         console.log(r1[i].value);
     }

@@ -3,19 +3,20 @@
 %table#review
   %thead
     %tr
+      - i = 1
       - @mark.each do |id, val|
         - if val == "marked"
-          %th#true= id
+          %th#true= i
         - elsif val == "answered"
-          %th#false= id
+          %th#false= i
         - else
-          %th= id
-
+          %th= i
+        - i = i + 1
 %br
 
 = form_tag test_questions_path, :id => 'test_form', :method => 'get' do
   - @questions.each_with_index do |question, i|
-    = "#{question.id}."
+    = "#{i+1}."
     = question.content
     %br 
     %br
