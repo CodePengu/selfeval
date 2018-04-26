@@ -125,8 +125,7 @@ $(document).ready(function ()
     <%= form.file_field :image, size: "5x2", id: :question_image %>
     <%= image_tag @question.image_url(:thumb) if @question.image_url.present? %>
     <% if @question.image_url.present? %>
-      <%= form.label "Remove image"%>
-      <%= form.check_box :remove_question_image %>
+      <%= form.check_box :remove_question_image %> Remove Image
     <% end %>
   </div>
   

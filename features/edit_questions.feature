@@ -7,10 +7,10 @@ Feature: modify an existing question
   Background: questions in database
  
   Given the following questions exist:
-  | qtype | content       | option1 | option2 | option3 | option4 | answer  |  explanation |
-  | MCQ  | Question 1    | opt1    | opt2    | opt3    | opt4    | option1 |  exp1        |
-  | MCQ  | Question 2    | opt1    | opt2    | opt3    | opt4    | option2 |  exp2        |
-  | MCQ  | Question 3    | opt1    | opt2    | opt3    | opt4    | option4 |  exp3        |
+  | qtype | topic  | content       | option1 | option2 | option3 | option4 | answer  |  explanation |
+  | MCQ   | topic1 | Question 1    | opt1    | opt2    | opt3    | opt4    | option1 |  exp1        |
+  | MCQ   | topic1 | Question 2    | opt1    | opt2    | opt3    | opt4    | option2 |  exp2        |
+  | MCQ   | topic2 | Question 3    | opt1    | opt2    | opt3    | opt4    | option4 |  exp3        |
   
   Scenario: path of editing an existing question
   When I am on the homepage

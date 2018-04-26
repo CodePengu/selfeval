@@ -42,7 +42,7 @@
 
 #show:link, #show:visited {
     background-color: blue;
-    color: white;
+    color: black;
     padding: 14px 25px;
     text-align: center; 
     text-decoration: none;
@@ -78,6 +78,7 @@
 #destroy:hover, #destroy:active {
     background-color: red;
 }
+
 #show{
     text-decoration: underline;
 }

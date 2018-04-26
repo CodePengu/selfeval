@@ -7,10 +7,10 @@ Feature: summary of the test questions
   Background: questions in database
     
     Given the following questions exist:
-    | content                | option1 | option2     | option3   | option4  | answer  |
-    | What color is the sky? | red     | green       | blue      | yellow   | option3 |
-    | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 |
-    | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 |
+    | content                | topic  | option1 | option2     | option3   | option4  | answer  |
+    | What color is the sky? | topic1 | red     | green       | blue      | yellow   | option3 |
+    | When is the exam?      | topic2 | Monday  | Tuesday     | Wednesday | Thursday | option4 |
+    | Who is the professor?  | topic3 | Walker  | Chen        | Obama     | Trump    | option1 |
 
 Scenario: summary of the test questions
     Given I am on the index page for test_questions
