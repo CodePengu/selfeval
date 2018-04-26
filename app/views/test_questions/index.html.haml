@@ -2,20 +2,20 @@
 
 = form_tag test_questions_path, :id => 'test_form', :method => 'get' do
   - if @topic_selected != "Done"
-    - i = 0 
     - @questions.each_with_index do |question, index|
       - if @topics.exclude?(question.topic)
         - @topics.push(question.topic)
-        %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{i}]", :id => question.id ,:checked => @selected_topics[question.topic] == 'selected' }= question.topic
-        - i += 1
+        %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{question.topic}]", :id => question.id ,:checked => @selected_topics[question.topic] == 'selected' }= question.topic
     %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
     %br
-    %button{:value => "Done", :name => "topic_selected", @topic_selected => 'Done' } Take Test
+    %button{:value => "Done", :name => "topic_selected", @topic_selected => 'Done' }Take Test
   %br
-    
-  %h2Take the test
   
   - if @topic_selected == "Done"  
+  
+    %h2 Take the test
+    %br
+    
     %table#review
       %thead
         %tr
@@ -30,28 +30,29 @@
     %br
     
     - @questions.each_with_index do |question, i|
-      = "#{question.id}."
-      = question.content
-      = image_tag question.image_url(:thumb).to_s if question.image_url.present?
-      %br
-      #content_q
-        - if  question.option1 != "nil"
-          %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
-          %br
-        - if  question.option2 != "nil"
-          %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
-          %br
-        - if  question.option3 != "nil"
-          %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
-          %br
-        - if  question.option4 != "nil"
-          %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
-          %br
+      -if @selected_topics[question.topic] == "selected" || @Default == "selected"
+        = "#{question.id}."
+        = question.content
+        = image_tag question.image_url(:thumb).to_s if question.image_url.present?
         %br
-    %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 
-      %yellow mark
-      %br
-      %br
+        #content_q
+          - if  question.option1 != "nil"
+            %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
+            %br
+          - if  question.option2 != "nil"
+            %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
+            %br
+          - if  question.option3 != "nil"
+            %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
+            %br
+          - if  question.option4 != "nil"
+            %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
+            %br
+          %br
+        %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 
+        %yellow mark
+        %br
+        %br
       - if @submitted == "true"
         #content
           The correct answer is
