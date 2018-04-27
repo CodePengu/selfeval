@@ -29,11 +29,11 @@ RSpec.describe QuestionsController, type: :controller do
   # Question. As you add validations to Question, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {qtype: "MCQ", content: "Question1", option1: "1", option2: "2", option3: "3", option4: "4", answer: "option1", explanation: "explanation"}
+    {qtype: "MCQ", content: "Question1", option1: "1", option2: "2", option3: "3", option4: "4", answer: "option1", explanation: "explanation", topic: "general"}
   }
 
   let(:invalid_attributes) {
-    {qtype: "MCQ", content: "Question1", option1: "", option2: "False", option3: "nil", option4: "nil", answer: "option1", explanation: "explanation"}
+    {qtype: "MCQ", content: "Question1", option1: "", option2: "False", option3: "nil", option4: "nil", answer: "option1", explanation: "explanation" , topic: "general"}
   }
 
   # This should return the minimal set of values that should be in the session

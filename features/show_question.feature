@@ -7,11 +7,11 @@ Feature:Show the content of existing  questions in the Question List Page
  Background: questions in database
  
   Given the following questions exist:
-  |  qtype  | content      | option1 | option2      | option3      | option4    | answer  |  explanation |
-  |  MCQ    | Question 1   | PG      | George Lucas |  Shane Cooper|  Watson    | option4 |  exp1        |
-  |  MCQ    | Question 2   | PG      | Ridley Scott |  Sean Parker |  Tesla     | option3 |  exp2        |
-  |  T/F    | Question 3   | True    | False        |  nil         |  nil       | option1 |  exp3        |
-  |  T/F    | Question 4   | True    | False        |  nil         |  nil       | option2 |  exp4        |
+  |  qtype  | content      | option1 | option2      | option3      | option4    | answer  |  explanation | topic |
+  |  MCQ    | Question 1   | PG      | George Lucas |  Shane Cooper|  Watson    | option4 |  exp1        | general |
+  |  MCQ    | Question 2   | PG      | Ridley Scott |  Sean Parker |  Tesla     | option3 |  exp2        | general |
+  |  T/F    | Question 3   | True    | False        |  nil         |  nil       | option1 |  exp3        | general |
+  |  T/F    | Question 4   | True    | False        |  nil         |  nil       | option2 |  exp4        | general |
   
   Scenario: showing the content of the existing question
   When I am on the Question List Page

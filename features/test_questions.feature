@@ -7,10 +7,10 @@ Feature: submit answers to questions
   Background: questions in database
     
     Given the following questions exist:
-    | content                | option1 | option2     | option3   | option4  | answer  |
-    | What color is the sky? | red     | green       | blue      | yellow   | option3 |
-    | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 |
-    | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 |
+    | content                | option1 | option2     | option3   | option4  | answer  | topic |
+    | What color is the sky? | red     | green       | blue      | yellow   | option3 | general |
+    | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 | general |
+    | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 | general |
   
   Scenario: view list of questions on application's test_questions page
     When I go to the index page for test_questions
