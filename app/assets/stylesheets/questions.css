@@ -40,44 +40,6 @@
     text-decoration: underline;
 }
 
-#show:link, #show:visited {
-    background-color: blue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-}
-
-#show:hover, #show:active {
-    background-color: red;
-}
-
-#edit:link, #edit:visited {
-    background-color: blue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-}
-
-#edit:hover, #edit:active {
-    background-color: red;
-}
-
-#destroy:link, #destroy:visited {
-    background-color: blue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-}
-
-#destroy:hover, #destroy:active {
-    background-color: red;
-}
 #show{
     text-decoration: underline;
 }
