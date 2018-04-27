@@ -25,9 +25,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    if params[:qtype] == "True or False"
+    if params[:question][:qtype] == "True or False"
       @question = Question.new()
-      @question.qtype = params[:question_qtype]
+      @question.qtype = params[:question][:qtype]
       @question.topic = params[:question][:topic]
       @question.content = params[:question][:content]
       @question.option1 = 'True'

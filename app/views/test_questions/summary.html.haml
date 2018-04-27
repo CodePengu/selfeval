@@ -7,7 +7,11 @@
 - @questions.each_with_index do |question, i|
   -if @answers!=nil
     = question.content
-    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
+    %br
+    - if question.image_url.present?
+      = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
+      - 20.times do
+        %br
     %br
     <strong>Correct Answer:</strong>
     = question[question.answer]

@@ -22,3 +22,9 @@ Feature: modify an existing question
   And I follow "Destroy" of "1"
   Then I should be redirected to the homepage
   And "Question 1" should not be in the Question List
+  
+  Scenario: adding an image with question
+  When I am on the New Question Page
+  And I upload a jpg file
+  And I fill in "topic" with "topic1"
+  And I fill in ""

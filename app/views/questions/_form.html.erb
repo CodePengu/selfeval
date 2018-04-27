@@ -57,25 +57,20 @@ $(document).ready(function ()
   
   <div class="actions" >
     <%= form.label :qtype, 'Type of question (Select this first)' %>
-    <select name="qtype" onchange="if (this.selectedIndex) myFunction();" onload="function();" id="question_qtype">
-      <%if question.qtype == "True or False"%>
-        <option selected="selected">True or False</option>
-      <%else%>
-        <option>True or False</option>
-      <%end%>
-      <%if question.qtype == "Multiple Choice"%>
-        <option selected="selected">Multiple Choice</option>
-      <%else%>
-        <option>Multiple Choice</option>
-      <%end%>
-    </select>
+    <%if question.qtype == "True or False"%>
+      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ], "True or False"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>
+    <%elsif question.qtype == "Multiple Choice"%>
+      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ], "Multiple Choice"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>
+    <% else %>
+      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ]), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>  
+    <% end %>
   </div>
 
   <%= javascript_include_tag('question.js') %>
   
   <div class="topic">
     <%= form.label :topic %>
-    <%= form.text_area :topic, size: "100x4", id: :question_topic%>
+    <%= form.text_area :topic, size: "100x1", id: :question_topic%>
   </div>
   
   <div class="field">
