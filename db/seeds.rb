@@ -50,6 +50,14 @@ questions = [{:qtype => 'MCQ',
               :option4 => 'Trump',
               :answer => 'option1',
               :explanation => 'All of us know it'},
+             {:qtype => 'MCQ',
+              :content => 'What is \(\frac{1+2^2}{5}\)?',
+              :option1 => '5',
+              :option2 => '1',
+              :option3 => '\(\frac{1}{3}\)',
+              :option4 => '0',
+              :answer => 'option2',
+              :explanation => 'A number divided by itself is 1.'},
             ]
 
 questions.each do |question|

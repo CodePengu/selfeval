@@ -48,6 +48,8 @@ document.onload = function ()
 
   <%= javascript_include_tag('question.js') %>
   
+  <p>Mathematical equations written in LaTeX must be delimitted by \(...\)</p>
+  
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, size: "100x4", id: :question_content%>

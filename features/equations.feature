@@ -1,6 +1,6 @@
 Feature: include formatted equations
   
-  As a student
+  As a student or an admin
   So that I can better understand math equations
   I want equations to appear similar to how they would be written
   
@@ -12,13 +12,18 @@ Feature: include formatted equations
     | What is \(\frac{1+2^2}{5}\)? | 5       | 1           | \(\frac{1}{3}\) | 0        | option2 |
     | Who is the professor?        | Walker  | Chen        | Obama           | Trump    | option1 |
 
-  Scenario: view equations in a question
+  Scenario: view equations in the test
     When I go to the index page for test_questions
     Then show me the page
-    # Then I should see "\frac{1+2^2}{5}" as an equation
-    # And I should see "\frac{1}{3}" as an equation
-    # When I choose "option1" for "answers[1]"
-    # And I choose "option2" for "answers[2]"
-    # When I press "Submit All"
-    # Then I should see "/frac{1+2^2}{5}" as an equation
-    # And I should see "/frac{1}{3}" as an equation
+    And I choose "option3" for "answers[2]"
+    And I choose "option1" for "answers[3]"
+    When I press "Review All"
+    Then I press "Submit All"
+    Then I should be on the index page for test_questions
+    And I follow "Summary"
+    Then I should be redirected to the summary page
+    And show me the page
+  
+  Scenario: view equations in the questions index
+    When I am viewing the questions index
+    Then show me the page
