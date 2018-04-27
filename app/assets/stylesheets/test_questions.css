@@ -31,32 +31,6 @@ table#review th#false {
   vertical-align:middle;
 }
 
-#summa:link, #summa:visited {
-    background-color: blue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-}
-
-#summa:hover, #summa:active {
-    background-color: red;
-}
-
-#done:link, #done:visited {
-    background-color: blue;
-    color: white;
-    padding: 14px 25px;
-    text-align: center; 
-    text-decoration: none;
-    display: inline-block;
-}
-
-#done:hover, #done:active {
-    background-color: red;
-}
-
 
 input[type='radio'] {
   width:4em;
@@ -70,3 +44,29 @@ input[type='radio'] {
  yellow {
    color: #999900;
  }
+
+#summa:link, #summa:visited {
+    background-color: blue;
+    color: black;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+#summa:hover, #summa:active {
+    background-color: red;
+}
+
+#done:link, #done:visited {
+    background-color: blue;
+    color: black;
+    padding: 14px 25px;
+    text-align: center; 
+    text-decoration: none;
+    display: inline-block;
+}
+
+#done:hover, #done:active {
+    background-color: red;
+}

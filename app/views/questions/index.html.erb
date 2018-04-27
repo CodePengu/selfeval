@@ -2,7 +2,9 @@
 
 <h1>Questions</h1>
 <br>
-<strong id="new_question"><%= link_to 'New Question', new_question_path %></strong>
+<span id="new_question">
+<strong><%= link_to 'New Question', new_question_path %></strong>
+</span>
 <br>
 <br>
 <table>
@@ -36,9 +38,9 @@
         <td>
           <table>
             <tr>
-               <td><strong id="show"><%= link_to 'Show', question %></strong></td>
-               <td><strong id="edit"><%= link_to 'Edit', edit_question_path(question) %></strong></td>
-               <td><strong id="destroy"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
+               <td><strong id="show_qu"><%= link_to 'Show', question %></strong></td>
+               <td><strong id="edit_qu"><%= link_to 'Edit', edit_question_path(question) %></strong></td>
+               <td><strong id="destroy_qu"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
             </tr>
           </table>
         </td>
