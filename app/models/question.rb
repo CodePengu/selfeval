@@ -6,6 +6,7 @@ class Question < ApplicationRecord
   validates_presence_of :option4
   validates_presence_of :answer
   validates_presence_of :topic
+  validates_presence_of :qtype
 
   mount_uploader :image, ImageUploader
  

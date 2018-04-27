@@ -1,17 +1,17 @@
 var elem = document.getElementById("question_qtype");
 elem.onchange = function(){console.log()
     var hiddenDiv1 = document.getElementById("opt1");
-    hiddenDiv1.style.display = (this.value == "T/F") ? "none":"block";
+    hiddenDiv1.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv2 = document.getElementById("opt2");
-    hiddenDiv2.style.display = (this.value == "T/F") ? "none":"block";
+    hiddenDiv2.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv3 = document.getElementById("opt3");
-    hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
+    hiddenDiv3.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv4 = document.getElementById("opt4");
-    hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
+    hiddenDiv4.style.display = (this.value == "True or False") ? "none":"block";
     var r1 = document.getElementsByClassName("radiobutton");
     for (var i = 2, length = r1.length; i < 4; i++)
     {
-        if (elem.value == "T/F")
+        if (elem.value == "True or False")
         {
             r1[i].checked = false;
             r1[i].style.visibility = "hidden";
@@ -20,9 +20,8 @@ elem.onchange = function(){console.log()
         {
             r1[i].style.visibility = "visible";
         }
-        console.log(r1[i].value);
     }
-    if (elem.value == "T/F")
+    if (elem.value == "True or False")
     {
         document.getElementById("Option1").firstChild.data = "True";
         document.getElementById("Option2").firstChild.data = "False";
