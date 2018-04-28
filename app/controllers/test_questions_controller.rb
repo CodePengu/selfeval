@@ -3,6 +3,7 @@ class TestQuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @topics = @questions.uniq{|x| x.topic}
     @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
     @topics = Array.new
     @Default = params[:Default]

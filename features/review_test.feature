@@ -14,7 +14,7 @@ Feature: review test
 
   Scenario: see which questions have been attempted
     Given I am on the index page for test_questions
-    When I checkbox "selected" for "selected_topics[606_course]" 
+    When I check "606_course"
     Then I should see "Take test" 
     When I follow "Take Test"
     Then I should be redirected to the test page

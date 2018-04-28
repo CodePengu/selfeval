@@ -1,11 +1,9 @@
-%h1 Select the topics for the test
-- @questions.each_with_index do |question, index|
-  - if @topics.exclude?(question.topic)
-    - @topics.push(question.topic)
-    %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{question.topic}]", :id => question.id ,:checked => @selected_topics[question.topic] == 'selected' }= question.topic
-%input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
 
-= @selected_topics
+= form_tag test_questions_path, :id => 'test_form', :method => 'get' do
+  %h1 Select the topics for the test
+  - @selected_topics.each do |topic, val|
+    %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
+  %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
 
-- if @selected_topics.has_value?("selected")
-  = link_to "Take Test",{:controller => "test_questions", :action => "test", :default => @Default, :selected_topics => @selected_topics}, :id => 'test'
+  - if @selected_topics.has_value?("selected")
+    = link_to "Take Test",{:controller => "test_questions", :action => "test", :default => @Default, :selected_topics => @selected_topics}, :id => 'test'

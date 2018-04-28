@@ -7,7 +7,7 @@
     %tr
       = @selected_topics
       - @questions.each_with_index do |question, index|
-        -if 1
+        -if @selected_topics[question.topic.to_s] == "selected" || @Default == "selected"
           - if @mark[index] == "marked"
             %th#true= i
           - elsif @mark[index] == "answered"
@@ -19,7 +19,7 @@
 
 - i = 0
 - @questions.each_with_index do |question, index|
-  - if 1
+  -if @selected_topics[question.topic] == "selected" || @Default == "selected"
     - i+=1
     = "#{i}."
     = question.content
@@ -57,7 +57,7 @@
   %br
 %br
 - if @submitted != 'true'
-  %button{:value => "clicked", :name => "review", @review => 'clicked', :selected_topics => @selected_topics, :action => "test" } Review All
+  %button{:value => "clicked", :name => "review", @review => 'clicked', :selected_topics => @selected_topics } Review All
 - if @review == 'clicked' && @submitted != 'true'
   %button{:value => 'true', :name => "submitted", @submitted => 'true', :selected_topics => @selected_topics }Submit All
 - if @submitted == 'true'
