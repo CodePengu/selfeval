@@ -16,3 +16,7 @@ end
 When("I checkbox {string} for {string}") do |string, string2|
   check(string2, option: string)
 end
+
+Then("I should be redirected to the test page") do
+  visit "/test"
+end

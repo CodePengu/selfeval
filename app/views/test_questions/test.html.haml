@@ -1,0 +1,67 @@
+%h1 Take the test
+%br
+
+- i = 1
+%table#review
+  %thead
+    %tr
+      - @questions.each_with_index do |question, index|
+        -if @selected_topics[question.topic] == "selected" || @Default == "selected"
+          - if @mark[index] == "marked"
+            %th#true= i
+          - elsif @mark[index] == "answered"
+            %th#false= i
+          - else
+            %th= i
+          - i+=1
+%br
+
+- i = 0
+- @questions.each_with_index do |question, index|
+  -if @selected_topics[question.topic] == "selected" || @Default == "selected"
+    - i+=1
+    = "#{i}."
+    = question.content
+    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
+    %br
+    #content_q
+      %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
+      %br
+      %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
+      %br
+      - if  question.qtype != "TrueorFalse"
+        %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
+        %br
+      - if  question.option4 != "TrueorFalse"
+        %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
+        %br
+      %br
+    %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 
+    %yellow mark
+    %br
+    %br
+    - if @submitted == "true"
+      The correct answer is
+      %strong
+      = question[question.answer]
+      - if question[@answers[question.id]] != nil
+        and you selected
+        %strong
+        = question[@answers[question.id]]
+      - if question[@answers[question.id]] != nil
+        so it was
+        %i
+        = @correctness[question.id]
+    %br
+  %br
+%br
+- if @submitted != 'true'
+  %button{:value => "clicked", :name => "review", @review => 'clicked', :selected_topics => @selected_topics } Review All
+- if @review == 'clicked' && @submitted != 'true'
+  %button{:value => 'true', :name => "submitted", @submitted => 'true', :selected_topics => @selected_topics }Submit All
+- if @submitted == 'true'
+  = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
+%br
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
+<script type="text/javascript">if (window.MathJax) { MathJax.Hub.Queue(["Typeset",MathJax.Hub]);}</script>

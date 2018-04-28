@@ -3,17 +3,9 @@ class TestQuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    @correctness = Hash[@questions.map {|question| [question.id, ""]}]
-    @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
-    @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
     @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
-    @Default = params[:Default]
     @topics = Array.new
-    @review = params[:review]
-    @submitted = params[:submitted]
-    @topic_selected = params[:topic_selected]
-    @count=0
-    
+    @Default = params[:Default]
     if params[:selected_topics] != nil
       params[:selected_topics].each do |topic,selector|
         topic = topic.to_s
@@ -22,6 +14,18 @@ class TestQuestionsController < ApplicationController
         end
       end
     end
+  end
+  
+  def test
+    @questions = Question.all
+    @correctness = Hash[@questions.map {|question| [question.id, ""]}]
+    @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
+    @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
+    @selected_topics = params[:selected_topics]
+    @Default = params[:default]
+    @review = params[:review]
+    @submitted = params[:submitted]
+    @count=0
     
     if params[:mark] != nil
       params[:mark].each do |id,marker|
@@ -53,6 +57,7 @@ class TestQuestionsController < ApplicationController
         @answers[id] = ("#{answer}")
       end
     end
+    
   end
 
 
