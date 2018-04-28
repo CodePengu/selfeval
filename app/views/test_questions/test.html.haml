@@ -5,8 +5,9 @@
 %table#review
   %thead
     %tr
+      = @selected_topics
       - @questions.each_with_index do |question, index|
-        -if @selected_topics[question.topic] == "selected" || @Default == "selected"
+        -if @selected_topics[question.topic.to_s] == "selected" || @Default == "selected"
           - if @mark[index] == "marked"
             %th#true= i
           - elsif @mark[index] == "answered"

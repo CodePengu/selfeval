@@ -7,10 +7,10 @@ Feature: review test
   Background: questions in database
     
     Given the following questions exist:
-    | content                | option1 | option2     | option3   | option4  | answer  | qtype |   topic    | 
-    | What color is the sky? | red     | green       | blue      | yellow   | option3 | MCQ   | general    |
-    | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 | MCQ   | 606_course |
-    | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 | MCQ   | 606_course |
+    | content                | qtype | option1 | option2     | option3   | option4  | answer  |    topic   | 
+    | What color is the sky? | MCQ   | red     | green       | blue      | yellow   | option3 | general    |
+    | When is the exam?      | MCQ   | Monday  | Tuesday     | Wednesday | Thursday | option4 | 606_course |
+    | Who is the professor?  | MCQ   | Walker  | Chen        | Obama     | Trump    | option1 | 606_course |
 
   Scenario: see which questions have been attempted
     Given I am on the index page for test_questions

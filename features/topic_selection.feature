@@ -20,8 +20,9 @@ Feature: review test
     And I should see "Take Test"
     And I should not see "What color is the sky?"
     When I checkbox "selected" for "selected_topics[general]" 
-    And I press "Take Test"
-    Then I should see "What color is the sky?"
+    And I follow "Take Test"
+    Then I should be redirected to the test page
+    And I should see "What color is the sky?"
     And I should see "red"
     And I should see "green"
     And I should see "blue"
