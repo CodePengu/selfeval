@@ -10,7 +10,7 @@ class TestQuestionsController < ApplicationController
       params[:selected_topics].each do |topic,selector|
         topic = topic.to_s
         if (selector == "selected")
-          @selected_topics[topic] = ("selected")
+          @selected_topics[topic] = "selected"
         end
       end
     end
