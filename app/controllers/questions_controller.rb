@@ -25,9 +25,9 @@ class QuestionsController < ApplicationController
   # POST /questions
   # POST /questions.json
   def create
-    if params[:qtype] == "T/F"
+    if params[:question][:qtype] == "True or False"
       @question = Question.new()
-      @question.qtype = params[:question_qtype]
+      @question.qtype = params[:question][:qtype]
       @question.topic = params[:question][:topic]
       @question.content = params[:question][:content]
       @question.option1 = 'True'
@@ -60,6 +60,24 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
+    if image_remove_params
+      @question.remove_image = true
+      if params[:question][:qtype] == "True or False"
+        params[:question][:option1] = 'True'
+        params[:question][:option2] = 'False'
+        params[:question][:option3] = 'nil'
+        params[:question][:option4] = 'nil'
+      end
+      @question.update(question_params)
+    else
+      if params[:question][:qtype] == "True or False"
+        params[:question][:option1] = 'True'
+        params[:question][:option2] = 'False'
+        params[:question][:option3] = 'nil'
+        params[:question][:option4] = 'nil'
+      end
+      @question.update(question_params)
+    end
     respond_to do |format|
       if @question.update(question_params)
         format.html { redirect_to @question, notice: 'Question was successfully updated.' }
@@ -69,10 +87,6 @@ class QuestionsController < ApplicationController
         format.json { render json: @question.errors, status: :unprocessable_entity }
       end
     end
-    if image_remove_params
-      @question.remove_image = true
-      @question.update(question_params)
-    end
   end
 
   # DELETE /questions/1
@@ -80,7 +94,7 @@ class QuestionsController < ApplicationController
   def destroy
     @question.destroy
     respond_to do |format|
-      format.html { redirect_to questions_url, notice: 'Question was successfully destroyed.' }
+      format.html { redirect_to questions_url, notice: 'Question was successfully deleted.' }
       format.json { head :no_content }
     end
   end

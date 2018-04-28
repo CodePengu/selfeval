@@ -1,20 +1,50 @@
 <script type="text/javascript">
-document.onload = function ()
+$(document).ready(function initfunction()
 {
   var elem = document.getElementById("question_qtype");
+  //console.log('hi')
+  //console.log(elem.value)
   var hiddenDiv1 = document.getElementById("opt1");
-  hiddenDiv1.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv1.style.display = (elem.value == "True or False") ? "none":"block";
   var hiddenDiv2 = document.getElementById("opt2");
-  hiddenDiv2.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv2.style.display = (elem.value == "True or False") ? "none":"block";
   var hiddenDiv3 = document.getElementById("opt3");
-  hiddenDiv3.style.display = (this.value == "T/F") ? "none":"block";
+  hiddenDiv3.style.display = (elem.value == "True or False") ? "none":"block";
   var hiddenDiv4 = document.getElementById("opt4");
-  hiddenDiv4.style.display = (this.value == "T/F") ? "none":"block";
-  var r1 = document.getElementById("typetf");
-  r1.style.display = (this.value == "T/F") ? "block":"none";
-  var r2 = document.getElementById("typemcq");
-  r2.style.display = (this.value == "T/F") ? "none":"block";
-}
+  hiddenDiv4.style.display = (elem.value == "True or False") ? "none":"block";
+  var r1 = document.getElementsByClassName("radiobutton");
+  for (var i = 2, length = r1.length; i < 4; i++)
+  {
+    if (elem.value == "True or False")
+    {
+      r1[i].checked = false;
+      r1[i].style.visibility = "hidden";
+      console.log(i)
+      //console.log(r1[i].checked)
+    }
+    else
+    {
+      r1[i].style.visibility = "visible";
+    }
+  }
+  console.log(elem.value)
+  if (elem.value == "True or False")
+  {
+    document.getElementById("Option1").firstChild.data = "True";
+    document.getElementById("Option2").firstChild.data = "False";
+    document.getElementById("Option3").firstChild.data = "";
+    document.getElementById("Option4").firstChild.data = "";
+  }
+  else
+  {
+    document.getElementById("Option1").firstChild.data = "Option 1";
+    document.getElementById("Option2").firstChild.data = "Option 2";
+    document.getElementById("Option3").firstChild.data = "Option 3";
+    document.getElementById("Option4").firstChild.data = "Option 4";
+  }
+  
+  console.log(document.getElementById("question_image"));
+})
 </script>
 
 <%= form_with(model: question, local: true) do |form| %>
@@ -30,20 +60,15 @@ document.onload = function ()
     </div>
   <% end %>
   
-  <div class="actions">
-    <%= form.label :qtype, 'Type of question' %>
-    <select name="qtype" onchange="if (this.selectedIndex) myFunction();" id="question_qtype">
-      <%if question.qtype == "T/F"%>
-        <option selected="selected">T/F</option>
-      <%else%>
-        <option>T/F</option>
-      <%end%>
-      <%if question.qtype == "MCQ"%>
-        <option selected="selected">MCQ</option>
-      <%else%>
-        <option>MCQ</option>
-      <%end%>
-    </select>
+  <div class="actions" >
+    <%= form.label :qtype, 'Type of question (Select this first)' %>
+    <%if question.qtype == "True or False"%>
+      <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}, :selected => "True or False"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>
+    <%elsif question.qtype == "Multiple Choice"%>
+      <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}, :selected => "Multiple Choice"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>
+    <% else %>
+    <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>  
+    <% end %>
   </div>
 
   <%= javascript_include_tag('question.js') %>
@@ -52,7 +77,7 @@ document.onload = function ()
   
   <div class="topic">
     <%= form.label :topic %>
-    <%= form.text_area :topic, size: "100x4", id: :question_topic%>
+    <%= form.text_area :topic, size: "100x1", id: :question_topic%>
   </div>
   
   <div class="field">
@@ -81,17 +106,11 @@ document.onload = function ()
   </div>
   
   <div id="typemcq" class="field">
-    <%= form.label :answer, "Correct Answer"%><br />
-    <%= form.radio_button :answer, 'option1' %> Option 1<br />
-    <%= form.radio_button :answer, 'option2' %> Option 2<br />
-    <%= form.radio_button :answer, 'option3' %> Option 3<br />
-    <%= form.radio_button :answer, 'option4' %> Option 4<br />
-  </div>
-  
-  <div id="typetf" class="field">
-    <%= form.label :answer, "Correct Answer"%><br />
-    <%= form.radio_button :answer, 'option1' %> True<br />
-    <%= form.radio_button :answer, 'option2' %> False<br />
+    <%= form.label :answer, "Correct Answer" %>
+    <%= form.radio_button(:answer, "option1", :class => "radiobutton", :id => "op1") %> <span id="Option1"> Option 1 </span> <br />
+    <%= form.radio_button(:answer, "option2", :class => "radiobutton", :id => 'op2') %> <span id="Option2"> Option 2 </span> <br />
+    <%= form.radio_button(:answer, "option3", :class => "radiobutton", :id => 'op3') %> <span id="Option3"> Option 3 </span> <br />
+    <%= form.radio_button(:answer, "option4", :class => "radiobutton", :id => 'op4') %> <span id="Option4"> Option 4 </span> <br />
   </div>
   
   <div class="field">
@@ -100,12 +119,20 @@ document.onload = function ()
   </div>
   
   <div class="field">
-    <%= form.label :image , "Image (only jpg, jpeg, gif and png files)"%>
-    <%= form.file_field :image, size: "5x2", id: :question_image %>
-    <%= image_tag @question.image_url(:thumb) if @question.image_url.present? %>
     <% if @question.image_url.present? %>
-      <%= form.label "Remove image"%>
-      <%= form.check_box :remove_question_image %>
+      <%= form.label :image , "Replace Image (only jpg, jpeg, gif and png files)"%>
+    <% else %>
+      <%= form.label :image , "Add Image (only jpg, jpeg, gif and png files)" %>
+    <% end %>
+    <%= form.file_field :image, size: "5x2", id: :question_image %>
+    <% if @question.image_url.present? %>
+      <%= image_tag(@question.image_url(:thumb), :align=>"left") %>
+      <% 21.times do %>
+        <br>
+      <% end %>
+    <% end %>  
+    <% if @question.image_url.present? %>
+      <%= form.check_box :remove_question_image %> Remove Existing Image
     <% end %>
   </div>
   

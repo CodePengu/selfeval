@@ -3,34 +3,40 @@
 %table#review
   %thead
     %tr
+      - i = 1
       - @mark.each do |id, val|
         - if val == "marked"
-          %th#true= id
+          %th#true= i
         - elsif val == "answered"
-          %th#false= id
+          %th#false= i
         - else
-          %th= id
-
+          %th= i
+        - i = i + 1
 %br
 
 = form_tag test_questions_path, :id => 'test_form', :method => 'get' do
   - @questions.each_with_index do |question, i|
-    = "#{question.id}."
+    = "#{i+1}."
     = question.content
-    = image_tag question.image_url(:thumb).to_s if question.image_url.present?
+    %br 
     %br
+    %br
+    - if question.image_url.present?
+      = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
+      - 22.times do
+        %br
     #content_q
       - if  question.option1 != "nil"
-        %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1'}= question.option1
+        %input{:type => 'radio', :value => "option1", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option1', :align=>"left"}= question.option1
         %br
       - if  question.option2 != "nil"
-        %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2'}= question.option2
+        %input{:type => 'radio', :value => "option2", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option2', :align=>"left"}= question.option2
         %br
       - if  question.option3 != "nil"
-        %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3'}= question.option3
+        %input{:type => 'radio', :value => "option3", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option3', :align=>"left"}= question.option3
         %br
       - if  question.option4 != "nil"
-        %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4'}= question.option4
+        %input{:type => 'radio', :value => "option4", :name => "answers[#{question.id}]", :checked => @answers[question.id] == 'option4', :align=>"left"}= question.option4
         %br
       %br
     %input{:type => 'checkbox',:value => "marked", :name => "mark[#{question.id}]", :checked => @mark[question.id] == 'marked'} 

@@ -4,12 +4,12 @@ describe TestQuestionsController do
 
   describe 'index' do
     
-    question_1 = {:content => 'What color is the sky?', :option1 => 'red',
+    question_1 = {:content => 'What color is the sky?', :qtype => 'Multiple Choice', :option1 => 'red',
     :option2 => 'green', :option3 => 'blue', :option4 => 'yellow', :answer => 'option3', :topic => 'general'}
-    question_2 = {:content => 'When is the exam?', :option1 => 'Monday',
+    question_2 = {:content => 'When is the exam?', :qtype => 'Multiple Choice', :option1 => 'Monday',
     :option2 => 'Tuesday', :option3 => 'Wednesday', :option4 => 'Thursday',
     :answer => 'option4', :topic => 'general'}
-    question_3 = {:content => 'Who is the professor?', :option1 => 'Walker',
+    question_3 = {:content => 'Who is the professor?', :qtype => 'Multiple Choice', :option1 => 'Walker',
     :option2 => 'Chen', :option3 => 'Obama', :option4 => 'Trump', :answer => 'option1', :topic => 'general'}
     
     id_1 = nil

@@ -8,6 +8,11 @@
   -if @answers!=nil
     = question.content
     %br
+    - if question.image_url.present?
+      = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
+      - 20.times do
+        %br
+    %br
     <strong>Correct Answer:</strong>
     = question[question.answer]
     %br

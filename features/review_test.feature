@@ -7,11 +7,11 @@ Feature: review test
   Background: questions in database
     
     Given the following questions exist:
-    | content                | option1 | option2     | option3   | option4  | answer  | topic |
-    | What color is the sky? | red     | green       | blue      | yellow   | option3 | general |
-    | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 | general |
-    | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 | general |
-
+    | content                | qtype           | topic  | option1 | option2     | option3   | option4  | answer  |
+    | What color is the sky? | Multiple Choice | topic1 | red     | green       | blue      | yellow   | option3 |
+    | When is the exam?      | Multiple Choice | topic1 | Monday  | Tuesday     | Wednesday | Thursday | option4 |
+    | Who is the professor?  | Multiple Choice | topic2 | Walker  | Chen        | Obama     | Trump    | option1 |
+  
   Scenario: see which questions have been attempted
     Given I am on the index page for test_questions
     Then the color of "1" in "#review" should be ""

@@ -7,7 +7,19 @@
 
 <p>
   <strong>Image:</strong>
-  <%= image_tag @question.image_url(:thumb).to_s if @question.image_url.present? %>
+  <br>
+  <br>
+  <% if @question.image_url.present? %>
+    <%= image_tag(@question.image_url(:thumb).to_s, :align=>"left") %>
+    <% 20.times do %>
+      <br>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Qtype:</strong>
+  <%= @question.qtype %>
 </p>
 
 <p>

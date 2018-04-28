@@ -7,9 +7,10 @@
 <br>
 <table>
   <tbody>
+    <% i=1 %>
     <% @questions.each do |question| %>
       <tr>
-        <td><strong><%= question.id %>.) Content:<%= question.content %></strong></td>
+        <td><strong><%= i %>.) Content:<%= question.content %></strong></td>
       </tr>
       <tr>
         <td><strong>Option 1: </strong><%= question.option1 %></td>
@@ -43,6 +44,7 @@
           </table>
         </td>
       </tr>
+      <% i=i+1 %>
     <% end %>
   </tbody>
 </table>
