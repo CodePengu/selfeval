@@ -7,10 +7,10 @@ Feature: include formatted equations
   Background: questions in database
     
     Given the following questions exist:
-    | content                      | option1 | option2     | option3         | option4  | answer  |
-    | What color is the sky?       | red     | green       | blue            | yellow   | option3 |
-    | What is \(\frac{1+2^2}{5}\)? | 5       | 1           | \(\frac{1}{3}\) | 0        | option2 |
-    | Who is the professor?        | Walker  | Chen        | Obama           | Trump    | option1 |
+    | content                      | option1 | option2     | option3         | option4  | answer  | topic |
+    | What color is the sky?       | red     | green       | blue            | yellow   | option3 | general |
+    | What is \(\frac{1+2^2}{5}\)? | 5       | 1           | \(\frac{1}{3}\) | 0        | option2 | general |
+    | Who is the professor?        | Walker  | Chen        | Obama           | Trump    | option1 | general |
 
   Scenario: view equations in the test
     When I go to the index page for test_questions

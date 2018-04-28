@@ -50,6 +50,11 @@ document.onload = function ()
   
   <p>Mathematical equations written in LaTeX must be delimitted by \(...\)</p>
   
+  <div class="topic">
+    <%= form.label :topic %>
+    <%= form.text_area :topic, size: "100x4", id: :question_topic%>
+  </div>
+  
   <div class="field">
     <%= form.label :content %>
     <%= form.text_area :content, size: "100x4", id: :question_content%>
