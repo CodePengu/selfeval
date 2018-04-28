@@ -52,12 +52,17 @@
           = @correctness[question.id]
     %br
   %br
+  
   - if @submitted != 'true'
     %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
   - if @review == 'clicked' && @submitted != 'true'
     %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
   - if @submitted == 'true'
     = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
-
-
+  %br
+  %br
+  %br
+  - if @review == 'clicked'
+    = link_to "Save and log out" , {:controller => "test_questions", :action => "signoutwpause", :count => @count, :mark => @mark, :correctness => @correctness, :answers => @answers}, :id => 'summa'
+  
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>

@@ -40,6 +40,22 @@ class TestQuestionsController < ApplicationController
     end
   end
 
+  def signoutwpause
+    @mark=params[:mark]
+    @correctness=params[:correctness]
+    @answers=params[:answers]
+    @email_id=current_user.email
+    
+    rec = Testrecs.new(email: @email_id , mark: @mark, correctness: @correctness, answers: @answers)
+    rec.save
+    redirect_to "users/sign_out", :notice => "Test saved and logged out successfully."
+    # click logout (/user/sign_out)
+    #recs = Testrecs.all
+    #recs.each do |rec|
+    #  test = object_from_yaml(rec.value)
+    #  puts test
+    #end
+  end
 
   def summary
     @questions = Question.all
