@@ -1,5 +1,5 @@
 var elem = document.getElementById("question_qtype");
-elem.onchange = function(){console.log()
+elem.onchange = function myFunction(){console.log(elem.value)
     var hiddenDiv1 = document.getElementById("opt1");
     hiddenDiv1.style.display = (this.value == "True or False") ? "none":"block";
     var hiddenDiv2 = document.getElementById("opt2");
@@ -13,7 +13,7 @@ elem.onchange = function(){console.log()
     {
         if (elem.value == "True or False")
         {
-            r1[i].checked = false;
+            //r1[i].checked = false;
             r1[i].style.visibility = "hidden";
         }
         else
@@ -21,6 +21,7 @@ elem.onchange = function(){console.log()
             r1[i].style.visibility = "visible";
         }
     }
+    document.getElementById('op1').checked = true;
     if (elem.value == "True or False")
     {
         document.getElementById("Option1").firstChild.data = "True";
@@ -35,7 +36,7 @@ elem.onchange = function(){console.log()
         document.getElementById("Option3").firstChild.data = "Option 3";
         document.getElementById("Option4").firstChild.data = "Option 4";
     }
-    console.log(r1)
+    //console.log(r1)
 };
 
 //function myFunction() {

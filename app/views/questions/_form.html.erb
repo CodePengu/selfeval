@@ -1,7 +1,9 @@
 <script type="text/javascript">
-$(document).ready(function ()
+$(document).ready(function initfunction()
 {
   var elem = document.getElementById("question_qtype");
+  //console.log('hi')
+  //console.log(elem.value)
   var hiddenDiv1 = document.getElementById("opt1");
   hiddenDiv1.style.display = (elem.value == "True or False") ? "none":"block";
   var hiddenDiv2 = document.getElementById("opt2");
@@ -17,12 +19,15 @@ $(document).ready(function ()
     {
       r1[i].checked = false;
       r1[i].style.visibility = "hidden";
+      console.log(i)
+      //console.log(r1[i].checked)
     }
     else
     {
       r1[i].style.visibility = "visible";
     }
   }
+  console.log(elem.value)
   if (elem.value == "True or False")
   {
     document.getElementById("Option1").firstChild.data = "True";
@@ -58,11 +63,11 @@ $(document).ready(function ()
   <div class="actions" >
     <%= form.label :qtype, 'Type of question (Select this first)' %>
     <%if question.qtype == "True or False"%>
-      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ], "True or False"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>
+      <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}, :selected => "True or False"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>
     <%elsif question.qtype == "Multiple Choice"%>
-      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ], "Multiple Choice"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>
+      <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}, :selected => "Multiple Choice"), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>
     <% else %>
-      <%= form.select :qtype, options_for_select([ "True or False", "Multiple Choice" ]), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "function();"}, id: :question_qtype %>  
+    <%= form.select :qtype, options_for_select({"True or False" => "True or False", "Multiple Choice" => "Multiple Choice"}), {:onchange => "if (this.selectedIndex) myFunction();", :onload => "initfunction();"}, id: :question_qtype %>  
     <% end %>
   </div>
 
@@ -100,10 +105,10 @@ $(document).ready(function ()
   
   <div id="typemcq" class="field">
     <%= form.label :answer, "Correct Answer" %>
-    <%= form.radio_button(:answer, "option1", :class => "radiobutton") %> <span id="Option1"> Option 1 </span> <br />
-    <%= form.radio_button(:answer, "option2", :class => "radiobutton") %> <span id="Option2"> Option 2 </span> <br />
-    <%= form.radio_button(:answer, "option3", :class => "radiobutton") %> <span id="Option3"> Option 3 </span> <br />
-    <%= form.radio_button(:answer, "option4", :class => "radiobutton") %> <span id="Option4"> Option 4 </span> <br />
+    <%= form.radio_button(:answer, "option1", :class => "radiobutton", :id => "op1") %> <span id="Option1"> Option 1 </span> <br />
+    <%= form.radio_button(:answer, "option2", :class => "radiobutton", :id => 'op2') %> <span id="Option2"> Option 2 </span> <br />
+    <%= form.radio_button(:answer, "option3", :class => "radiobutton", :id => 'op3') %> <span id="Option3"> Option 3 </span> <br />
+    <%= form.radio_button(:answer, "option4", :class => "radiobutton", :id => 'op4') %> <span id="Option4"> Option 4 </span> <br />
   </div>
   
   <div class="field">
@@ -112,16 +117,20 @@ $(document).ready(function ()
   </div>
   
   <div class="field">
-    <%= form.label :image , "Image (only jpg, jpeg, gif and png files)"%>
+    <% if @question.image_url.present? %>
+      <%= form.label :image , "Replace Image (only jpg, jpeg, gif and png files)"%>
+    <% else %>
+      <%= form.label :image , "Add Image (only jpg, jpeg, gif and png files)" %>
+    <% end %>
     <%= form.file_field :image, size: "5x2", id: :question_image %>
     <% if @question.image_url.present? %>
-      <%= image_tag(@question.image_url(:thumb), :align=>"leFt") %>
+      <%= image_tag(@question.image_url(:thumb), :align=>"left") %>
       <% 21.times do %>
         <br>
       <% end %>
     <% end %>  
     <% if @question.image_url.present? %>
-      <%= form.check_box :remove_question_image %> Remove Image
+      <%= form.check_box :remove_question_image %> Remove Existing Image
     <% end %>
   </div>
   
