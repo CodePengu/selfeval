@@ -14,6 +14,8 @@ Feature: include formatted equations
 
   Scenario: view equations in the test
     When I go to the index page for test_questions
+    And I choose "general"
+    And I press "OK"
     Then show me the page
     And I choose "option3" for "answers[2]"
     And I choose "option1" for "answers[3]"

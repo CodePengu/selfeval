@@ -56,7 +56,7 @@ class TestQuestionsController < ApplicationController
     @questions = Question.all
     @count1 = params[:count]
     @answers=params[:answers]
-    @total =Question.count
+    @total =params[:total]
   end
 
 
