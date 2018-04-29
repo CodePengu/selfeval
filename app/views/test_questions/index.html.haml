@@ -2,11 +2,14 @@
   - if @OK != "clicked" && @review != "clicked" && @submitted != "true"
     %h1 Select the Topics
     - @selected_topics.each do |topic, val|
-      %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
-    %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
+      %input{:type => 'radio',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
+    %input{:type => 'radio', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
     %button{:value => "clicked", :name => "OK", @OK => 'clicked' } OK
   %br 
   -if @OK == "clicked" || @review == "clicked" || @submitted == "true"
+    - @selected_topics.each do |topic, val|
+      -if val == "selected"
+        %input{:type => 'radio',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
     - i = 1
     %table#review
       %thead
