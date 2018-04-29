@@ -3,6 +3,7 @@ class TestQuestionsController < ApplicationController
 
   def index
     @questions = Question.all
+    @OK = params[:OK]
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
