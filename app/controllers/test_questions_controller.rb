@@ -7,7 +7,7 @@ class TestQuestionsController < ApplicationController
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
-    session[:selected_topics] = Hash[@questions.map {|question| [question.topic, ""]}]
+    @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
     @review = params[:review]
     @submitted = params[:submitted]
     @count=0
@@ -16,7 +16,7 @@ class TestQuestionsController < ApplicationController
       params[:selected_topics].each do |topic,selector|
         topic = topic.to_s
         if (selector == "selected")
-          session[:selected_topics][topic] = ("selected")
+          @selected_topics[topic] = ("selected")
         end
       end
     end
@@ -57,12 +57,6 @@ class TestQuestionsController < ApplicationController
     @count1 = params[:count]
     @answers=params[:answers]
     @total =Question.count
-    #if @answers != nil
-    #  @answers.each do |id, answer|
-     #   id = id.to_i
-     #   question = Question.find_by(:id => id)
-     # end
-    #end
   end
 
 

@@ -1,19 +1,18 @@
 = form_tag test_questions_path, :id => 'test_form', :method => 'get' do
-  - if @OK != "clicked" 
+  - if @OK != "clicked" && @review != "clicked" && @submitted != "true"
     %h1 Select the Topics
-    - session[:selected_topics].each do |topic, val|
-      %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{topic}]",:checked => session[:selected_topics][topic] == 'selected', :id => "#{topic}" }= topic
+    - @selected_topics.each do |topic, val|
+      %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
     %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
     %button{:value => "clicked", :name => "OK", @OK => 'clicked' } OK
   %br 
-  -if @OK == "clicked"
+  -if @OK == "clicked" || @review == "clicked" || @submitted == "true"
     - i = 1
     %table#review
       %thead
         %tr
           - @questions.each_with_index do |question, index|
-            - if session[:selected_topics][question.topic] == "selected" || @Default == "selected"
-              "#{i}"
+            - if @selected_topics[question.topic] == "selected" || @Default == "selected"
               - if @mark[index] == "marked"
                 %th#true= i
               - elsif @mark[index] == "answered"
@@ -25,7 +24,7 @@
     -i = 0
     - if 1
       - @questions.each_with_index do |question, i|
-        -if session[:selected_topics][question.topic] == "selected" || @Default == "selected"
+        -if @selected_topics[question.topic] == "selected" || @Default == "selected"
           -i+=1
           = "#{i}."
           = question.content
@@ -64,12 +63,12 @@
                 = @correctness[question.id]
           %br
         %br
-        - if @submitted != 'true'
-          %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
-        - if @review == 'clicked' && @submitted != 'true'
-          %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
-        - if @submitted == 'true'
-          = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
+      - if @submitted != 'true'
+        %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
+      - if @review == 'clicked' && @submitted != 'true'
+        %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
+      - if @submitted == 'true'
+        = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
   
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
     <script type="text/javascript">if (window.MathJax) { MathJax.Hub.Queue(["Typeset",MathJax.Hub]);}</script>
