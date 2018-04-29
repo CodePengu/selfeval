@@ -21,6 +21,7 @@ Rails.application.routes.draw do
   # root 'users#index'
   get    '/summary',  to: 'test_questions#summary'
   get    '/signoutwpause',  to: 'test_questions#signoutwpause'
+  get    '/resume',  to: 'test_questions#resume'
   # get '/about', to: 
 
   # resources :password_resets,     only: [:new, :create, :edit, :update] 

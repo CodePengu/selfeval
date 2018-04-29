@@ -1,7 +1,7 @@
 class TestQuestionsController < ApplicationController
-
-
+  
   def index
+    @show_resume = false
     @questions = Question.all
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
@@ -38,6 +38,34 @@ class TestQuestionsController < ApplicationController
         @answers[id] = ("#{answer}")
       end
     end
+    rec = Testrecs.all
+    @recno=rec.where(email: current_user.email).count
+    #@recno=Testrecs.first(:conditions => ["email = (?)", current_user.email])
+    #@recno=rec.count
+    if @recno == 0
+        @show_resume = false
+    else
+        @show_resume = true
+    end
+    
+  end
+  
+  def resume
+    rec = Testrecs.find_by(email: current_user.email)
+    @mark1=rec.mark
+    @corr1=rec.correctness
+    @ans1=rec.answers
+    rec.destroy
+    
+    ActionController::Parameters.permit_all_parameters = true
+    
+    last_params = ActionController::Parameters.new(answers: @ans1, correctness: @corr1, mark: @mark1, notice: "Last saved test loaded.")
+    last_params.permit!
+    last_params.permitted?
+    #last_params.permit(:mark,:notice)
+    puts last_params
+    redirect_to test_questions_path(last_params)
+    #redirect_to "/test_questions", :notice => "Last saved test loaded.", :mark => @mark1, :correctness => @corr1, :answers => @ans1
   end
 
   def signoutwpause
@@ -48,7 +76,12 @@ class TestQuestionsController < ApplicationController
     
     rec = Testrecs.new(email: @email_id , mark: @mark, correctness: @correctness, answers: @answers)
     rec.save
-    redirect_to "users/sign_out", :notice => "Test saved and logged out successfully."
+    #reset_session
+    #reset_params
+    user = current_user
+    sign_out user
+    redirect_to "/", :notice => "Test saved and logged out successfully."
+    #redirect_to "/",:notice => "Test saved and logged out successfully." 
     # click logout (/user/sign_out)
     #recs = Testrecs.all
     #recs.each do |rec|

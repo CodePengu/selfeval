@@ -1,5 +1,8 @@
 %h1 Take the Test
 
+- if @show_resume == true
+  = link_to "Resume last saved test" , {:controller => "test_questions" , :action => "resume"}, :id => 'summa'
+    
 %table#review
   %thead
     %tr
@@ -52,9 +55,9 @@
           = @correctness[question.id]
     %br
   %br
-  
+
   - if @submitted != 'true'
-    %button{:value => "clicked", :name => "review", @review => 'clicked' } Review All
+    %button{:value => "clicked", :name => "review", @review => 'clicked' }Review All/Save Test
   - if @review == 'clicked' && @submitted != 'true'
     %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
   - if @submitted == 'true'
