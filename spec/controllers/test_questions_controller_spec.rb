@@ -23,7 +23,7 @@ describe TestQuestionsController do
       id_3 = Question.create!(question_3).id
       parameters = {"utf8"=>"✓", "answers"=>{"#{id_1}"=>"option3", "#{id_2}"=>"option3",
       "#{id_3}"=>"blank"},"mark"=>{"#{id_1}"=>"marked", "#{id_2}"=>"",
-      "#{id_3}"=>""}, "selected_topics"=>{ "#{question_1[:topic]}"=>"selected", "#{question_2[:topic]}" => "" }, "commit"=>"Submit All"}
+      "#{id_3}"=>""}, "selected_topics"=>{ "#{question_1[:topic]}"=>"selected", "#{question_2[:topic]}" => "" }, "all_topics" => "selected" , "commit"=>"Submit All"}
     end
     
     after :all do
@@ -32,7 +32,7 @@ describe TestQuestionsController do
       Question.where(:content => 'Who is the professor?').destroy_all
     end
     it 'should select topics' do
-      selected_topics = {"#{question_1[:topic]}"=>"selected", "#{question_2[:topic]}"=>""}
+      selected_topics = {"#{question_1[:topic]}"=>"selected", "#{question_2[:topic]}"=>"selected"}
       get :index, :params => parameters
       expect(assigns(:selected_topics)).to eql(selected_topics)
     end
