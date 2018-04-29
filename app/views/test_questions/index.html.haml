@@ -7,14 +7,11 @@
     %button{:value => "clicked", :name => "OK", @OK => 'clicked' } OK
   %br 
   -if @OK == "clicked" || @review == "clicked" || @submitted == "true"
-    %p Select the Topics
+    %p Your Selected Topics
     - @selected_topics.each do |topic, val|
       -if val == "selected"
         %input{:type => 'radio',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
     - j = 0
-    
-    %h2 TAKE TEST 
-    
     
     %table#review
       %thead
@@ -29,6 +26,10 @@
               - else
                 %th= j
     %br
+    
+    %h2 TAKE TEST 
+    
+    
     -i = 0
     - if 1
       - @questions.each_with_index do |question, index|
