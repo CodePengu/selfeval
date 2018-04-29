@@ -59,9 +59,9 @@
   %br
 %br
 - if @submitted != 'true'
-  %button{:value => "clicked", :name => "review", @review => 'clicked', :selected_topics => @selected_topics } Review All
+  %button{:value => "clicked", :name => "review", @review => 'clicked'} Review All
 - if @review == 'clicked' && @submitted != 'true'
-  %button{:value => 'true', :name => "submitted", @submitted => 'true', :selected_topics => @selected_topics }Submit All
+  %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
 - if @submitted == 'true'
   = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers}, :id => 'summa'
 %br

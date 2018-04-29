@@ -22,6 +22,7 @@ class TestQuestionsController < ApplicationController
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
     @selected_topics = params[:selected_topics]
+    @selected_questions = @questions.find { |question| question.topic.include?(@selected_topics.keys("selected")) }
     @Default = params[:default]
     @review = params[:review]
     @submitted = params[:submitted]
