@@ -76,7 +76,6 @@
     - if @review == 'clicked' && @submitted != 'true'
       %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
     - if @submitted == 'true'
-      = @selected_topics
       = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :selected_topics => @selected_topics, :answers => @answers, :total => "#{j}"}, :id => 'summa'
   
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
