@@ -59,4 +59,8 @@ feature 'Sign Up', :devise do
     expect(page).to have_content "Password confirmation doesn't match"
   end
 
+  scenario 'visitor can sign up with valid credintials' do
+    user = FactoryGirl.create(:user)
+    
+  end
 end
