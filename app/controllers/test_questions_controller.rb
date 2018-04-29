@@ -63,7 +63,7 @@ class TestQuestionsController < ApplicationController
     last_params.permit!
     last_params.permitted?
     #last_params.permit(:mark,:notice)
-    puts last_params
+    #puts last_params
     redirect_to test_questions_path(last_params)
     #redirect_to "/test_questions", :notice => "Last saved test loaded.", :mark => @mark1, :correctness => @corr1, :answers => @ans1
   end
