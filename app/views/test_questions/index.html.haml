@@ -4,6 +4,7 @@
   - @selected_topics.each do |topic, val|
     %input{:type => 'checkbox',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
   %input{:type => 'checkbox', :value => "selected", :name => "Default", :checked => @Default == 'selected'} Default
+  %button{:value => "clicked", :name => "OK", @OK => 'clicked' } OK
 
-  - if @selected_topics.has_value?("selected")
+  - if @OK == "clicked"
     = link_to "Take Test",{:controller => "test_questions", :action => "test", :default => @Default, :selected_topics => @selected_topics}, :id => 'test'

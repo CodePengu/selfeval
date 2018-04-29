@@ -3,9 +3,8 @@ class TestQuestionsController < ApplicationController
 
   def index
     @questions = Question.all
-    @topics = @questions.uniq{|x| x.topic}
     @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
-    @topics = Array.new
+    @OK = params[:OK]
     @Default = params[:Default]
     if params[:selected_topics] != nil
       params[:selected_topics].each do |topic,selector|

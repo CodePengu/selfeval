@@ -15,7 +15,8 @@ Feature: review test
   Scenario: see which questions have been attempted
     Given I am on the index page for test_questions
     When I check "606_course"
-    Then I should see "Take test" 
+    And I press "OK"
+    Then I should see "Take Test" 
     When I follow "Take Test"
     Then I should be redirected to the test page
     And the color of "1" in "#review" should be ""
