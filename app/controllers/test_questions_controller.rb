@@ -54,6 +54,7 @@ class TestQuestionsController < ApplicationController
   def summary
     @questions = Question.all
     @count1 = params[:count]
+    @selected_topics=params[:selected_topics]
     @answers=params[:answers]
     @total = params[:total]
   end
