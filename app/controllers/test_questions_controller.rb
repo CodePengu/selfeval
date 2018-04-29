@@ -11,7 +11,6 @@ class TestQuestionsController < ApplicationController
     @review = params[:review]
     @submitted = params[:submitted]
     @count=0
-    @total=0
     if params[:selected_topics] != nil
       params[:selected_topics].each do |topic,selector|
         topic = topic.to_s
@@ -56,7 +55,7 @@ class TestQuestionsController < ApplicationController
     @questions = Question.all
     @count1 = params[:count]
     @answers=params[:answers]
-    @total = params [:total]
+    @total = params[:total]
   end
 
 
