@@ -39,7 +39,8 @@ class TestQuestionsController < ApplicationController
       end
     end
     rec = Testrecs.all
-    @recno=rec.where(email: current_user.email).count
+    @email_id=current_user.email
+    @recno=rec.where(email: @email_id).count
     #@recno=Testrecs.first(:conditions => ["email = (?)", current_user.email])
     #@recno=rec.count
     if @recno == 0
@@ -47,7 +48,6 @@ class TestQuestionsController < ApplicationController
     else
         @show_resume = true
     end
-    
   end
   
   def resume

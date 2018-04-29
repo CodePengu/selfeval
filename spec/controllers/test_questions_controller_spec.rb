@@ -54,6 +54,7 @@ describe TestQuestionsController do
       get :index, :params => parameters
       expect(assigns(:answers)).to eql(answers)
     end
+
   end
 
 end
