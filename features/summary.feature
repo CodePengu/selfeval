@@ -33,7 +33,6 @@ Scenario:Seeing the score
   Then I should see "You scored"
   And I should see "The questions with the right answers are:"
   And I should not see "What colour is the sky?"
-  And I should see "When is the exam?"
   
 Scenario:Going back to the homepage
   When I am on the summary page

@@ -110,6 +110,10 @@
         20,
         20,
         5,
+        0,
+        0,
+        null,
+        5,
         5,
         5,
         5,
@@ -122,10 +126,10 @@
         null,
         null,
         5,
-        0,
-        0,
-        0,
-        0,
+        2,
+        2,
+        2,
+        2,
         null,
         null,
         null,
@@ -140,10 +144,10 @@
         2,
         null,
         4,
-        4,
+        2,
         0,
         null,
-        4,
+        2,
         null,
         null,
         4,
@@ -153,11 +157,11 @@
         null,
         null,
         1,
-        4,
-        4,
-        4,
-        4,
-        4,
+        1,
+        1,
+        1,
+        1,
+        1,
         null,
         null,
         null,
@@ -225,22 +229,6 @@
         1,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
-        1,
-        1,
-        2,
-        0,
-        null,
-        2,
-        null,
-        null,
-        null,
-        1,
-        null,
-        0,
-        null,
-        null
-      ],
       "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
         0,
         0,
@@ -248,6 +236,22 @@
         0
       ],
       "/home/ec2-user/environment/selfeval/app/jobs/application_job.rb": [
+        0,
+        0
+      ],
+      "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        null,
+        0,
+        null,
+        0,
         0,
         0
       ],
@@ -526,7 +530,7 @@
         0
       ]
     },
-    "timestamp": 1525022615
+    "timestamp": 1525023238
   },
   "RSpec": {
     "coverage": {

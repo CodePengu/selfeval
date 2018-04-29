@@ -8,6 +8,10 @@ class TestQuestionsController < ApplicationController
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
     @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
+    if params[:all_topics]!=nil
+      @all_topics = params[:all_topics]
+      @selected_topics = Hash[@questions.map {|question| [question.topic, "selected"]}]
+    end
     @review = params[:review]
     @submitted = params[:submitted]
     @count=0

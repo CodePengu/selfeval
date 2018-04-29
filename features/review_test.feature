@@ -16,7 +16,7 @@ Feature: review test
     Given I am on the index page for test_questions
     Then I should see "general"
     And I should see "606_course"
-    And I should see "Default"
+    And I should see "All Topics"
     When I choose "606_course"
     And I press "OK"
     Then the color of "1" in "#review" should be ""
