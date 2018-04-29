@@ -7,10 +7,13 @@
     %button{:value => "clicked", :name => "OK", @OK => 'clicked' } OK
   %br 
   -if @OK == "clicked" || @review == "clicked" || @submitted == "true"
+    %h2 Selected Topics 
     - @selected_topics.each do |topic, val|
       -if val == "selected"
         %input{:type => 'radio',:value => "selected", :name => "selected_topics[#{topic}]",:checked => @selected_topics[topic] == 'selected', :id => "#{topic}" }= topic
     - j = 0
+    
+    %h3 TAKE TEST
     %table#review
       %thead
         %tr
@@ -23,6 +26,7 @@
                 %th#false= j
               - else
                 %th= j
+          - @total = j      
     %br
     -i = 0
     - if 1
@@ -71,7 +75,7 @@
       - if @review == 'clicked' && @submitted != 'true'
         %button{:value => 'true', :name => "submitted", @submitted => 'true'}Submit All
       - if @submitted == 'true'
-        = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers, :total => "#{i}"}, :id => 'summa'
+        = link_to "Summary" , {:controller => "test_questions", :action => "summary", :count => @count, :answers => @answers, :total => @total}, :id => 'summa'
   
     <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>
     <script type="text/javascript">if (window.MathJax) { MathJax.Hub.Queue(["Typeset",MathJax.Hub]);}</script>
