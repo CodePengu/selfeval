@@ -7,10 +7,10 @@ Feature: modify an existing question
   Background: questions in database
  
   Given the following questions exist:
-  | qtype | topic  | content       | option1 | option2 | option3 | option4 | answer  |  explanation |
-  | MCQ   | topic1 | Question 1    | opt1    | opt2    | opt3    | opt4    | option1 |  exp1        |
-  | MCQ   | topic1 | Question 2    | opt1    | opt2    | opt3    | opt4    | option2 |  exp2        |
-  | MCQ   | topic2 | Question 3    | opt1    | opt2    | opt3    | opt4    | option4 |  exp3        |
+  | qtype             | topic  | content       | option1 | option2 | option3 | option4 | answer  |  explanation |
+  | Multiple Choice   | topic1 | Question 1    | opt1    | opt2    | opt3    | opt4    | option1 |  exp1        |
+  | Multiple Choice   | topic1 | Question 2    | opt1    | opt2    | opt3    | opt4    | option2 |  exp2        |
+  | Multiple Choice   | topic2 | Question 3    | opt1    | opt2    | opt3    | opt4    | option4 |  exp3        |
   
   Scenario: path of editing an existing question
   When I am on the homepage
@@ -35,6 +35,13 @@ Feature: modify an existing question
     And I should not see "opt2"
     And I should see "True"
     And I should see "False"
+    
+  #Scenario: updating a mcq question with image
+  #  When I am on the homepage
+  #  And I follow "Edit" of "1"
+  #  And I check "Remove Image"
+  #  And I press "Update Question"
+  #  Then I should be redirected to "Show" of "1"
     
   Scenario: updating a tf question to a mcq question
     When I am on the homepage

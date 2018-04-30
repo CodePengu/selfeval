@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     if params[:question][:qtype] == "True or False"
       @question = Question.new()
       @question.qtype = params[:question][:qtype]
-      @question.topic = params[:question][:topic]
+      @question.topic = params[:question][:topic].pluralize
       @question.content = params[:question][:content]
       @question.option1 = 'True'
       @question.option2 = 'False'
@@ -60,8 +60,11 @@ class QuestionsController < ApplicationController
   # PATCH/PUT /questions/1
   # PATCH/PUT /questions/1.json
   def update
-    if image_remove_params
+    if params[:question][:remove_question_image] == "1"
       @question.remove_image = true
+      if params[:question][:topic] != nil
+        params[:question][:topic] = params[:question][:topic].pluralize
+      end
       if params[:question][:qtype] == "True or False"
         params[:question][:option1] = 'True'
         params[:question][:option2] = 'False'
@@ -70,6 +73,9 @@ class QuestionsController < ApplicationController
       end
       @question.update(question_params)
     else
+      if params[:question][:topic] != nil
+        params[:question][:topic] = params[:question][:topic].pluralize
+      end
       if params[:question][:qtype] == "True or False"
         params[:question][:option1] = 'True'
         params[:question][:option2] = 'False'
@@ -111,6 +117,6 @@ class QuestionsController < ApplicationController
     end
     
     def image_remove_params
-      params.permit(:remove_question_image)
+      params.require(:question).permit(:remove_question_image)
     end
 end
