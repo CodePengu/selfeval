@@ -1,7 +1,8 @@
 class Testrecs < ApplicationRecord
   serialize :correctness, ActionController::Parameters
-  serialize :answers, ActionController::Parameters #Hash
-  serialize :questions, ActionController::Parameters #Hash
+  serialize :answers, ActionController::Parameters
+  serialize :questions, ActionController::Parameters
   serialize :mark, ActionController::Parameters
-  #store :settings, accessors: [ :color, :homepage ], coder: JSON
+  serialize :seltopics, ActionController::Parameters
+  serialize :alltopics, ActionController::Parameters
 end

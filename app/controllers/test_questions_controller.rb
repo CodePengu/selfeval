@@ -4,7 +4,7 @@ class TestQuestionsController < ApplicationController
   def index
     @show_resume = false
     @questions = Question.all
-    @OK = params[:OK]
+    @OK = params[:ok]
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
@@ -71,11 +71,13 @@ class TestQuestionsController < ApplicationController
     @mark1=rec.mark
     @corr1=rec.correctness
     @ans1=rec.answers
+    @top1=rec.seltopics
+    @alltop1=rec.alltopics
     rec.destroy
     
     ActionController::Parameters.permit_all_parameters = true
     
-    last_params = ActionController::Parameters.new(answers: @ans1, correctness: @corr1, mark: @mark1, notice: "Last saved test loaded.")
+    last_params = ActionController::Parameters.new(answers: @ans1, correctness: @corr1, mark: @mark1, selected_topics: @top1, all_topics: @alltop1,  notice: "Last saved test loaded.", ok: "clicked")
     last_params.permit!
     last_params.permitted?
     #last_params.permit(:mark,:notice)
@@ -88,9 +90,13 @@ class TestQuestionsController < ApplicationController
     @mark=params[:mark]
     @correctness=params[:correctness]
     @answers=params[:answers]
+    @topics=params[:selected_topics]
+    @alltop=params[:all_topics]
     @user_id=session[:user_id]#current_user.email
     
-    rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, answers: @answers)
+    puts params[:selected_topics]
+    
+    rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, alltopics: @alltop, answers: @answers, seltopics: @topics)
     rec.save
     #reset_session
     #reset_params

@@ -5,6 +5,8 @@ class CreateTestrec < ActiveRecord::Migration[5.1]
       t.text :correctness
       t.text :answers
       t.text :mark
+      t.text :seltopics
+      t.text :alltopics
     end
   end
 end

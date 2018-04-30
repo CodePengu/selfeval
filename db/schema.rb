@@ -30,6 +30,8 @@ ActiveRecord::Schema.define(version: 20180430203743) do
     t.text "correctness"
     t.text "answers"
     t.text "mark"
+    t.text "seltopics"
+    t.text "alltopics"
   end
 
   create_table "users", force: :cascade do |t|

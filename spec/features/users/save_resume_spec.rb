@@ -21,13 +21,13 @@ feature 'Save Resume', :devise do
       @mark=marker_
       @correctness=correctness_
       @answers=answers_
-      @email_id=user.email
+      @user_id=user.id
   
-      rec = Testrecs.new(email: @email_id , mark: @mark, correctness: @correctness, answers: @answers)
+      rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, answers: @answers)
       rec.save
       
       rec2 = Testrecs.all
-      recno=rec2.where(email: @email_id).count
+      recno=rec2.where(userid: @user_id).count
       #puts recno
       expect(recno).to eq(1)
       rec2.destroy_all
@@ -50,13 +50,13 @@ feature 'Save Resume', :devise do
       @mark=marker_
       @correctness=correctness_
       @answers=answers_
-      @email_id=user.email
+      @user_id=user.id
   
-      rec = Testrecs.new(email: @email_id , mark: @mark, correctness: @correctness, answers: @answers)
+      rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, answers: @answers)
       rec.save
       
       rec2 = Testrecs.all
-      recno=rec2.where(email: @email_id).count
+      recno=rec2.where(userid: @user_id).count
       #puts recno
       expect(recno).to eq(1)
       
@@ -65,7 +65,7 @@ feature 'Save Resume', :devise do
       signin(user.email, user.password)
       visit test_questions_path
       
-      rec3 = Testrecs.find_by(email: user.email)
+      rec3 = Testrecs.find_by(userid: user.id)
       @mark1=rec3.mark
       @corr1=rec3.correctness
       @ans1=rec3.answers
