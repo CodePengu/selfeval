@@ -7,9 +7,9 @@
 <br>
 <table>
   <tbody>
-    <% @questions.each do |question| %>
+    <% @questions.each_with_index do |question,i| %>
       <tr>
-        <td><strong><%= question.id %>.) Content:<%= question.content %></strong></td>
+        <td><strong><%=i+1 %>.) Content:<%= question.content %></strong></td>
       </tr>
       <tr>
         <td><strong>Option 1: </strong><%= question.option1 %></td>
