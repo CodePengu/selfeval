@@ -18,8 +18,8 @@ feature 'User delete', :devise, :js do
   # scenario 'user can delete own account' do
   #   # skip 'skip a slow test'
   #   user = FactoryGirl.create(:user)
-  #   login_as(user, :scope => :user)
-  #   visit edit_user_registration_path(user)
+  #   login_as(user, :scope => :admin)
+  #   visit users_path
   #   click_button 'Cancel my account'
   #   page.driver.browser.switch_to.alert.accept
   #   expect(page).to have_content I18n.t 'devise.registrations.destroyed'

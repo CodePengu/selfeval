@@ -1,35 +1,48 @@
 {
   "Cucumber Features": {
     "coverage": {
-      "/home/ec2-user/environment/selfeval/app/models/user.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/models/user.rb": [
         1,
+        null,
         1,
         1,
         null,
         1,
-        20,
+        31,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null,
         1,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/models/application_record.rb": [
+        1,
+        1,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/visitors_controller.rb": [
+        1,
+        1,
+        11,
+        1,
+        null,
+        10,
+        null,
+        null,
+        null,
+        1,
+        null,
         0,
         null,
-        null,
-        null,
-        1,
-        null,
-        null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/models/application_record.rb": [
-        1,
-        1,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
-        1,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/application_controller.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/application_controller.rb": [
         1,
         1,
         null,
@@ -38,8 +51,8 @@
         1,
         null,
         1,
-        10,
-        10,
+        14,
+        14,
         null,
         null,
         null,
@@ -54,15 +67,15 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/helpers/application_helper.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/helpers/application_helper.rb": [
         1,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/helpers/questions_helper.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/helpers/questions_helper.rb": [
         1,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/helpers/sessions_helper.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/helpers/sessions_helper.rb": [
         1,
         null,
         null,
@@ -86,15 +99,11 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/helpers/static_pages_helper.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/helpers/users_helper.rb": [
         1,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/helpers/users_helper.rb": [
-        1,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/questions_controller.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/questions_controller.rb": [
         1,
         1,
         null,
@@ -197,7 +206,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/models/question.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/models/question.rb": [
         1,
         1,
         1,
@@ -213,7 +222,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/uploaders/image_uploader.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/uploaders/image_uploader.rb": [
         null,
         1,
         null,
@@ -267,7 +276,7 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/controllers/test_questions_controller.rb": [
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/test_questions_controller.rb": [
         1,
         null,
         null,
@@ -328,109 +337,80 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/jobs/application_job.rb": [
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/channel.rb": [
-        0,
-        0,
-        0,
-        0
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/users_controller.rb": [
-        0,
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/users_controller.rb": [
+        1,
         null,
-        0,
-        0,
+        1,
+        1,
         null,
-        0,
+        1,
         null,
         null,
         null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
         0,
         0,
         null,
-        0,
         null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        null,
+        1,
         0,
         0,
         0,
         0,
         null,
         null,
+        null,
+        null,
+        null,
+        1,
         0,
-        0,
-        0,
-        0,
-        0,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        1,
         0,
         0,
         0,
         null,
         0,
-        0,
+        null,
+        null,
+        null,
+        1,
         0,
         0,
         0,
         null,
-        0,
         null,
-        0,
-        0,
-        0,
-        0,
-        0,
+        1,
         null,
-        0,
+        1,
         0,
         0,
         null,
+        null,
+        null,
+        1,
         0,
+        null,
+        1,
+        0,
+        null,
+        null,
+        null,
         null,
         null,
         null,
@@ -467,41 +447,78 @@
         null,
         null
       ],
-      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
-        0,
-        0,
-        0,
+      "/home/ubuntu/workspace/rails-devise-roles/app/channels/application_cable/channel.rb": [
         null,
-        0,
-        0,
-        0,
         null,
-        0,
-        0,
-        0,
         null,
-        0,
-        0,
-        0,
-        0,
-        null,
-        0,
-        0,
-        0,
-        0,
-        0
+        null
       ],
-      "/home/ec2-user/environment/selfeval/app/controllers/static_pages_controller.rb": [
-        0,
-        0,
-        0,
+      "/home/ubuntu/workspace/rails-devise-roles/app/channels/application_cable/connection.rb": [
         null,
-        0,
-        0,
-        0
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/mailers/application_mailer.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/password_resets_controller.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/controllers/sessions_controller.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/jobs/application_job.rb": [
+        null,
+        null
+      ],
+      "/home/ubuntu/workspace/rails-devise-roles/app/services/create_admin_service.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
       ]
     },
-    "timestamp": 1524526530
+    "timestamp": 1525042247
   },
   "RSpec": {
     "coverage": {
@@ -512,7 +529,7 @@
         1,
         null,
         1,
-        37,
+        35,
         null,
         null,
         null,
@@ -816,8 +833,8 @@
         1,
         null,
         1,
-        3,
-        2,
+        1,
+        0,
         null,
         null,
         null,
@@ -1022,6 +1039,6 @@
         null
       ]
     },
-    "timestamp": 1525034341
+    "timestamp": 1525042265
   }
 }

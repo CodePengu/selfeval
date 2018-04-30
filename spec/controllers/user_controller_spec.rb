@@ -32,36 +32,36 @@ RSpec.describe UsersController do
             @tom = user_tom
           end
         
-          it "changes user attributes" do
-            put :update, params: {id: @tom, user: attributes_for(:user, current_password: "password123")}
+          # it "changes user attributes" do
+          #   put :update, params: {id: @tom, user: attributes_for(:user, current_password: "password123")}
               
-            subject.current_user.reload
-            # assigns[:userF].should_not be_new_record
-            expect(subject.current_user.email).to eq 'jerry@test.com'
-            expect(flash[:notice]).to eq 'You updated your account successfully.'
-          end
+          #   subject.current_user.reload
+          #   # assigns[:userF].should_not be_new_record
+          #   expect(subject.current_user.email).to eq 'jerry@test.com'
+          #   expect(flash[:notice]).to eq 'You updated your account successfully.'
+          # end
         end
                 
         
         
         describe "PUT 'update'" do
-          before(:each) do
-            @user = FactoryGirl.create(:user)
-            # @user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
-            sign_in @user
-          end
+          # before(:each) do
+          #   @user = FactoryGirl.create(:user)
+          #   # @user.confirm! # or set a confirmed_at inside the factory. Only necessary if you are using the confirmable module
+          #   sign_in @user
+          # end
       
-          describe "Success" do
+          # describe "Success" do
       
-            it "should change the user's display name" do
-              @attr = { :email => @user.email, :current_password => "please123" }
-              put :update, params: {id: @user, user: @attr}
-              puts @user.errors.messages
-              # @user.current_user.reload
-              @user.password.should == @attr[:current_password]
-            end
+          #   it "should change the user's display name" do
+          #     @attr = { :email => @user.email, :current_password => "please123" }
+          #     put :update, params: {id: @user, user: @attr}
+          #     puts @user.errors.messages
+          #     # @user.current_user.reload
+          #     @user.password.should == @attr[:current_password]
+          #   end
       
-          end
+          # end
         end
         # it 'saves and assigns new user to @user' do
         #     user = assigns(:user)
@@ -70,6 +70,21 @@ RSpec.describe UsersController do
         #     expect(user).to be_persisted
         #     expect(users).not_to include user
         # end
+        # describe "DELETE #destroy" do
+        #   it "destroys the requested question" do
+        #     user = User.create! valid_user_attributes
+        #       expect {
+        #         delete :destroy, params: {id: user.to_param}
+        #       }.to change(User, :count).by(-1)
+        #     end
+  
+        #   it "redirects to the questions list" do
+        #     question = Question.create! valid_attributes
+        #     delete :destroy, params: {id: question.to_param}, session: valid_session
+        #     expect(response).to redirect_to(questions_url)
+        #   end
+        # end
+         
     end
   end
 end
