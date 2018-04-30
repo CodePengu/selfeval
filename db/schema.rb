@@ -22,6 +22,7 @@ ActiveRecord::Schema.define(version: 20180430203743) do
     t.string "qtype"
     t.string "explanation"
     t.string "image"
+    t.string "topic"
   end
 
   create_table "testrecs", force: :cascade do |t|

@@ -4,12 +4,26 @@ class TestQuestionsController < ApplicationController
   def index
     @show_resume = false
     @questions = Question.all
+    @OK = params[:OK]
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
+    @selected_topics = Hash[@questions.map {|question| [question.topic, ""]}]
+    if params[:all_topics]!=nil
+      @all_topics = params[:all_topics]
+      @selected_topics = Hash[@questions.map {|question| [question.topic, "selected"]}]
+    end
     @review = params[:review]
     @submitted = params[:submitted]
     @count=0
+    if params[:selected_topics] != nil
+      params[:selected_topics].each do |topic,selector|
+        topic = topic.to_s
+        if (selector == "selected")
+          @selected_topics[topic] = ("selected")
+        end
+      end
+    end
 
     if params[:mark] != nil
       params[:mark].each do |id,marker|
@@ -95,14 +109,9 @@ class TestQuestionsController < ApplicationController
   def summary
     @questions = Question.all
     @count1 = params[:count]
+    @selected_topics=params[:selected_topics]
     @answers=params[:answers]
-    @total =Question.count
-    #if @answers != nil
-    #  @answers.each do |id, answer|
-     #   id = id.to_i
-     #   question = Question.find_by(:id => id)
-     # end
-    #end
+    @total = params[:total]
   end
 
 
