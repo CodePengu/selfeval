@@ -27,6 +27,7 @@ gem 'uglifier', '3.2.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '4.2.2'
+gem 'fog', require: 'fog/aws'
 
 # jquery rails
 gem 'jquery-rails', '4.3.1'
@@ -65,6 +66,7 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring'
   gem 'spring-watcher-listen', '2.0.1'
+  gem 'fog-aws'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
