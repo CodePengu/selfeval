@@ -1,3 +1,4 @@
+
 require 'simplecov'
 SimpleCov.start 'rails'
 
@@ -8,7 +9,6 @@ SimpleCov.start 'rails'
 # files.
 
 require 'cucumber/rails'
-
 # Capybara defaults to CSS3 selectors rather than XPath.
 # If you'd prefer to use XPath, just uncomment this line and adjust any
 # selectors in your step definitions to use the XPath syntax.
@@ -65,3 +65,31 @@ end
 # See https://github.com/cucumber/cucumber-rails/blob/master/features/choose_javascript_database_strategy.feature
 Cucumber::Rails::Database.javascript_strategy = :truncation
 
+module UserSessionHelper
+  def current_user
+    @current_user
+  end
+
+  def login(user=nil)
+    if user.nil?
+      @current_user = FactoryGirl.create(:user, username: fake_name)
+    else
+      @current_user = user
+    end
+    visit login_path
+    fill_in 'Username', with: @current_user.username
+    fill_in 'Password', with: '1234'
+    click_button 'Login'
+    page.should have_content('Logout')
+  end
+
+  def logout
+    click_link 'Logout'
+  end
+end
+
+RSpec.configure do |config|
+  config.include UserSessionHelper
+end if RSpec.respond_to?(:configure)
+
+World(UserSessionHelper) if respond_to?(:World)

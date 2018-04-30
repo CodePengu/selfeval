@@ -5,14 +5,15 @@ Feature: submit answers to questions
   I want to view questions and submit answers for them
   
   Background: questions in database
-    
+
     Given the following questions exist:
     | content                | option1 | option2     | option3   | option4  | answer  |
     | What color is the sky? | red     | green       | blue      | yellow   | option3 |
     | When is the exam?      | Monday  | Tuesday     | Wednesday | Thursday | option4 |
     | Who is the professor?  | Walker  | Chen        | Obama     | Trump    | option1 |
-  
+    #Given I am loggedin as "test@email.com" with password "123456"
   Scenario: view list of questions on application's test_questions page
+
     When I go to the index page for test_questions
     Then I should see "What color is the sky?"
     And I should see "red"
