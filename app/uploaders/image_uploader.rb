@@ -36,6 +36,14 @@ class ImageUploader < CarrierWave::Uploader::Base
   version :thumb do
     process resize_to_fill: [350, 350]
   end
+  
+  version :medium do
+    process resize_to_fill: [400, 400]
+  end
+  
+  version :large do
+    process resize_to_fill: [450, 450]
+  end
 
   # Add a white list of extensions which are allowed to be uploaded.
   # For images you might use something like this:

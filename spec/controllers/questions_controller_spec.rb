@@ -29,11 +29,15 @@ RSpec.describe QuestionsController, type: :controller do
   # Question. As you add validations to Question, be sure to
   # adjust the attributes here as well.
   let(:valid_attributes) {
-    {qtype: "MCQ", content: "Question1", option1: "1", option2: "2", option3: "3", option4: "4", answer: "option1", explanation: "explanation", topic: "general"}
+    {qtype: "Mutiple Choice", topic: "Topic 1", content: "Question1", option1: "1", option2: "2", option3: "3", option4: "4", answer: "option1", explanation: "explanation", image: File.open(Rails.root.join("test/fixtures/files/fruit.jpg"))}
   }
 
   let(:invalid_attributes) {
-    {qtype: "MCQ", content: "Question1", option1: "", option2: "False", option3: "nil", option4: "nil", answer: "option1", explanation: "explanation", topic: "general"}
+    {qtype: "Multiple Choice", content: "Question1", option1: "", option2: "False", option3: "nil", option4: "nil", answer: "option1", explanation: "explanation"}
+  }
+  
+  let(:image_remove_params) {
+    {remove_question_image: "1"}
   }
 
   # This should return the minimal set of values that should be in the session
@@ -98,20 +102,35 @@ RSpec.describe QuestionsController, type: :controller do
   describe "PUT #update" do
     context "with valid params" do
       let(:new_attributes) {
-        {content: "Question2"}
+        {topic: "general", content: "Question2", qtype: "True or False", explanation: "", answer: "option2"}
       }
 
       it "updates the requested question" do
         question = Question.create! valid_attributes
         put :update, params: {id: question.to_param, question: new_attributes}, session: valid_session
         question.reload
-        skip("Add assertions for updated state")
+        question.topic.should eql "general"
+        question.qtype.should eql "True or False"
+        question.explanation.should eql ""
       end
 
       it "redirects to the question" do
         question = Question.create! valid_attributes
         put :update, params: {id: question.to_param, question: valid_attributes}, session: valid_session
         expect(response).to redirect_to(question)
+      end
+    end
+    
+    context "with valid params" do
+      let(:new_attributes) {
+        {topic:"general", content: "Question2", qtype: "True or False", answer: "option2", remove_question_image: "1"}
+      }
+      
+      it "updates the requested question by removing image" do
+        question = Question.create! valid_attributes
+        put :update, params: {id: question.to_param, question: new_attributes}, session: valid_session
+        question.reload
+        question.image.present?.should eql false
       end
     end
 

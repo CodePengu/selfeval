@@ -7,13 +7,15 @@ Feature: include formatted equations
   Background: questions in database
     
     Given the following questions exist:
-    | content                      | option1 | option2     | option3         | option4  | answer  | topic |
-    | What color is the sky?       | red     | green       | blue            | yellow   | option3 | general |
-    | What is \(\frac{1+2^2}{5}\)? | 5       | 1           | \(\frac{1}{3}\) | 0        | option2 | general |
-    | Who is the professor?        | Walker  | Chen        | Obama           | Trump    | option1 | general |
+    | content                      | qtype            | option1 | option2     | option3         | option4  | answer  | topic |
+    | What color is the sky?       | Multiple Choice  | red     | green       | blue            | yellow   | option3 | general |
+    | What is \(\frac{1+2^2}{5}\)? | Multiple Choice  | 5       | 1           | \(\frac{1}{3}\) | 0        | option2 | general |
+    | Who is the professor?        | Multiple Choice  | Walker  | Chen        | Obama           | Trump    | option1 | general |
 
   Scenario: view equations in the test
     When I go to the index page for test_questions
+    And I choose "general"
+    And I press "OK"
     Then show me the page
     And I choose "option3" for "answers[2]"
     And I choose "option1" for "answers[3]"

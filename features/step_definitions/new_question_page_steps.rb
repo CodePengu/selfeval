@@ -52,3 +52,7 @@ Then("{string} should be {string}") do |string, string2|
     question.explanation.should == string2
   end
 end
+
+Then("I should be redirected to {string} of {string}") do |string, string2|
+  visit question_path(string2)
+end

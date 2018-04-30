@@ -7,9 +7,10 @@
 <br>
 <table>
   <tbody>
-    <% @questions.each_with_index do |question,i| %>
+    <% i=1 %>
+    <% @questions.each do |question| %>
       <tr>
-        <td><strong><%=i+1 %>.) Content:<%= question.content %></strong></td>
+        <td><strong><%= i %>.) Content:<%= question.content %></strong></td>
       </tr>
       <tr>
         <td><strong>Option 1: </strong><%= question.option1 %></td>
@@ -30,7 +31,7 @@
         <td><strong>Explanation: </strong><%= question.explanation %></td>
       </tr>
       <tr>
-        <td><strong>Topic:</strong><%= question.topic %></td>
+        <td><strong>Topic: </strong><%= question.topic %></td>
       </tr>
       <tr>
         <td>
@@ -38,11 +39,12 @@
             <tr>
                <td><strong id="show"><%= link_to 'Show', question %></strong></td>
                <td><strong id="edit"><%= link_to 'Edit', edit_question_path(question) %></strong></td>
-               <td><strong id="destroy"><%= link_to 'Destroy', question, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
+               <td><strong id="destroy"><%= link_to 'Delete', question, method: :delete, data: { confirm: 'Are you sure?' } %></strong></td>
             </tr>
           </table>
         </td>
       </tr>
+      <% i=i+1 %>
     <% end %>
   </tbody>
 </table>
