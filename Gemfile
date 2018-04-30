@@ -27,7 +27,6 @@ gem 'uglifier', '3.2.0'
 
 # Use CoffeeScript for .coffee assets and views
 gem 'coffee-rails', '4.2.2'
-gem 'fog', require: 'fog/aws'
 
 # jquery rails
 gem 'jquery-rails', '4.3.1'
@@ -41,8 +40,10 @@ gem 'devise'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '3.1.11'
 gem 'bootstrap-sass', '3.3.7'
-gem 'carrierwave', '~> 0.10.0'
+gem 'carrierwave'
+gem 'fog'
 gem 'mini_magick', '~> 4.3'
+gem 'figaro'
 
 # Use Capistrano for deployment
 # gem 'capistrano-rails', group: :development
@@ -66,7 +67,6 @@ group :development do
   gem 'listen',                '3.1.5'
   gem 'spring'
   gem 'spring-watcher-listen', '2.0.1'
-  gem 'fog-aws'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]

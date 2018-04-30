@@ -108,3 +108,6 @@ pickle-email-*.html
 
 .byebug_history
 >>>>>>> 868bd9a3615f538a32e60d089722b99f8efcaeba
+
+# Ignore application configuration
+/config/application.yml
