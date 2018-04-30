@@ -51,6 +51,29 @@ Feature:Add a new question
     And I choose "op2"
     And I press "Create Question"
     Then I should be redirected to "Show" of "1"
+    And I should see "Topic 1"
+    And I should see "optional 1"
+    And I should see "optional 2"
+    And I should see "optional 3"
+    And I should see "optional 4"
+    And I should see "Question?"
+    And I should see "Multiple Choice"
+    
+  Scenario: adding a new TF question
+    When I am on the New Question Page
+    And I select "True or False" from "question_qtype"
+    And I fill in "question_content" with "Question?"
+    And I fill in "Topic 2" for "question_topic"
+    And I choose "op2"
+    And I press "Create Question"
+    Then I should be redirected to "Show" of "1"
+    And I should see "Topic 2"
+    And I should see "True"
+    And I should see "False"
+    And I should see "nil"
+    And I should see "nil"
+    And I should see "Question?"
+    And I should see "True or False"
   
   Scenario: Going back from the new question page
   When I am on the New Question Page

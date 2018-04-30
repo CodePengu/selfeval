@@ -5,25 +5,27 @@
 %h3 The questions with the right answers are:
 %br
 - @questions.each_with_index do |question, i|
-  -if @answers!=nil
-    = question.content
-    %br
-    - if question.image_url.present?
-      = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
-      - 20.times do
+  - if @selected_topics != nil 
+    -if @selected_topics[question.topic] == "selected"
+      -if @answers!=nil
+        = question.content
         %br
-    %br
-    <strong>Correct Answer:</strong>
-    = question[question.answer]
-    %br
-    <strong>Your answer:</strong>
-    = question[@answers[question.id.to_s]]
-    %br
-    <strong>Explanation:</strong>
-    = question.explanation
-    %br
-    %br
-    %br
+        - if question.image_url.present?
+          = image_tag(question.image_url(:thumb).to_s, :align=>"left") 
+          - 20.times do
+            %br
+        %br
+        <strong>Correct Answer:</strong>
+        = question[question.answer]
+        %br
+        <strong>Your answer:</strong>
+        = question[@answers[question.id.to_s]]
+        %br
+        <strong>Explanation:</strong>
+        = question.explanation
+        %br
+        %br
+        %br
 = link_to 'Done', root_path , :id => 'done'
 
 <script src='https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.4/MathJax.js?config=TeX-MML-AM_CHTML' async></script>

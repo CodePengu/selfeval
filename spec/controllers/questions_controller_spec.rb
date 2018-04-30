@@ -109,7 +109,7 @@ RSpec.describe QuestionsController, type: :controller do
         question = Question.create! valid_attributes
         put :update, params: {id: question.to_param, question: new_attributes}, session: valid_session
         question.reload
-        question.topic.should eql "general".pluralize
+        question.topic.should eql "general"
         question.qtype.should eql "True or False"
         question.explanation.should eql ""
       end

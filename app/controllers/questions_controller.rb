@@ -28,7 +28,7 @@ class QuestionsController < ApplicationController
     if params[:question][:qtype] == "True or False"
       @question = Question.new()
       @question.qtype = params[:question][:qtype]
-      @question.topic = params[:question][:topic].pluralize
+      @question.topic = params[:question][:topic]
       @question.content = params[:question][:content]
       @question.option1 = 'True'
       @question.option2 = 'False'
@@ -63,7 +63,7 @@ class QuestionsController < ApplicationController
     if params[:question][:remove_question_image] == "1"
       @question.remove_image = true
       if params[:question][:topic] != nil
-        params[:question][:topic] = params[:question][:topic].pluralize
+        params[:question][:topic] = params[:question][:topic]
       end
       if params[:question][:qtype] == "True or False"
         params[:question][:option1] = 'True'
@@ -74,7 +74,7 @@ class QuestionsController < ApplicationController
       @question.update(question_params)
     else
       if params[:question][:topic] != nil
-        params[:question][:topic] = params[:question][:topic].pluralize
+        params[:question][:topic] = params[:question][:topic]
       end
       if params[:question][:qtype] == "True or False"
         params[:question][:option1] = 'True'

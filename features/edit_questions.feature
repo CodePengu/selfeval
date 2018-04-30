@@ -36,12 +36,14 @@ Feature: modify an existing question
     And I should see "True"
     And I should see "False"
     
-  #Scenario: updating a mcq question with image
-  #  When I am on the homepage
-  #  And I follow "Edit" of "1"
-  #  And I check "Remove Image"
-  #  And I press "Update Question"
-  #  Then I should be redirected to "Show" of "1"
+  Scenario: updating topic of a mcq question
+    When I am on the homepage
+    And I follow "Edit" of "1"
+    And I select "True or False" from "question_qtype"
+    And I fill in "question_topic" with "general"
+    And I press "Update Question"
+    Then I should see "general"
+    And I should see "True or False"
     
   Scenario: updating a tf question to a mcq question
     When I am on the homepage
@@ -59,17 +61,3 @@ Feature: modify an existing question
     And I press "Update Question"
     Then I should not see "Question was successfully updated."
     And I should be redirected to "Edit" of "1"
-  
-  #Scenario: adding a valid image with question
-  #When I am on the homepage
-  #And I follow "Edit" of "1"
-  #And I upload a jpeg file
-  #And I click update question
-  #Then I should be redirected to the homepage
-  
-  #Scenario: adding an invalid image with question
-  #When I am on the homepage
-  #And I follow "Edit" of "1"
-  #And I upload a pdf file
-  #And I click update question
-  #Then I should not be redirected to the homepage
