@@ -22,7 +22,50 @@ feature 'User profile page', :devise do
     expect(page).to have_content 'User'
     expect(page).to have_content user.email
   end
-
+  
+  scenario 'user as admin update users' do
+    user = FactoryGirl.create(:user, :admin)
+    other = FactoryGirl.create(:user, email: "other@example.com")
+    login_as(user, scope: :user)
+    visit users_path
+    expect(page).to have_content user.email
+    expect(page).to have_content 'User'
+    click_button 'Change Role'
+    expect(page).to have_content 'User updated.'
+  end
+  
+  scenario 'user as admin delete users' do
+    user = FactoryGirl.create(:user, :admin)
+    other = FactoryGirl.create(:user, email: "other@example.com")
+    login_as(user, scope: :user)
+    visit users_path
+    expect(page).to have_content user.email
+    expect(page).to have_content 'User'
+    click_link 'Delete user'
+    expect(page).to have_content 'User deleted.'
+  end
+  
+  # scenario 'user as admin delete users' do
+  #   user = FactoryGirl.create(:user, :admin)
+  #   other = FactoryGirl.create(:user, email: "other@example.com")
+  #   login_as(user, scope: :user)
+  #   visit users_path
+  #   expect(page).to have_content user.email
+  #   expect(page).to have_content 'User'
+  #   click_link 'Delete user'
+  #   expect(page).to have_content 'Unable to update user.'
+  # end
+  
+  scenario 'user can delete own account' do
+    # skip 'skip a slow test'
+    user = FactoryGirl.create(:user)
+    login_as(user, :scope => :user)
+    visit edit_user_registration_path(user)
+    expect(page).to have_content 'User'
+    click_button 'Cancel my account'
+    # page.driver.browser.switch_to.alert.accept
+    expect(page).to have_content I18n.t 'devise.registrations.destroyed'
+  end
   # Scenario: User cannot see another user's profile
   #   Given I am signed in
   #   When I visit another user's profile

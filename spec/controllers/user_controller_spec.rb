@@ -6,25 +6,25 @@ RSpec.describe UsersController do
   
   
     let(:valid_user_attributes){
-    {role: "user", email: "xien.thomas@gmail.com", password: "1234567"}
+    {role: "admin", email: "xien.thomas@gmail.com", password: "1234567"}
     }
     let(:valid_session) { {} }
     let(:invalid_user_attributes){
     {role: "admin", email: "xien.thomas@gmail.com", password: "1234567"}
     }
     let(:user) { FactoryGirl.create(:user, email: 'xien.thomas@gmail.com') }
-    
+    let!(:admin_user){{role: :admin, email: "some@example.com", password: "somepassword"}}
   describe "PUT #update" do
       context "with valid params" do
           let(:new_attributes) {
-            {password: "password"}
+            {role: "user"}
             }
         it "update user" do
-           user = User.create! valid_user_attributes
+            user = User.create! valid_user_attributes
             put :update, params: {id: user.to_param, user: new_attributes}, session: valid_session
             user.reload
         end
-        describe "PUT #update" do
+        describe "Patch #update" do
           before :each do
             @request.env['devise.mapping'] = Devise.mappings[:user]
             user_tom = FactoryGirl.create(:user, email: 'tom@test.com', password: "password123")
@@ -32,14 +32,21 @@ RSpec.describe UsersController do
             @tom = user_tom
           end
         
-          # it "changes user attributes" do
-          #   put :update, params: {id: @tom, user: attributes_for(:user, current_password: "password123")}
-              
-          #   subject.current_user.reload
-          #   # assigns[:userF].should_not be_new_record
-          #   expect(subject.current_user.email).to eq 'jerry@test.com'
-          #   expect(flash[:notice]).to eq 'You updated your account successfully.'
-          # end
+          it "changes user attributes" do
+            patch :update, params: {id: @tom, user: attributes_for(:user, current_password: "password123")}
+            # expect(response).to be_redirect
+            # subject.current_user.reload
+            # assigns[:userF].should_not be_new_record
+            # expect(subject.current_user.email).to eq 'jerry@test.com'
+            # expect(flash[:notice]).to eq 'You updated your account successfully.'
+          end
+          
+          it "change role of user" do
+            # user = User.create!(admin_user)
+            # @all_users = User.find(params[:id])
+            # patch :update, params: {id: user}
+            # expect(flash[:notice]).to eq 'User updated'
+          end
         end
                 
         

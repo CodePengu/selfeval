@@ -51,7 +51,7 @@ Scenario: admin sign in
   
 Scenario: admin deleting users
   Given I am on the Users page
-  And I press "Change Role"
+  # Then I follow "Change Role"
   
 #   And  I press "Log in"
 #   Given I am on the login page

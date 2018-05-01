@@ -19,7 +19,7 @@ feature 'User delete', :devise, :js do
   #   # skip 'skip a slow test'
   #   user = FactoryGirl.create(:user)
   #   login_as(user, :scope => :admin)
-  #   visit users_path
+  #   visit user_path(user)
   #   click_button 'Cancel my account'
   #   page.driver.browser.switch_to.alert.accept
   #   expect(page).to have_content I18n.t 'devise.registrations.destroyed'
