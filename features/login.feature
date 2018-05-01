@@ -42,6 +42,17 @@ Scenario: verify output when email id is entered wrong (sad path)
   And  I fill in "Password confirmation" with "password"
   Then I should be on Sign up
   
+Scenario: admin sign in
+  Given I am on the home page
+  Then I follow "Sign in"
+  And  I fill in "Password" with "password"
+  And  I fill in "Email" with "xienthomas"
+  And I press "Sign in"
+  
+Scenario: admin deleting users
+  Given I am on the Users page
+  # Then I follow "Change Role"
+  
 #   And  I press "Log in"
 #   Given I am on the login page
 #   And  I fill in "Username" with "xthomas"

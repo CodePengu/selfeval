@@ -22,22 +22,22 @@ class UsersController < ApplicationController
 
   end
   
-  def new
-    @user = User.new
-  end
+  # def new
+  #   @user = User.new
+  # end
   
-  def create
-    @user = User.create!(user_params) #change new to create!
-    if @user.save
-      # Handle a successful save.
-      log_in @user
-      flash[:success] = "Welcome to the Self Evaluation System!"
-      redirect_to @user
-      # We can also redirect to home page with a success message
-    else
-      render 'new'
-    end
-  end
+  # def create
+  #   @user = User.create!(user_params) #change new to create!
+  #   if @user.save
+  #     # Handle a successful save.
+  #     log_in @user
+  #     flash[:success] = "Welcome to the Self Evaluation System!"
+  #     redirect_to @user
+  #     # We can also redirect to home page with a success message
+  #   else
+  #     render 'new'
+  #   end
+  # end
 
 
   def update

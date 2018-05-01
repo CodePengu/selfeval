@@ -5,14 +5,15 @@ Feature: submit answers to questions
   I want to view questions and submit answers for them
   
   Background: questions in database
-    
+
     Given the following questions exist:
     | content                | qtype           | topic      | option1 | option2     | option3   | option4  | answer  |
     | What color is the sky? | Multiple Choice | general    | red     | green       | blue      | yellow   | option3 |
     | When is the exam?      | Multiple Choice | 606_course | Monday  | Tuesday     | Wednesday | Thursday | option4 |
     | Who is the professor?  | Multiple Choice | 606_course | Walker  | Chen        | Obama     | Trump    | option1 |
-  
+
   Scenario: view list of questions on application's test_questions page
+
     When I go to the index page for test_questions
     Then I should see "general"
     And I should see "606_course"

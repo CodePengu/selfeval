@@ -15,7 +15,9 @@ module NavigationHelpers
 
     when /^the home\s?page$/
       '/'
-    
+    when /^the Users page$/
+      users_path
+      
     when /^the index page for test_questions/i
       '/test_questions'
       

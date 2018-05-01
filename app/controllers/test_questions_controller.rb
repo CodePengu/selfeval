@@ -1,9 +1,10 @@
+
 class TestQuestionsController < ApplicationController
-
-
+  
   def index
+    @show_resume = false
     @questions = Question.all
-    @OK = params[:OK]
+    @OK = params[:ok]
     @correctness = Hash[@questions.map {|question| [question.id, ""]}]
     @answers = Hash[@questions.map {|question| [question.id, "blank"]}]
     @mark = Hash[@questions.map {|question| [question.id, "~review"]}]
@@ -52,8 +53,64 @@ class TestQuestionsController < ApplicationController
         @answers[id] = ("#{answer}")
       end
     end
+    rec = Testrecs.all
+    #puts session
+    @user_id=session[:user_id]#current_user.email
+    @recno=rec.where(userid: @user_id).count
+    #@recno=Testrecs.first(:conditions => ["email = (?)", current_user.email])
+    #@recno=rec.count
+    if @recno == 0
+        @show_resume = false
+    else
+        @show_resume = true
+    end
+  end
+  
+  def resume
+    rec = Testrecs.find_by(userid: session[:user_id])
+    @mark1=rec.mark
+    @corr1=rec.correctness
+    @ans1=rec.answers
+    @top1=rec.seltopics
+    @alltop1=rec.alltopics
+    rec.destroy
+    
+    ActionController::Parameters.permit_all_parameters = true
+    
+    last_params = ActionController::Parameters.new(answers: @ans1, correctness: @corr1, mark: @mark1, selected_topics: @top1, all_topics: @alltop1,  notice: "Last saved test loaded.", ok: "clicked")
+    last_params.permit!
+    last_params.permitted?
+    #last_params.permit(:mark,:notice)
+    #puts last_params
+    redirect_to test_questions_path(last_params)
+    #redirect_to "/test_questions", :notice => "Last saved test loaded.", :mark => @mark1, :correctness => @corr1, :answers => @ans1
   end
 
+  def signoutwpause
+    @mark=params[:mark]
+    @correctness=params[:correctness]
+    @answers=params[:answers]
+    @topics=params[:selected_topics]
+    @alltop=params[:all_topics]
+    @user_id=session[:user_id]#current_user.email
+    
+    puts params[:selected_topics]
+    
+    rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, alltopics: @alltop, answers: @answers, seltopics: @topics)
+    rec.save
+    #reset_session
+    #reset_params
+    user = current_user
+    sign_out user
+    redirect_to "/", :notice => "Test saved and logged out successfully."
+    #redirect_to "/",:notice => "Test saved and logged out successfully." 
+    # click logout (/user/sign_out)
+    #recs = Testrecs.all
+    #recs.each do |rec|
+    #  test = object_from_yaml(rec.value)
+    #  puts test
+    #end
+  end
 
   def summary
     @questions = Question.all

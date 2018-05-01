@@ -45,6 +45,16 @@ Given /^(?:|I )am on (.+)$/ do |page_name|
   visit path_to(page_name)
 end
 
+Given /^I am loggedin as "([^\"]*)" with password "([^\"]*)"$/ do |email, password|
+  unless email.blank?
+    visit new_user_session_path
+    user = FactoryGirl.create(:user)
+    fill_in "Email", :with => user.email
+    fill_in "Password", :with => user.password
+    click_button "Sign In"
+  end
+end
+
 When /^(?:|I )go to (.+)$/ do |page_name|
   visit path_to(page_name)
 end
