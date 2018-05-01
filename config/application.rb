@@ -13,7 +13,7 @@ Bundler.require(*Rails.groups)
 
 module RailsDeviseRoles #RailsDeviseRoles
   class Application < Rails::Application
-    config.action_mailer.default_url_options = { :host => Rails.application.secrets.domain_name }
+    config.action_mailer.default_url_options = { host: 'self-eval-2121.herokuapp.com' }
     config.generators do |g|
       g.test_framework :rspec,
         fixtures: true,
