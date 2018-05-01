@@ -394,6 +394,8 @@
         0,
         0,
         0,
+        0,
+        0,
         null,
         0,
         null,
@@ -410,6 +412,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        null,
         0,
         null,
         0,
@@ -446,7 +452,8 @@
         1,
         1,
         1,
-        null,
+        1,
+        1,
         null
       ],
       "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
@@ -630,7 +637,7 @@
         0
       ]
     },
-    "timestamp": 1525124568
+    "timestamp": 1525131241
   },
   "RSpec": {
     "coverage": {
@@ -921,6 +928,8 @@
         0,
         0,
         0,
+        0,
+        0,
         null,
         0,
         null,
@@ -937,6 +946,10 @@
         0,
         0,
         0,
+        0,
+        0,
+        0,
+        null,
         0,
         null,
         0,
@@ -1063,7 +1076,8 @@
         1,
         1,
         1,
-        null,
+        1,
+        1,
         null
       ],
       "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
@@ -1263,6 +1277,6 @@
         0
       ]
     },
-    "timestamp": 1525124890
+    "timestamp": 1525141742
   }
 }

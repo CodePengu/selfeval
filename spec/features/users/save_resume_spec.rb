@@ -11,6 +11,7 @@ feature 'Save Resume', :devise do
   #   And I am signed in
   #   When I visit test_questions page
   #   Then I should be able to save parameters
+  
   it 'should save test session before logout' do
       user = FactoryGirl.create(:user)
       signin(user.email, user.password)
@@ -34,6 +35,7 @@ feature 'Save Resume', :devise do
       
       click_link 'Sign out'
   end
+  
   
   # Scenario: User can sign in and restore test progress
   #   Given I exist as a user
@@ -64,7 +66,6 @@ feature 'Save Resume', :devise do
       
       signin(user.email, user.password)
       visit test_questions_path
-      
       rec3 = Testrecs.find_by(userid: user.id)
       @mark1=rec3.mark
       @corr1=rec3.correctness
@@ -73,7 +74,7 @@ feature 'Save Resume', :devise do
       expect(@mark1).to eq(@mark)
       expect(@corr1).to eq(@correctness)
       expect(@ans1).to eq(@answers)
-      
+      expect(rec3.mark).to eq(@mark)
       rec2.destroy_all
   end
 
