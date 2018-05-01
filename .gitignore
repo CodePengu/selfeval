@@ -106,5 +106,19 @@ pickle-email-*.html
 # tilde files are usually backup files from a text editor
 *~
 
+# Ignore all logfiles and tempfiles.
+/log/*
+/tmp/*
+!/log/.keep
+!/tmp/.keep
+
+/node_modules
+/yarn-error.log
+
+.byebug_history
 .env
 Procfile
+
+# Ignore application configuration
+/config/application.yml
+
