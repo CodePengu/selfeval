@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180420035717) do
+ActiveRecord::Schema.define(version: 20180430203743) do
 
   create_table "questions", force: :cascade do |t|
     t.string "content"
@@ -22,6 +22,16 @@ ActiveRecord::Schema.define(version: 20180420035717) do
     t.string "qtype"
     t.string "explanation"
     t.string "image"
+    t.string "topic"
+  end
+
+  create_table "testrecs", force: :cascade do |t|
+    t.integer "userid"
+    t.text "correctness"
+    t.text "answers"
+    t.text "mark"
+    t.text "seltopics"
+    t.text "alltopics"
   end
 
   create_table "users", force: :cascade do |t|

@@ -6,8 +6,20 @@
 </p>
 
 <p>
-  <strong>Image:</strong>
-  <%= image_tag @question.image_url(:thumb).to_s if @question.image_url.present? %>
+  <% if @question.image_url.present? %>
+    <strong>Image:</strong>
+    <br>
+    <br>
+    <%= image_tag(@question.image_url(:thumb).to_s, :align=>"left") %>
+    <% 20.times do %>
+      <br>
+    <% end %>
+  <% end %>
+</p>
+
+<p>
+  <strong>Qtype:</strong>
+  <%= @question.qtype %>
 </p>
 
 <p>
@@ -40,5 +52,11 @@
   <%= @question.explanation %>
 </p>
 
-<%= link_to 'Edit', edit_question_path(@question) %> |
-<%= link_to 'Back', questions_path %>
+<p>
+  <strong>Topic:</strong>
+  <%= @question.topic %>
+</p>
+
+
+<u><strong><%= link_to 'Edit', edit_question_path(@question) %></strong></u>
+<u><strong><%= link_to 'Back', questions_path %></strong></u>
