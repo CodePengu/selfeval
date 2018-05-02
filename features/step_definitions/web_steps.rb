@@ -215,18 +215,16 @@ Then /^the "([^"]*)" field should have no error$/ do |field|
   end
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should be checked$/ do |label, parent|
-  with_scope(parent) do
-    field_checked = find_field(label)['checked']
-    if field_checked.respond_to? :should
-      field_checked.should be_true
-    else
-      assert field_checked
-    end
-  end
+Then /^I should see that "([^"]*)" is checked from "([^"]*)"$/ do |value, name|
+  page.should have_selector "input[type='radio'][checked='checked'][value='#{value}'][name='#{name}']"
 end
 
-Then /^the "([^"]*)" checkbox(?: within (.*))? should not be checked$/ do |label, parent|
+Then /^the "([^"]*)" radio button value should be "([^"]*)"$/ do |label, value|
+    field_checked = find_field(label)['checked']
+    expect(field_checked.value).to eq value
+end
+
+Then /^the "([^"]*)" checkbox present in "([^"]*)" should not be checked$/ do |label, parent|
   with_scope(parent) do
     field_checked = find_field(label)['checked']
     if field_checked.respond_to? :should

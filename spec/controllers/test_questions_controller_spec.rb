@@ -3,6 +3,7 @@ require 'rails_helper'
 
 describe TestQuestionsController do
 before { controller.stub(:current_user).and_return (@user = create(:user)) }
+
   describe 'index' do
     
     question_1 = {:content => 'What color is the sky?', :qtype => 'Multiple Choice', :option1 => 'red',
