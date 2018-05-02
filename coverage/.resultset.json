@@ -568,6 +568,17 @@
         null,
         null
       ],
+      "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
         null,
         null,
@@ -575,6 +586,32 @@
         null
       ],
       "/home/ec2-user/environment/selfeval/app/jobs/application_job.rb": [
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/channels/application_cable/channel.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null
       ],
@@ -600,46 +637,13 @@
         null,
         null,
         null
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/channel.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1525237618
+=======
+    "timestamp": 1525226306
+>>>>>>> 085ddce9fda999345d98ea76ff4e8f5d302dc275
   },
   "RSpec": {
     "coverage": {
@@ -1210,6 +1214,17 @@
         null,
         null
       ],
+      "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null
+      ],
       "/home/ec2-user/environment/selfeval/app/mailers/application_mailer.rb": [
         null,
         null,
@@ -1217,6 +1232,32 @@
         null
       ],
       "/home/ec2-user/environment/selfeval/app/jobs/application_job.rb": [
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/channels/application_cable/channel.rb": [
+        null,
+        null,
+        null,
+        null
+      ],
+      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
+        null,
         null,
         null
       ],
@@ -1242,45 +1283,12 @@
         null,
         null,
         null
-      ],
-      "/home/ec2-user/environment/selfeval/app/controllers/sessions_controller.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/channel.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/channels/application_cable/connection.rb": [
-        null,
-        null,
-        null,
-        null
-      ],
-      "/home/ec2-user/environment/selfeval/app/services/create_admin_service.rb": [
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null,
-        null
       ]
     },
+<<<<<<< HEAD
     "timestamp": 1525237637
+=======
+    "timestamp": 1525226314
+>>>>>>> 085ddce9fda999345d98ea76ff4e8f5d302dc275
   }
 }
