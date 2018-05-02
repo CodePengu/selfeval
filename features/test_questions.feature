@@ -13,15 +13,20 @@ Feature: submit answers to questions
     | Who is the professor?  | Multiple Choice | 606_course | Walker  | Chen        | Obama     | Trump    | option1 |
     
     Given the following users exist:
-    | name        | email         | created_at        | role  | encrypted_password|
-    | Xien        | xthomas       | shieldedRavine    | admin       |     123           |
-    | Edmaad      | edScrumMaster | shovelWaterSpirit | user       |     567           |
-    | Alien       | iAmReal       | sugarStarWars     | user     |                |
-    | George      | armyOfOne     | georgeOfTheJungle | user       |                |
+    | name        | email                   | created_at        | role        | encrypted_password|
+    | Xien        | xthomas@gmail.com       | shieldedRavine    | admin       |     123456           |
+    | Edmaad      | edScrumMaster           | shovelWaterSpirit | user        |     567           |
+    | Alien       | iAmReal                 | sugarStarWars     | user        |                |
+    | George      | armyOfOne               | georgeOfTheJungle | user        |                |
 
 
   Scenario: view list of questions on application's test_questions page
-
+    Given I am on the home page
+    Given a valid user
+    Then I follow "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     When I go to the index page for test_questions
     Then I should see "general"
     And I should see "606_course"
@@ -47,6 +52,12 @@ Feature: submit answers to questions
     And I should see "Trump"
     
   Scenario: submit answers to the questions on application's test_questions page
+    Given I am on the home page
+    Given a valid user
+    Then I follow "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     Given I am on the index page for test_questions
     When I go to the index page for test_questions
     Then I should see "general"
@@ -65,6 +76,12 @@ Feature: submit answers to questions
     And I should see "The correct answer is Walker and you selected Walker so it was correct"
 
   Scenario: leave questions blank
+    Given I am on the home page
+    Given a valid user
+    Then I follow "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     Given I am on the index page for test_questions
     When I go to the index page for test_questions
     Then I should see "general"
@@ -82,10 +99,11 @@ Feature: submit answers to questions
  
  Scenario: test resume is populating options
     Given I am on the home page
+    Given a valid user
     Then I follow "Sign in"
-    And  I fill in "Email" with "xien.thomas@email.com"
-    And  I fill in "Password" with "password"
-    And  I press "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     When I go to the index page for test_questions
     Then I should see "general"
     And I should see "606_course"
@@ -97,9 +115,8 @@ Feature: submit answers to questions
     Then I should see "Save and log out"
     And I follow "Save and log out"
     Then I follow "Sign in"
-    And  I fill in "Email" with "xien.thomas@email.com"
-    And  I fill in "Password" with "password"
-    And  I press "Sign in"
+    Given a loggedin user
+    Then I should see "You are logged in as"
     When I go to the index page for test_questions
     And  I follow "Resume last saved test"
     Then I should see that "option1" is checked from "answers[2]"

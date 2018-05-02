@@ -13,6 +13,12 @@ Feature: summary of the test questions
     | Who is the professor?  | Multiple Choice | 606_course | Walker  | Chen        | Obama     | Trump    | option1 |
   
 Scenario: summary of the test questions
+    Given I am on the home page
+    Given a valid user
+    Then I follow "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     Given I am on the index page for test_questions
     When I go to the index page for test_questions
     Then I should see "general"

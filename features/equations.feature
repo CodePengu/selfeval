@@ -13,6 +13,12 @@ Feature: include formatted equations
     | Who is the professor?        | Multiple Choice  | Walker  | Chen        | Obama           | Trump    | option1 | general |
 
   Scenario: view equations in the test
+    Given I am on the home page
+    Given a valid user
+    Then I follow "Sign in"
+    Given a loggedin user
+    #Then I should see "Signed in successfully."
+    Then I should see "You are logged in as"
     When I go to the index page for test_questions
     And I choose "general"
     And I press "OK"

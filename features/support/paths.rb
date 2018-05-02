@@ -13,6 +13,9 @@ module NavigationHelpers
   def path_to(page_name)
     case page_name
 
+    when /the login page/
+      user_session_path
+
     when /^the home\s?page$/
       '/'
     when /^the Users page$/
@@ -59,3 +62,4 @@ module NavigationHelpers
 end
 
 World(NavigationHelpers)
+

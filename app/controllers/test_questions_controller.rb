@@ -55,7 +55,8 @@ class TestQuestionsController < ApplicationController
     end
     rec = Testrecs.all
     #puts session
-    @user_id=session[:user_id]#current_user.email
+    #@user_id=session[:user_id]#current_user.email
+    @user_id=current_user.id
     @recno=rec.where(userid: @user_id).count
     #@recno=Testrecs.first(:conditions => ["email = (?)", current_user.email])
     #@recno=rec.count
@@ -67,7 +68,7 @@ class TestQuestionsController < ApplicationController
   end
   
   def resume
-    rec = Testrecs.find_by(userid: session[:user_id])
+    rec = Testrecs.find_by(userid: current_user.id)
     @mark1=rec.mark
     @corr1=rec.correctness
     @ans1=rec.answers
@@ -92,10 +93,11 @@ class TestQuestionsController < ApplicationController
     @answers=params[:answers]
     @topics=params[:selected_topics]
     @alltop=params[:all_topics]
-    @user_id=session[:user_id]#current_user.email
+    #@user_id=session[:user_id]#current_user.email
+    @user_id=current_user.id
     
     puts params[:selected_topics]
-    
+    puts 
     rec = Testrecs.new(userid: @user_id , mark: @mark, correctness: @correctness, alltopics: @alltop, answers: @answers, seltopics: @topics)
     rec.save
     #reset_session

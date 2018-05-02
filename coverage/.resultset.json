@@ -8,7 +8,7 @@
         1,
         null,
         1,
-        51,
+        70,
         null,
         null,
         null,
@@ -29,10 +29,10 @@
       "/home/ec2-user/environment/selfeval/app/controllers/visitors_controller.rb": [
         1,
         1,
-        17,
-        1,
+        31,
+        9,
         null,
-        16,
+        22,
         null,
         null,
         null,
@@ -52,8 +52,8 @@
         1,
         null,
         1,
-        20,
-        20,
+        38,
+        38,
         null,
         null,
         null,
@@ -377,6 +377,7 @@
         null,
         31,
         null,
+        null,
         31,
         31,
         null,
@@ -414,10 +415,11 @@
         1,
         1,
         1,
-        1,
         null,
         1,
         null,
+        1,
+        1,
         1,
         1,
         null,
@@ -637,7 +639,7 @@
         null
       ]
     },
-    "timestamp": 1525223029
+    "timestamp": 1525237618
   },
   "RSpec": {
     "coverage": {
@@ -911,14 +913,15 @@
         null,
         8,
         null,
-        8,
-        8,
-        null,
         null,
         8,
         8,
         null,
-        0,
+        null,
+        8,
+        7,
+        null,
+        1,
         null,
         null,
         null,
@@ -948,10 +951,11 @@
         0,
         0,
         0,
-        0,
         null,
         0,
         null,
+        0,
+        0,
         0,
         0,
         null,
@@ -1277,6 +1281,6 @@
         null
       ]
     },
-    "timestamp": 1525223058
+    "timestamp": 1525237637
   }
 }

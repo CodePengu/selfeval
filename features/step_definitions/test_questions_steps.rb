@@ -16,3 +16,18 @@ end
 When("I checkbox {string} for {string}") do |string, string2|
   check(string2, option: string)
 end
+
+Given /^a valid user$/ do
+  @user = User.create!({
+             :email => "minikermit@hotmail.com",
+             :password => "12345678",
+             :password_confirmation => "12345678"
+           })
+end
+
+Given /^a loggedin user$/ do
+  visit new_user_session_path
+  fill_in "Email", :with => "minikermit@hotmail.com"
+  fill_in "Password", :with => "12345678"
+  click_button "Sign in"
+end
