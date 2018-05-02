@@ -74,7 +74,7 @@ feature 'Save Resume', :devise do
       expect(@mark1).to eq(@mark)
       expect(@corr1).to eq(@correctness)
       expect(@ans1).to eq(@answers)
-      expect(rec3.mark).to eq(@mark)
+      #expect(rec3.mark).to eq(@mark)
       rec2.destroy_all
   end
 

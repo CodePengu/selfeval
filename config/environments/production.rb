@@ -78,24 +78,21 @@ Rails.application.configure do
 
 
   # ActionMailer Config
-  config.action_mailer.default_url_options = { :host => 'https://selfeval-codepengu-606.herokuapp.com' }
+  config.action_mailer.default_url_options = { :host => 'selfeval-codepengu-606.herokuapp.com'}#Rails.application.secrets.domain_name }
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
+  config.action_mailer.default :charset => "utf-8"
   
-  # Send deprecation notices to registered listeners.
-  config.active_support.deprecation = :notify
-
-
   config.action_mailer.smtp_settings = {
-    address: "smtp.gmail.com",
-    port: 587,
-    domain: Rails.application.secrets.domain_name,
-    authentication: "plain",
-    enable_starttls_auto: true,
-    user_name: Rails.application.secrets.email_provider_username,
-    password: Rails.application.secrets.email_provider_password
-  }
+  address: "smtp.gmail.com",
+  port: 587,
+  domain: ENV["GMAIL_DOMAIN"],
+  authentication: "plain",
+  enable_starttls_auto: true,
+  user_name: ENV["GMAIL_USERNAME"],
+  password: ENV["GMAIL_PASSWORD"]
+}
 
 
 

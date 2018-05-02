@@ -11,6 +11,14 @@ Feature: submit answers to questions
     | What color is the sky? | Multiple Choice | general    | red     | green       | blue      | yellow   | option3 |
     | When is the exam?      | Multiple Choice | 606_course | Monday  | Tuesday     | Wednesday | Thursday | option4 |
     | Who is the professor?  | Multiple Choice | 606_course | Walker  | Chen        | Obama     | Trump    | option1 |
+    
+    Given the following users exist:
+    | name        | email         | created_at        | role  | encrypted_password|
+    | Xien        | xthomas       | shieldedRavine    | admin       |     123           |
+    | Edmaad      | edScrumMaster | shovelWaterSpirit | user       |     567           |
+    | Alien       | iAmReal       | sugarStarWars     | user     |                |
+    | George      | armyOfOne     | georgeOfTheJungle | user       |                |
+
 
   Scenario: view list of questions on application's test_questions page
 
@@ -71,3 +79,37 @@ Feature: submit answers to questions
     And I should see "The correct answer is Thursday and you selected Monday so it was wrong"
     And I should see "Who is the professor?"
     But I should see "The correct answer is Walker"
+ 
+ Scenario: test resume is populating options
+    Given I am on the home page
+    Then I follow "Sign in"
+    And  I fill in "Email" with "xien.thomas@email.com"
+    And  I fill in "Password" with "password"
+    And  I press "Sign in"
+    When I go to the index page for test_questions
+    Then I should see "general"
+    And I should see "606_course"
+    And I should see "OK"
+    When I choose "606_course"
+    And I press "OK"
+    And I choose "option1" for "answers[2]"
+    When I press "Review All"
+    Then I should see "Save and log out"
+    And I follow "Save and log out"
+    Then I follow "Sign in"
+    And  I fill in "Email" with "xien.thomas@email.com"
+    And  I fill in "Password" with "password"
+    And  I press "Sign in"
+    When I go to the index page for test_questions
+    And  I follow "Resume last saved test"
+    Then I should see that "option1" is checked from "answers[2]"
+    #Then the "answers[2]" radio button value should be "option1"    
+    #Then the "answer[2]" checkbox present in "answers[2]" should be checked
+    #Then I should be on index page for test_questions
+#    And  I follow "summa"
+#    Then I should be on the index page for test_questions
+
+#    And  I choose "all_topics"
+#    And  I press "ok"
+#    Then I should see 
+    
